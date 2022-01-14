@@ -7,3 +7,10 @@ body{
     background-repeat: no-repeat;
     background-attachment:fixed;
 }
+.content{
+    font-family: 'Times new roman' , serif;
+    font-size: 100px;
+    color: #ba0000;
+    margin-top:0%;
+    margin-left: 10%;
+}
