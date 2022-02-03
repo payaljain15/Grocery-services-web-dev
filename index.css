@@ -7,16 +7,17 @@ body{
     background-repeat: no-repeat;
     background-attachment:fixed;
 }
- #cont{
+.content{
+    position: absolute;
     font-family: 'Times new roman' , serif;
     font-size: 100px;
-    color: #ba0000;
-    margin-top:0%;
-    margin-left: 10%;
+    color: black;
+    margin-top:2%;
+    margin-left: 5%;
 }
 
 .signup {
-    background-color: #ba0000;
+    background-color: black;
     border: none;
     color: white;
     padding: 10px 20px;
@@ -26,10 +27,25 @@ body{
     font-size: 16px;
     border-radius: 5px;
     font-size:20px;
-    margin-left:85%;
+    margin-left:90%;
     position:absolute;
-    /* margin-top:-70%; */
-    margin-top:-7%;
+    margin-top:2%;
+
+  }
+  .login {
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    font-size:20px;
+    margin-left:81.5%;
+    position:absolute;
+    margin-top:2%;
 
   }
 a.button{
@@ -37,20 +53,28 @@ a.button{
     text-decoration: none;
     margin-top:-40%;
 }
-.box{
-    position:relative;
-    width:35%;
-    background: rgb(255,255,255,1);
-    margin-left:12.5%;
-    /* padding:20px; */
-    margin-bottom: 20px;
-    display:inline-block;
-    margin-top:5%;
-    height:40%;
-    border:5px;
-    border-color: red;
-    border-radius:10px;
-    display:block;
-    
-    /* filter: alpha(opacity=60); */
+.mail{
+    position:absolute;
+    margin-top:17%;
+    margin-left:60%;
+    /* border:red solid 5px; */
+    width:29%;
+    height:20%;
+    background-color:rgb(255,255,255,0.3);
+    border-radius:5px;
+}
+.mail label{
+    font-family: 'Times New Roman', Times, serif;
+    font-size:25px;
+    padding:10px;
+    margin-top:10px;
+    padding-left:20px;
+}
+.mail select{
+   margin-top:5%;
+   margin-left:6%;
+   width:87%;
+   height:25%;
+   font-family: cursive;
+   font-weight:bold;
 }
