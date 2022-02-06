@@ -73,8 +73,29 @@ a.button{
 .mail select{
    margin-top:5%;
    margin-left:6%;
-   width:87%;
+   width:65%;
    height:25%;
    font-family: cursive;
    font-weight:bold;
+}
+.mail .go {
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    font-size:20px;
+    margin-left:5%;
+    position:absolute;
+    margin-top:4%;
+
+  }
+.mail #png{
+    position:absolute;
+    margin-left:68%;
+    margin-top:-9%;
 }
