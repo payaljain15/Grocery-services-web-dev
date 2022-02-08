@@ -21,41 +21,12 @@ body{
     margin-top:15%;
     margin-left:33%;
     width:29%;
-    height:45%;
+    height:50%;
     background-color:rgb(255,255,255,0.3);
     border-radius:5px;
 }
 
-.mail .login {
-    background-color: black;
-    border: none;
-    color: white;
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 5px;
-    font-size:20px;
-    margin-left:30%;
-    position:absolute;
-    margin-top:65%;
-}
-.mail .signup {
-    background-color: black;
-    border: none;
-    color: white;
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 5px;
-    font-size:20px;
-    margin-left:50%;
-    position:absolute;
-    margin-top:65%;
-}
+
 a.button{
     text-decoration: none;
     color: white;
@@ -67,3 +38,93 @@ a.button{
    margin-left:30%;
    margin-top:-17%;
 }
+.mail form{
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+  form .txt_field{
+    position: relative;
+    border-bottom: 2px solid black;
+    margin: 30px 0;
+    font-size: 20px;
+  }
+  .txt_field input{
+    width: 100%;
+    padding: 0 5px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+  }
+  .txt_field label{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    color: black;
+    transform: translateY(-50%);
+    font-size: 16px;
+    pointer-events: none;
+    transition: .5s;
+    font-size: 20px;
+  }
+  .txt_field span::before{
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: black;
+    transition: .5s;
+ 
+  }
+  .txt_field input:focus ~ label,
+  .txt_field input:valid ~ label{
+    top: -5px;
+    color: rgba(0, 110, 255, 0.87);
+  }
+  .txt_field input:focus ~ span::before,
+  .txt_field input:valid ~ span::before{
+    width: 100%;
+  }
+  .pass{
+    margin: -5px 0 20px 5px;
+    color: black;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  .pass:hover{
+    text-decoration: underline;
+  }
+  input[type="submit"]{
+    width: 25%;
+    height: 25%;
+    background: black;
+    border-radius: 5px;
+    font-size: 20px;
+    color: #e9f4fb;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+    margin-left:35%;
+  }
+  input[type="submit"]:hover{
+    background: rgba(0, 110, 255, 0.87);
+    transition: .5s;
+  }
+  .signup_link{
+    margin: 20px 0;
+    text-align: center;
+    font-size: 20px;
+    color: black;
+    font-weight:bold;
+  }
+  .signup_link a{
+    color: rgba(0, 110, 255, 0.87);
+    text-decoration: none;
+  }
+  .signup_link a:hover{
+    text-decoration: underline;
+  }
+  
