@@ -5,17 +5,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/login.css" type="text/css">
+    <link rel="stylesheet" href="/stylesheets/login.css" type="text/css">
     <link rel='icon' href='/icon.png' />
     <title>Epicerie</title>
 </head>
 
-<body style="background-image:url(b5.jpg)" center center fixed>
+<body style="background-image:url(/images/b5.jpg)" center center fixed>
     <div class="content">
         <span>Epicerie</span>
     </div>
     <div class='mail'>
-        <img src="login4.png" alt="login" style="width:40%;height:45%;" id="png">
+        <img src="/images/login4.png" alt="login" style="width:40%;height:45%;" id="png">
         <form method="post">
             <div class="txt_field">
                 <input type="text" required>
@@ -28,10 +28,13 @@
                 <label>Password</label>
             </div>
             <div class="pass">Forgot Password?</div>
-            <input type="submit" value="Login" href="welcome.html">
+            <input type="submit" value="Login" href="/welcome">
             <div class="signup_link">
-                Not a member? <a href="signup.html">Signup</a>
+                Not a member? <a href="/signup">Signup</a>
             </div>
         </form>
+        {{#if message}}
+            <h4> {{ message }}</h4>
+        {{/if}}
     </div>
 </body>

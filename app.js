@@ -12,9 +12,13 @@ var db = mysql.createConnection({
   database: process.env.database
 });
 
-const publicDirectory = path.join(__dirname, './public')
+const publicDirectory = path.join(__dirname, 'public')
 app.use(express.static(publicDirectory));
 
+//Parse URL-encoded bodies as sent by html form
+app.use(express.urlencoded({extended: false}));
+//Parse JSON bodies as sent by API clients
+app.use(express.json());
 app.set('view engine' , 'hbs');
 
 db.connect(function (err) {
@@ -22,9 +26,10 @@ db.connect(function (err) {
   console.log("Connected!");
 });
 
-app.get("/" , (req, res) => {
-  res.render('login');
-})
+
+//Define Routes
+app.use('/', require('./routes/pages'));
+app.use('/auth', require('./routes/auth'));
 
 
 app.get('/createdb', (req, res) => {
@@ -32,7 +37,6 @@ app.get('/createdb', (req, res) => {
   db.query(sql, (err, result) => {
     if (err) throw err;
     res.send('database created successfully');
-
   });
 });
 
