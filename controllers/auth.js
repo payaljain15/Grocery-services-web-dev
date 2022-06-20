@@ -20,20 +20,41 @@ exports.register = (req,res) => {
 
     const{ name,username, email, pnumber, password, passwordConfirm} = req.body;
 
-    db.query('SELECT email_id FROM users WHERE email_id = ?', [email], async (error, results) => {
+    db.query('SELECT user_name FROM users WHERE user_name = ?', [username], async (error, results) => {
         if (error) {
             console.log(error);
         }
         if(results.length > 0) {
             return res.render("signup",{
-                message: 'This email is already registered with us.'
+                message: 'This username is already registered with us.'
+            })
+        }
+        if(typeof password !== 'string')
+        {
+            return res.render("signup",{
+                message: 'Password should be string in nature.'
+            })
+        }
+        if(typeof username !== 'string')
+        {
+            return res.render("signup",{
+                message: 'Username should be string in nature.'
             })
         }
         else if(password !== passwordConfirm) {
             return res.render("signup",{
                 message: 'Passwords do not match.'
             });
+            // window.alert("Passwords do not match")
         }
+        if(password.length < 6)
+        {
+            return res.render("signup",{
+                message: 'Password must be at least 6 characters.'
+            })
+        }
+        
+
 
         let hashedpassword = await bcrypt.hash(password, 8);
         console.log(hashedpassword);
@@ -48,5 +69,17 @@ exports.register = (req,res) => {
             }
         })
     });
+}
+
+exports.forgot_password = (req, res) => {
+    console.log(req.body);
+    const{username} = req.body;
+
+    db.query('SELECT email_id FROM users WHERE user_name = ?', [username], async (error, results) => {
+        if (error) {
+            console.log(error);
+        }
+        console.log(results);
+    })
 }
 
