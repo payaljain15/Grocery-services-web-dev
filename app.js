@@ -19,7 +19,7 @@ app.use(express.static(publicDirectory));
 app.use(express.urlencoded({extended: false}));
 //Parse JSON bodies as sent by API clients
 app.use(express.json());
-app.set('view engine' , 'hbs');
+app.set('view engine' , 'hbs'); 
 
 db.connect(function (err) {
   if (err) throw err;
