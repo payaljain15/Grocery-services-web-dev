@@ -60,3 +60,37 @@ body{
   from {opacity: .4}
   to {opacity: 1}
 }
+
+.description {
+  border:red solid 5px;
+  position:relative;
+  width:500px;
+  height:350px;
+  margin-top:-30%;
+  margin-left:60%;
+}
+
+.loc{
+  position:absolute;
+  margin-top:17%;
+  margin-left:33%;
+  width:29%;
+  height:20%;
+  background-color:rgb(255,255,255,0.3);
+  border-radius:5px;
+}
+.loc label{
+  font-family: 'Times New Roman', Times, serif;
+  font-size:25px;
+  padding:10px;
+  margin-top:10px;
+  padding-left:20px;
+}
+.loc select{
+ margin-top:10%;
+ margin-left:6%;
+ width:65%;
+ height:25%;
+ font-family: cursive;
+ font-weight:bold;
+}
