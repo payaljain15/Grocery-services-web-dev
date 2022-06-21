@@ -27,12 +27,3 @@ var con = mysql.createConnection({
 //     });
 //   });
 
-exports.forgot_password = (req, res) => {
-  var username = req.body;
-  var sql = 'SELECT * FROM users WHERE username = ?';
-  console.log(sql);
-  con.query(sql,[username], async function (err, result, fields) {
-    if (err) throw err;
-    console.log(result);
-  });
-}
