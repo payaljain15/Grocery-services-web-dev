@@ -4,8 +4,8 @@ var mysql = require('mysql');
 var con = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "Emptineful123*",
-    database: "grocery",
+    password: process.env.pass,
+    database: process.env.database
 });
 
 // con.connect(function(err) {
@@ -31,7 +31,7 @@ exports.forgot_password = (req, res) => {
   var username = req.body;
   var sql = 'SELECT * FROM users WHERE username = ?';
   console.log(sql);
-  con.query(sql,[username], function (err, result, fields) {
+  con.query(sql,[username], async function (err, result, fields) {
     if (err) throw err;
     console.log(result);
   });

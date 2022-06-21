@@ -11,6 +11,10 @@ router.get('/signup', (req, res) => {
 
 router.get('/forgot_password', (req, res) => {
     res.render('forgot_password');
-})
+});
+
+router.get('/welcome', (req, res) => {
+    res.render('welcome');
+});
 
 module.exports = router;

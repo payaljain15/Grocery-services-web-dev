@@ -104,3 +104,8 @@ exports.forgot_password = (req, res) => {
     });
 }
 
+exports.login = (req,res) => {
+    console.log(req.body);
+    const {username, password} = req.body;
+}
+
