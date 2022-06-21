@@ -13,7 +13,10 @@ var db = mysql.createConnection({
     password: process.env.pass,
     database: process.env.database
 });
-
+//Parse URL-encoded bodies as sent by html form
+app.use(express.urlencoded({extended: false}));
+//Parse JSON bodies as sent by API clients
+app.use(express.json());
 
 exports.register = (req, res) => {
     console.log(req.body);
@@ -69,43 +72,62 @@ exports.register = (req, res) => {
 }
 
 exports.forgot_password = (req, res) => {
-    // console.log(req.body);
-    const username = req.body;
-    console.log(username);
-    db.query('SELECT email FROM users WHERE username = ?',[username], (error, result,field) => {
-        console.log(error, result);
-        if (error) {
-            console.log(error);
+    var username = req.body;
+    var usern = JSON.stringify(username);
+    const user = usern.split('"');
+    var sql = 'SELECT email FROM users WHERE username = "' + user[3] + '"';
+    console.log(sql);
+    db.query(sql, function (err, result, fields) {
+        if (err) throw err;
+        if(result.length < 1) {
+            res.render('signup', {message: 'The username is not registered with us.'});
         }
-    // var nodemailer = require('nodemailer');
+        console.log(result);
+        // var nodemailer = require('nodemailer');
 
-    // var transporter = nodemailer.createTransport({
-    //     service: 'gmail',
-    //     auth: {
-    //         user: '1511payal.jain@gmail.com',
-    //         pass: ''
-    //     }
-    // });
+        // var transporter = nodemailer.createTransport({
+        //     service: 'gmail',
+        //     auth: {
+        //         user: process.env.E,
+        //         pass: process.env.P
+        //     }
+        // });
 
-    // var mailOptions = {
-    //     from: '201210056@nitdelhi.ac.in',
-    //     to: '1511payal.jain@gmail.com',
-    //     subject: 'Sending Email using Node.js',
-    //     text: 'That was easy!'
-    // };
+        // var mailOptions = {
+        //     from: process.env.E,
+        //     to: result.email,
+        //     subject: 'Sending Email using Node.js',
+        //     text: 'That was easy!'
+        // };
 
-    // transporter.sendMail(mailOptions, function (error, info) {
-    //     if (error) {
-    //         console.log(error);
-    //     } else {
-    //         console.log('Email sent: ' + info.response);
-    //     }
-    // });
+        // transporter.sendMail(mailOptions, function (error, info) {
+        //     if (error) {
+        //         console.log(error);
+        //     } else {
+        //         console.log('Email sent: ' + info.response);
+        //     }
+        // });
     });
+
 }
 
-exports.login = (req,res) => {
+exports.login = async (req, res) => {
     console.log(req.body);
-    const {username, password} = req.body;
+    const { username, password } = req.body;
+    var usern = JSON.stringify(username);
+    const user = usern.split('"');
+    console.log(user[1]);
+    var sql = 'SELECT userpass FROM users WHERE username = "' + user[1] + '"';
+    console.log(sql);
+    // db.query(sql, function (err, result, fields) {
+    //     if (err) throw err;
+    //     if(result.length  < 1){
+    //         res.render('error', {
+    //             message: 'No users found'
+    //         })
+    //     }
+    //     if(await bcrypt.compare(password, result.password)){
+
+    //     }
 }
 
