@@ -4,6 +4,7 @@ const mysql = require('mysql');
 const dotenv = require('dotenv');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const JWTSecret = process.env.JWT;
 
 dotenv.config({ path: './.env' })
 const app = express();
@@ -18,6 +19,14 @@ app.use(express.urlencoded({extended: false}));
 //Parse JSON bodies as sent by API clients
 app.use(express.json());
 
+
+const router = express.Router();
+
+router.get('/', (req, res) => {
+    res.render('login');
+});
+
+
 exports.register = (req, res) => {
     console.log(req.body);
 
@@ -30,17 +39,17 @@ exports.register = (req, res) => {
         if (results.length > 0) {
             return res.render("signup", {
                 message: 'This username is already registered with us.'
-            })
+            });
         }
         if (typeof password !== 'string') {
             return res.render("signup", {
                 message: 'Password should be string in nature.'
-            })
+            });
         }
         if (typeof username !== 'string') {
             return res.render("signup", {
                 message: 'Username should be string in nature.'
-            })
+            });
         }
         else if (password !== passwordConfirm) {
             return res.render("signup", {
@@ -51,7 +60,7 @@ exports.register = (req, res) => {
         if (password.length < 6) {
             return res.render("signup", {
                 message: 'Password must be at least 6 characters.'
-            })
+            });
         }
 
 
@@ -72,62 +81,77 @@ exports.register = (req, res) => {
 }
 
 exports.forgot_password = (req, res) => {
-    var username = req.body;
-    var usern = JSON.stringify(username);
-    const user = usern.split('"');
-    var sql = 'SELECT email FROM users WHERE username = "' + user[3] + '"';
+    var user = req.body;
+    console.log(user.username);
+    var sql = 'SELECT email FROM users WHERE username = ?';
     console.log(sql);
-    db.query(sql, function (err, result, fields) {
+    db.query(sql,[user.username], function (err, result, fields) {
         if (err) throw err;
         if(result.length < 1) {
             res.render('signup', {message: 'The username is not registered with us.'});
         }
         console.log(result);
-        // var nodemailer = require('nodemailer');
+        var usern = JSON.stringify(result);
+        console.log(usern);
+        const email = usern.split('"');
+        console.log(email[3]);
+        var nodemailer = require('nodemailer');
 
-        // var transporter = nodemailer.createTransport({
-        //     service: 'gmail',
-        //     auth: {
-        //         user: process.env.E,
-        //         pass: process.env.P
-        //     }
-        // });
+        var transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: process.env.E,
+                pass: process.env.P
+            }
+        });
 
-        // var mailOptions = {
-        //     from: process.env.E,
-        //     to: result.email,
-        //     subject: 'Sending Email using Node.js',
-        //     text: 'That was easy!'
-        // };
+        var mailOptions = {
+            from: process.env.E,
+            to: email[3],
+            subject: 'Sending Email using Node.js',
+            text: 'That was easy!'
+        };
 
-        // transporter.sendMail(mailOptions, function (error, info) {
-        //     if (error) {
-        //         console.log(error);
-        //     } else {
-        //         console.log('Email sent: ' + info.response);
-        //     }
-        // });
+        transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
+        });
     });
-
 }
 
 exports.login = async (req, res) => {
     console.log(req.body);
-    const { username, password } = req.body;
+    const username = req.body;
     var usern = JSON.stringify(username);
     const user = usern.split('"');
-    console.log(user[1]);
-    var sql = 'SELECT userpass FROM users WHERE username = "' + user[1] + '"';
+    console.log(user);
+    const nowpass = user[7];
+    var sql = 'SELECT userpass FROM users WHERE username = "' + user[3] + '"';
     console.log(sql);
-    // db.query(sql, function (err, result, fields) {
-    //     if (err) throw err;
-    //     if(result.length  < 1){
-    //         res.render('error', {
-    //             message: 'No users found'
-    //         })
-    //     }
-    //     if(await bcrypt.compare(password, result.password)){
-
-    //     }
+    db.query(sql, async function (err, result, fields) {
+        if (err) throw err;
+        var userpass = JSON.stringify(result);
+        const pass = userpass.split('"');
+        console.log(pass);
+        const password = pass[3];
+        if(result.length  < 1){
+            return res.render('login', {
+                message: 'No users found'
+            });
+        }
+        if(await bcrypt.compare(nowpass, password)){
+            console.log('Done');
+            const token = jwt.sign(
+                {
+                    username: user[3]
+                },
+                JWTSecret
+            )
+            return res.render('welcome');
+        }
+    });
 }
 
