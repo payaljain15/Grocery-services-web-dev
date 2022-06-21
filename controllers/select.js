@@ -27,10 +27,12 @@ var con = mysql.createConnection({
 //     });
 //   });
 
-con.connect(function(err) {
+exports.forgot_password = (req, res) => {
+  var username = req.body;
+  var sql = 'SELECT * FROM users WHERE username = ?';
+  console.log(sql);
+  con.query(sql,[username], function (err, result, fields) {
     if (err) throw err;
-    con.query("SELECT * FROM grocery.games", function (err, result, fields) {
-      if (err) throw err;
-      console.log(result);
-    });
+    console.log(result);
   });
+}
