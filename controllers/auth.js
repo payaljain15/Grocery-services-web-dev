@@ -20,7 +20,7 @@ exports.register = (req, res) => {
 
     const { name, username, email, pnumber, password, passwordConfirm } = req.body;
 
-    db.query('SELECT user_name FROM users WHERE user_name = ?', [username], async (error, results) => {
+    db.query('SELECT username FROM users WHERE username = ?', [username], async (error, results) => {
         if (error) {
             console.log(error);
         }
@@ -56,7 +56,7 @@ exports.register = (req, res) => {
         let hashedpassword = await bcrypt.hash(password, 8);
         console.log(hashedpassword);
 
-        db.query("INSERT INTO users SET ?", { full_name: name, email_id: email, contact_number: pnumber, user_name: username, user_pass: hashedpassword }, (error, results) => {
+        db.query("INSERT INTO users SET ?", { fullname: name, email: email, contactnumber: pnumber, username: username, userpass: hashedpassword }, (error, results) => {
             if (error) {
                 console.log(error);
             } else {
@@ -69,37 +69,38 @@ exports.register = (req, res) => {
 }
 
 exports.forgot_password = (req, res) => {
-    console.log(req.body);
-    // const username = req.body;
-
-    db.query('SELECT email_id FROM users WHERE user_name = "payaljain1511"', async (error, results) => {
+    // console.log(req.body);
+    const username = req.body;
+    console.log(username);
+    db.query('SELECT email FROM users WHERE username = ?',[username], (error, result,field) => {
+        console.log(error, result);
         if (error) {
             console.log(error);
         }
-        var nodemailer = require('nodemailer');
+    // var nodemailer = require('nodemailer');
 
-        var transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: '1511payal.jain@gmail.com',
-                pass: ''
-            }
-        });
+    // var transporter = nodemailer.createTransport({
+    //     service: 'gmail',
+    //     auth: {
+    //         user: '1511payal.jain@gmail.com',
+    //         pass: ''
+    //     }
+    // });
 
-        var mailOptions = {
-            from: '201210056@nitdelhi.ac.in',
-            to: '1511payal.jain@gmail.com',
-            subject: 'Sending Email using Node.js',
-            text: 'That was easy!'
-        };
+    // var mailOptions = {
+    //     from: '201210056@nitdelhi.ac.in',
+    //     to: '1511payal.jain@gmail.com',
+    //     subject: 'Sending Email using Node.js',
+    //     text: 'That was easy!'
+    // };
 
-        transporter.sendMail(mailOptions, function (error, info) {
-            if (error) {
-                console.log(error);
-            } else {
-                console.log('Email sent: ' + info.response);
-            }
-        });
-    })
+    // transporter.sendMail(mailOptions, function (error, info) {
+    //     if (error) {
+    //         console.log(error);
+    //     } else {
+    //         console.log('Email sent: ' + info.response);
+    //     }
+    // });
+    });
 }
 
