@@ -15,7 +15,7 @@ body{
 /* Slideshow container */
 .slideshow-container {
   height: 400px;
-  width: 655px;
+  width: 90%;
   margin-top:0%;
   margin-left:5%;
   position: relative;
@@ -26,6 +26,7 @@ body{
 /* Hide the images by default */
 .mySlides {
   display: none;
+  float: left;
 }
 
 /* Next & previous buttons */
@@ -66,12 +67,13 @@ body{
   position:absolute;
   width:500px;
   height:350px;
-  margin-top:-30%;
+  margin-top:0%;
   margin-left:60%;
 }
 
 .location{
-  position:absolute;
+  position:relative;
+  float: right;
   margin-top:5%;
   margin-left:5%;
   width:90%;
