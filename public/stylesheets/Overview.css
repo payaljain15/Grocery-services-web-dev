@@ -63,7 +63,7 @@ body{
 
 .description {
   border:red solid 5px;
-  position:relative;
+  position:absolute;
   width:500px;
   height:350px;
   margin-top:-30%;
@@ -73,16 +73,16 @@ body{
 .location{
   position:absolute;
   margin-top:5%;
-  margin-left:5%;
+  margin-left:10%;
   width:90%;
-  height:20%;
+  height:15%;
   background-color:rgb(255,255,255,0.3);
   border-radius:5px;
 }
 .location label{
   font-family: 'Times New Roman', Times, serif;
   font-size:25px;
-  padding:50px;
+  padding:45px;
   margin-top:10px;
   padding-left:20px;
 }
