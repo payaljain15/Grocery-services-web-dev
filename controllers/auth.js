@@ -5,6 +5,8 @@ const dotenv = require('dotenv');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const JWTSecret = process.env.JWT;
+var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
 
 dotenv.config({ path: './.env' })
 const app = express();
@@ -18,7 +20,9 @@ var db = mysql.createConnection({
 app.use(express.urlencoded({extended: false}));
 //Parse JSON bodies as sent by API clients
 app.use(express.json());
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 const router = express.Router();
 
@@ -150,7 +154,10 @@ exports.login = async (req, res) => {
                 },
                 JWTSecret
             )
-            return res.render('welcome');
+            console.log('Token: ' + token);
+            return res.render('welcome',{
+                data: token
+            });
         }
     });
 }
