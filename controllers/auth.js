@@ -7,6 +7,7 @@ const bcrypt = require('bcryptjs');
 const JWTSecret = process.env.JWT;
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
+const hbs = require('nodemailer-express-handlebars');
 
 dotenv.config({ path: './.env' })
 const app = express();
@@ -108,12 +109,31 @@ exports.forgot_password = (req, res) => {
                 pass: process.env.P
             }
         });
+        const handlebarOptions = {
+            viewEngine: {
+                partialsDir: path.resolve('./views/'),
+                defaultLayout: false,
+            },
+            viewPath: path.resolve('./views/'),
+        };
+        
+        transporter.use('compile', hbs(handlebarOptions))
+
+        var otp = Math.floor((Math.random() * 10000) + 1);
+
+        console.log("otp: ", otp);
+
+        db.query("INSERT INTO OTP ")
 
         var mailOptions = {
             from: process.env.E,
             to: email[3],
-            subject: 'Sending Email using Node.js',
-            text: 'That was easy!'
+            subject: 'OTP Confirmation',
+            template: 'email',
+            context : {
+                name : otp
+
+            }
         };
 
         transporter.sendMail(mailOptions, function (error, info) {
