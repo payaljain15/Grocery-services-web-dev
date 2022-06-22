@@ -70,26 +70,26 @@ body{
   margin-left:60%;
 }
 
-.loc{
+.location{
   position:absolute;
-  margin-top:17%;
-  margin-left:33%;
-  width:29%;
+  margin-top:5%;
+  margin-left:5%;
+  width:90%;
   height:20%;
   background-color:rgb(255,255,255,0.3);
   border-radius:5px;
 }
-.loc label{
+.location label{
   font-family: 'Times New Roman', Times, serif;
   font-size:25px;
-  padding:10px;
+  padding:50px;
   margin-top:10px;
   padding-left:20px;
 }
-.loc select{
- margin-top:10%;
- margin-left:6%;
- width:65%;
+.location select{
+ margin-top:2%;
+ margin-left:5%;
+ width:90%;
  height:25%;
  font-family: cursive;
  font-weight:bold;
