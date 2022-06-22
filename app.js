@@ -2,6 +2,8 @@ const express = require('express');
 const path = require('path');
 const mysql = require('mysql');
 const dotenv = require('dotenv');
+var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
 
 dotenv.config({path: './.env'})
 const app = express();
@@ -20,7 +22,9 @@ app.use(express.urlencoded({extended: false}));
 //Parse JSON bodies as sent by API clients
 app.use(express.json());
 app.set('view engine' , 'hbs'); 
-
+app.use(bodyParser.json());
+ app.use(bodyParser.urlencoded({ extended: true }));
+ app.use(cookieParser());
 db.connect(function (err) {
   if (err) throw err;
   console.log("Connected!");
