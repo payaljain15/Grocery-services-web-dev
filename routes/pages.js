@@ -20,5 +20,8 @@ router.get('/welcome', (req, res) => {
 router.get('/overview', (req, res) => {
     res.render('overview')
 })
+router.get('/confirm_otp', (req, res) => {
+    res.render('confirm_otp')
+})
 
 module.exports = router;
