@@ -5,8 +5,8 @@ const dotenv = require('dotenv');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const JWTSecret = process.env.JWT;
-var bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const hbs = require('nodemailer-express-handlebars');
 const { NOW } = require('sequelize');
 
@@ -190,8 +190,9 @@ exports.login = async (req, res) => {
                 },
                 JWTSecret
             )
-            localStorage.setItem('jwt_token', token);
+            // window.localStorage.setItem('jwt_token', token);
             console.log('Token: ' + token);
+            res.cookie('jwt_token', token);
             return res.render('welcome',{
                 data: token
             });
@@ -204,6 +205,7 @@ exports.login = async (req, res) => {
 exports.otp = async(req,res) => {
     console.log(req.body);
     db.query('DELETE FROM otp WHERE expirein < NOW()')
+
     res.render('change_pass');
 }
 
