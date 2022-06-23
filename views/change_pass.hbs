@@ -15,13 +15,18 @@
         <span>Epicerie</span>
     </div>
     <div class='mail'>
-        <form action="/auth/otp" method="post">
+        <form action="/auth/change_pass" method="post">
             <div class="txt_field">
-                <input type="text" id = "otp" name = "otp" required>
+                <input type="text" id = "newpass" name = "newpass" required>
                 <span></span>
-                <label>Enter the OTP recieved on your registered email.</label>
+                <label>New Password</label>
             </div>
-            <input type="submit" value="Submit" href="/new_pass">
+            <div class="txt_field">
+                <input type="text" id = "confirmpass" name = "confirmpass" required>
+                <span></span>
+                <label>Confirm New Password</label>
+            </div>
+            <input type="submit" value="Submit" href="/">
         </form>
     </div>
 </body>

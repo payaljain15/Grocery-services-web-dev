@@ -18,10 +18,13 @@ router.get('/welcome', (req, res) => {
 });
 
 router.get('/overview', (req, res) => {
-    res.render('overview')
-})
+    res.render('overview');
+});
 router.get('/confirm_otp', (req, res) => {
-    res.render('confirm_otp')
-})
+    res.render('confirm_otp');
+});
+router.get('/new_pass', (req, res) => {
+    res.render('change_pass');
+});
 
 module.exports = router;
