@@ -151,6 +151,7 @@ exports.forgot_password = (req, res) => {
             }
         });
     });
+    return res.render('change_pass');
 }
 
 exports.login = async (req, res) => {
@@ -181,11 +182,25 @@ exports.login = async (req, res) => {
                 },
                 JWTSecret
             )
+            localStorage.setItem('jwt_token', token);
             console.log('Token: ' + token);
             return res.render('welcome',{
                 data: token
             });
         }
+        else return res.render('login',{message: 'Invalid Password'});
     });
+}
+
+
+exports.otp = async(req,res) => {
+    console.log(req.body);
+}
+
+exports.change_password = async(req,res) => {
+    const {token} = req.body;
+    const user = jwt.verify(token,process.env.JWT);
+    console.log(user);
+
 }
 
