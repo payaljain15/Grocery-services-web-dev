@@ -8,6 +8,7 @@ const JWTSecret = process.env.JWT;
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 const hbs = require('nodemailer-express-handlebars');
+const { NOW } = require('sequelize');
 
 dotenv.config({ path: './.env' })
 const app = express();
@@ -123,7 +124,10 @@ exports.forgot_password = (req, res) => {
 
         console.log("otp: ", otp);
 
-        db.query("INSERT INTO OTP ")
+        db.query("INSERT INTO OTP SET ?",{ username:user.username , otp:otp , expirein : NOW()+300}, (error, results) =>{
+            if(error)throw error;
+            console.log(results);
+        })
 
         var mailOptions = {
             from: process.env.E,

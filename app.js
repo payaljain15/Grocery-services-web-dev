@@ -23,8 +23,8 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 app.set('view engine' , 'hbs'); 
 app.use(bodyParser.json());
- app.use(bodyParser.urlencoded({ extended: true }));
- app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser());
 db.connect(function (err) {
   if (err) throw err;
   console.log("Connected!");
