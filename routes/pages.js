@@ -20,10 +20,10 @@ router.get('/welcome',requireAuth, (req, res) => {
 router.get('/overview',requireAuth, (req, res) => {
     res.render('overview');
 });
-router.get('/confirm_otp', (req, res) => {
+router.get('/confirm_otp',requireAuth, (req, res) => {
     res.render('confirm_otp');
 });
-router.get('/new_pass', (req, res) => {
+router.get('/new_pass',requireAuth, (req, res) => {
     res.render('change_pass');
 });
 

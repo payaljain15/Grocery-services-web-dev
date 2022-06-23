@@ -104,6 +104,15 @@ exports.forgot_password = (req, res) => {
             }
             else console.log('done');
         });
+        const token = jwt.sign(
+            {
+                username: user.username
+            },
+            JWTSecret
+        )
+        // window.localStorage.setItem('jwt_token', token);
+        console.log('Token: ' + token);
+        res.cookie('jwt_token', token);
         console.log(result);
         var usern = JSON.stringify(result);
         console.log(usern);
