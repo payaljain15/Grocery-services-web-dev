@@ -121,10 +121,13 @@ exports.forgot_password = (req, res) => {
         transporter.use('compile', hbs(handlebarOptions))
 
         var otp = Math.floor((Math.random() * 10000) + 1);
-
+        var expire = new Date();
+        expire.setMinutes(expire.getMinutes() + 5);
         console.log("otp: ", otp);
+        console.log("expirein: ", expire);
+        
 
-        db.query("INSERT INTO OTP SET ?",{ username:user.username , otp:otp , expirein : NOW()+300}, (error, results) =>{
+        db.query("INSERT INTO OTP SET ?",{ username:user.username , otp:otp , expirein : expire}, (error, results) =>{
             if(error)throw error;
             console.log(results);
         })
