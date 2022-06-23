@@ -90,12 +90,20 @@ exports.forgot_password = (req, res) => {
     var user = req.body;
     console.log(user.username);
     var sql = 'SELECT email FROM users WHERE username = ?';
+    var sql2 = 'SELECT username FROM otp WHERE username = ?';
     console.log(sql);
     db.query(sql,[user.username], function (err, result, fields) {
         if (err) throw err;
         if(result.length < 1) {
             res.render('signup', {message: 'The username is not registered with us.'});
         }
+        db.query(sql2,[user.username], function (error,results){
+            if(error) throw error;
+            if(results.length > 0){
+                db.query('DELETE FROM otp WHERE username =?',[user.username]);
+            }
+            else console.log('done');
+        });
         console.log(result);
         var usern = JSON.stringify(result);
         console.log(usern);
@@ -122,7 +130,7 @@ exports.forgot_password = (req, res) => {
 
         var otp = Math.floor((Math.random() * 10000) + 1);
         var expire = new Date();
-        expire.setMinutes(expire.getMinutes() + 5);
+        expire.setMinutes(expire.getMinutes() + 0);
         console.log("otp: ", otp);
         console.log("expirein: ", expire);
         
@@ -151,7 +159,7 @@ exports.forgot_password = (req, res) => {
             }
         });
     });
-    return res.render('change_pass');
+    return res.render('confirm_otp');
 }
 
 exports.login = async (req, res) => {
@@ -195,12 +203,13 @@ exports.login = async (req, res) => {
 
 exports.otp = async(req,res) => {
     console.log(req.body);
+    db.query('DELETE FROM otp WHERE expirein < NOW()')
+    res.render('change_pass');
 }
 
 exports.change_password = async(req,res) => {
     const {token} = req.body;
     const user = jwt.verify(token,process.env.JWT);
     console.log(user);
-
 }
 

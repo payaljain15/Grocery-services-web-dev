@@ -7,5 +7,5 @@ router.post('/register',authController.register)
 router.post('/login', authController.login)
 router.post('/forgot_password' , authController.forgot_password)
 router.post('/otp' , authController.otp)
-// router.post('/change_pass', authController.change_pass)
+router.post('/confirm_otp', authController.otp)
 module.exports = router;
