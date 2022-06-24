@@ -33,7 +33,7 @@ body{
 /* Next & previous buttons */
 .prev, .next {
   cursor: pointer;
-  position: absolute;
+  position:absolute;
   width: auto;
   margin-top: -225px;
   padding: 16px;
@@ -48,7 +48,7 @@ body{
 
 /* Position the "next button" to the right */
 .next {
-  margin-left: 54%;
+  margin-left: 612px;
   /* border-radius: 3px 0 0 3px;
   margin-left:-610px; */
   
@@ -86,14 +86,65 @@ body{
   font-family: 'Times New Roman', Times, serif;
   font-size:25px;
   padding:45px;
-  margin-top:10px;
-  padding-left:20px;
+  /* margin-top:10px; */
+  /* padding-left:20px; */
+  padding-bottom:20px;
+  margin-bottom:20px;
 }
-.location select{
- margin-top:2%;
- margin-left:5%;
- width:90%;
- height:25%;
- font-family: cursive;
- font-weight:bold;
+.location select {
+  margin-top: 2%;
+  margin-bottom: 3%;
+  margin-left: 5%;
+  width: 90%;
+  height: 25%;
+  font-family: cursive;
+  font-weight: bold;
+}
+
+/* .menu{
+  position:absolute;
+  margin-left:5%;
+  margin-top:45%;
+
+} */
+.menu{
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 5px 0px;
+  text-align: center;
+  text-decoration: none;
+  /* display: inline-block; */
+  font-size: 16px;
+  border-radius: 5px;
+  font-size:20px;
+  margin-left:5%;
+  position:absolute;
+  margin-top:45%;
+}
+a.button{
+  color:white;
+  text-decoration: none;
+  margin-top:-40%;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+.dec{
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 5px 0px;
+  text-align: center;
+  text-decoration: none;
+  /* display: inline-block; */
+  font-size: 16px;
+  border-radius: 5px;
+  font-size:20px;
+  margin-left:55%;
+  position:absolute;
+  margin-top:45%;
+}
+a.button:hover{
+  background-color:white;
+  color: black;
 }
