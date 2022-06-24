@@ -17,16 +17,19 @@
     <div class='mail'>
         <form action="/auth/change_pass" method="post">
             <div class="txt_field">
-                <input type="text" id = "newpass" name = "newpass" required>
+                <input type="password" id = "newpass" name = "newpass" required>
                 <span></span>
                 <label>New Password</label>
             </div>
             <div class="txt_field">
-                <input type="text" id = "confirmpass" name = "confirmpass" required>
+                <input type="password" id = "confirmpass" name = "confirmpass" required>
                 <span></span>
                 <label>Confirm New Password</label>
             </div>
-            <input type="submit" value="Submit" href="/">
+            <input type="submit" value="Submit" href="/change_pass">
         </form>
+        {{#if message}}
+            <h4> {{ message }}</h4>
+        {{/if}}
     </div>
 </body>

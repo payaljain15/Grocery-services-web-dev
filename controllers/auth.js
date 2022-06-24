@@ -57,11 +57,10 @@ exports.register = (req, res) => {
                 message: 'Username should be string in nature.'
             });
         }
-        else if (password !== passwordConfirm) {
+        if (password !== passwordConfirm) {
             return res.render("signup", {
                 message: 'Passwords do not match.'
             });
-            // window.alert("Passwords do not match")
         }
         if (password.length < 6) {
             return res.render("signup", {
@@ -87,35 +86,44 @@ exports.register = (req, res) => {
 }
 
 exports.forgot_password = (req, res) => {
+    res.clearCookie('jwt_token',  { path: '/' });
     var user = req.body;
     console.log(user.username);
+    var otp = Math.floor((Math.random() * 10000) + 1);
+    var expire = new Date();
+    expire.setMinutes(expire.getMinutes() + 5);
+    console.log("otp: ", otp);
+    console.log("expirein: ", expire);
+        
+    const token = jwt.sign(
+        {
+            username: user.username, 
+            otp: otp
+        },
+        JWTSecret
+    )
+    console.log('Token: ' + token);
+    res.cookie('jwt_token', token, { path: '/' });
     var sql = 'SELECT email FROM users WHERE username = ?';
     var sql2 = 'SELECT username FROM otp WHERE username = ?';
     console.log(sql);
-    db.query(sql,[user.username], function (err, result, fields) {
+    db.query(sql,[user.username], async (err, result, fields) => {
         if (err) throw err;
         if(result.length < 1) {
             res.render('signup', {message: 'The username is not registered with us.'});
         }
-        db.query(sql2,[user.username], function (error,results){
-            if(error) throw error;
-            if(results.length > 0){
-                db.query('DELETE FROM otp WHERE username =?',[user.username]);
-            }
-            else console.log('done');
-        });
-        const token = jwt.sign(
-            {
-                username: user.username
-            },
-            JWTSecret
-        )
-        // window.localStorage.setItem('jwt_token', token);
-        console.log('Token: ' + token);
-        res.cookie('jwt_token', token);
-        console.log(result);
+        // db.query(sql2, [user.username], (error, results) => {
+        //     console.log("gg");
+        //     if (error)
+        //         throw error;
+        //     if (results.length > 0) {
+        //         console.log(1);
+        //         db.query('DELETE FROM otp WHERE ?', { username: user.username });
+        //     }
+        //     else
+        //         console.log('done fine');
+        // });
         var usern = JSON.stringify(result);
-        console.log(usern);
         const email = usern.split('"');
         console.log(email[3]);
         var nodemailer = require('nodemailer');
@@ -137,17 +145,12 @@ exports.forgot_password = (req, res) => {
         
         transporter.use('compile', hbs(handlebarOptions))
 
-        var otp = Math.floor((Math.random() * 10000) + 1);
-        var expire = new Date();
-        expire.setMinutes(expire.getMinutes() + 0);
-        console.log("otp: ", otp);
-        console.log("expirein: ", expire);
         
 
-        db.query("INSERT INTO OTP SET ?",{ username:user.username , otp:otp , expirein : expire}, (error, results) =>{
-            if(error)throw error;
-            console.log(results);
-        })
+        // db.query("INSERT INTO OTP SET ?",{ username:user.username , otp:otp , expirein : expire}, (error, results) =>{
+        //     if(error)throw error;
+        //     console.log(results);
+        // });
 
         var mailOptions = {
             from: process.env.E,
@@ -173,6 +176,7 @@ exports.forgot_password = (req, res) => {
 
 exports.login = async (req, res) => {
     console.log(req.body);
+    res.clearCookie('jwt_token',  { path: '/' });
     const username = req.body;
     var usern = JSON.stringify(username);
     const user = usern.split('"');
@@ -201,7 +205,7 @@ exports.login = async (req, res) => {
             )
             // window.localStorage.setItem('jwt_token', token);
             console.log('Token: ' + token);
-            res.cookie('jwt_token', token);
+            res.cookie('jwt_token', token, { path: '/' });
             return res.render('welcome',{
                 data: token
             });
@@ -212,15 +216,79 @@ exports.login = async (req, res) => {
 
 
 exports.otp = async(req,res) => {
-    console.log(req.body);
+    console.log(req.body.otp);
     db.query('DELETE FROM otp WHERE expirein < NOW()')
-
-    res.render('change_pass');
+    const token = req.cookies.jwt_token;
+    if(token){
+        jwt.verify(token,process.env.JWT, (err,decodedtoken) => {
+            if(err){
+                console.log(err);
+                res.render('login',
+                {
+                    message:'Please try again. There was some problem with the request.'
+                });
+            } else{
+                console.log(decodedtoken);
+                const user = decodedtoken;
+                console.log(user.username);
+                // db.query('SELECT otp from otp where username = ?',[user.username], async(err, res) => {
+                //     console.log(res.otp);
+                // });
+                if(req.body.otp == user.otp)
+                {
+                    res.clearCookie('jwt_token',  { path: '/' });
+                    const token = jwt.sign(
+                        {
+                            username: user.username
+                        },
+                        JWTSecret
+                    )
+                    console.log('4','Token: ' + token);
+                    res.cookie('jwt_token', token, { path: '/' });
+                    res.render('change_pass');
+                }
+                else
+                {
+                    res.render('login',{
+                        message: 'Invalid OTP.'
+                    });
+                }
+            }
+        });
+    }
+    else {
+        res.render('login',{message:'There was some problem with the request'});
+    }
 }
 
-exports.change_password = async(req,res) => {
-    const {token} = req.body;
-    const user = jwt.verify(token,process.env.JWT);
+exports.change_pass = async(req,res) => {
+    const token = req.cookies.jwt_token;
+    const user = jwt.verify(token,JWTSecret);
+    const { newpass, confirmpass} = req.body;
     console.log(user);
+    if (newpass !== confirmpass) {
+        return res.render("change_pass", {
+            message: 'Passwords do not match.'
+        });
+    }
+    if (newpass.length < 6) {
+        return res.render("change_pass", {
+            message: 'Password must be at least 6 characters.'
+        });
+    }
+    if (typeof newpass !== 'string') {
+        return res.render("signup", {
+            message: 'Password should be string in nature.'
+        });
+    }
+    let hashedpassword = await bcrypt.hash(newpass, 8);
+    console.log(hashedpassword);
+
+
+    var sql = 'UPDATE users SET userpass = ? WHERE username = ?';
+    db.query(sql, [hashedpassword,user.username]);
+    res.render("login",{
+        message: 'Password Successfully changed'
+    });
 }
 
