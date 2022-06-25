@@ -64,17 +64,18 @@ body{
   to {opacity: 1}
 }
 
-.description span {
-  /* border:red solid 5px; */
+.description {
+  border:red solid 5px;
   font-size: 24px;
   position:absolute;
-  /* width:40%;
-  height:40%; */
+  width:40%;
+  height:80%;
   margin-top:-30%;
   margin-left:60%;
-  background-color:rgba(253, 123, 24, 0.652);
+  background-color:rgba(240, 76, 235, 0.652);
   border-radius:5px;
   float: right;
+  text-align: center
 }
 
 .location{
