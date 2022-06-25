@@ -182,7 +182,7 @@ exports.login = async (req, res) => {
     const user = usern.split('"');
     console.log(user);
     const nowpass = user[7];
-    var sql = 'SELECT userpass FROM users WHERE username = "' + user[3] + '"';
+    var sql = 'SELECT userpass,fullname FROM users WHERE username = "' + user[3] + '"';
     console.log(sql);
     db.query(sql, async function (err, result, fields) {
         if (err) throw err;
@@ -190,6 +190,8 @@ exports.login = async (req, res) => {
         const pass = userpass.split('"');
         console.log(pass);
         const password = pass[3];
+        const name = pass[7];
+        // console.log("name:" +name);
         if(result.length  < 1){
             return res.render('login', {
                 message: 'No users found'
@@ -207,7 +209,7 @@ exports.login = async (req, res) => {
             console.log('Token: ' + token);
             res.cookie('jwt_token', token, { path: '/' });
             return res.render('welcome',{
-                data: user[3]
+                data: name
             });
         }
         else return res.render('login',{message: 'Invalid Password'});
