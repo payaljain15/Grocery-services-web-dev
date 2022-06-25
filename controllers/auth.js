@@ -300,7 +300,7 @@ exports.logout= async (req, res) => {
 
 exports.images = async (req, res) => {
     const city_name = req.body.locationlist;
-    db.query('SELECT images,description FROM destination WHERE destination.city_id = (SELECT city_id FROM city WHERE city_name = ?)',[city_name], async(err,result) => {
+    db.query('SELECT des_name,images,description FROM destination WHERE destination.city_id = (SELECT city_id FROM city WHERE city_name = ?)',[city_name], async(err,result) => {
         if(err) throw err;
         else {
             const img1 = result[0].images;
@@ -311,7 +311,11 @@ exports.images = async (req, res) => {
             const description2 = result[1].description;
             const description3 = result[2].description;
             const description4 = result[3].description;
-            return res.render("Overview",{city:city_name,img1:img1,img2:img2,img3:img3,img4:img4,description:description,description2:description2,description3:description3,description4:description4});
+            const loc1 = result[0].des_name;
+            const loc2 = result[1].des_name;
+            const loc3 = result[2].des_name;
+            const loc4 = result[3].des_name;
+            return res.render("Overview",{city:city_name,img1:img1,img2:img2,img3:img3,img4:img4,description:description,description2:description2,description3:description3,description4:description4,loc1 :loc1,loc2:loc2,loc3:loc3,loc4:loc4});
         }
     });
 
