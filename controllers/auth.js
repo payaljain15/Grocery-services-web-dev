@@ -207,7 +207,7 @@ exports.login = async (req, res) => {
             console.log('Token: ' + token);
             res.cookie('jwt_token', token, { path: '/' });
             return res.render('welcome',{
-                data: token
+                data: user[3]
             });
         }
         else return res.render('login',{message: 'Invalid Password'});
@@ -296,5 +296,22 @@ exports.logout= async (req, res) => {
     console.log('logout');
     await res.clearCookie('jwt_token',  { path: '/' });
     return res.render('login', { message:'User successfully logout'});
+}
+
+exports.images = async (req, res) => {
+    const city_name = req.body.locationlist;
+    db.query('SELECT images FROM destination WHERE destination.city_id = (SELECT city_id FROM city WHERE city_name = ?)',[city_name], async(err,result) => {
+        if(err) throw err;
+        else {
+            const img1 = result[0].images;
+            const img2 = result[1].images;
+            const img3 = result[2].images;
+            const img4 = result[3].images;
+            return res.render("Overview",{city:city_name,img1:img1,img2:img2,img3:img3,img4:img4,description:'ok'});
+        }
+    });
+
+
+    
 }
 
