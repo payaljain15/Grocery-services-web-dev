@@ -65,12 +65,14 @@ body{
 }
 
 .description {
-  border:red solid 5px;
+  /* border:red solid 5px; */
   position:absolute;
   width:500px;
   height:350px;
   margin-top:0%;
   margin-left:60%;
+  background-color:rgb(255,255,255,0.7);
+  border-radius:5px;
 }
 
 .location{
@@ -78,7 +80,6 @@ body{
   margin-top:35%;
   margin-left:5%;
   width:90%;
-  /* height:5%; */
   background-color:rgb(255,255,255,0.3);
   border-radius:5px;
 }
@@ -86,8 +87,6 @@ body{
   font-family: 'Times New Roman', Times, serif;
   font-size:25px;
   padding:45px;
-  /* margin-top:10px; */
-  /* padding-left:20px; */
   padding-bottom:20px;
   margin-bottom:20px;
 }
@@ -95,18 +94,12 @@ body{
   margin-top: 2%;
   margin-bottom: 3%;
   margin-left: 5%;
-  width: 90%;
+  width: 83%;
   height: 25%;
   font-family: cursive;
   font-weight: bold;
 }
 
-/* .menu{
-  position:absolute;
-  margin-left:5%;
-  margin-top:45%;
-
-} */
 .menu{
   background-color: black;
   border: none;
@@ -114,7 +107,6 @@ body{
   padding: 5px 0px;
   text-align: center;
   text-decoration: none;
-  /* display: inline-block; */
   font-size: 16px;
   border-radius: 5px;
   font-size:20px;
@@ -122,6 +114,7 @@ body{
   position:absolute;
   margin-top:45%;
 }
+
 a.button{
   color:white;
   text-decoration: none;
@@ -136,7 +129,6 @@ a.button{
   padding: 5px 0px;
   text-align: center;
   text-decoration: none;
-  /* display: inline-block; */
   font-size: 16px;
   border-radius: 5px;
   font-size:20px;
@@ -147,4 +139,38 @@ a.button{
 a.button:hover{
   background-color:white;
   color: black;
+}
+.logout{
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 5px 0px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 5px;
+  font-size:20px;
+  margin-left:85%;
+  position:absolute;
+  margin-top:-5%;
+}
+#png{
+  position:absolute;
+  margin-left:-3%;
+  margin-top:-7%;
+}
+.sub{
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 5px 0px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 5px;
+  font-size:20px;
+  margin-left:90%;
+  position:absolute;
+  margin-top:-5.5%;
+  
 }
