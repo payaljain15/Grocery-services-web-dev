@@ -120,7 +120,7 @@ body{
   margin-top:45%;
 }
 
-a.button{
+input.button{
   color:white;
   text-decoration: none;
   margin-top:-40%;
@@ -141,7 +141,7 @@ a.button{
   position:absolute;
   margin-top:45%;
 }
-a.button:hover{
+input.button:hover{
   background-color:white;
   color: black;
 }
@@ -178,4 +178,16 @@ a.button:hover{
   position:absolute;
   margin-top:-5.5%;
   
+}
+
+a.button:hover{
+  background-color:white;
+  color: black;
+}
+a.button{
+  color:white;
+  text-decoration: none;
+  margin-top:-40%;
+  padding: 5px 10px;
+  border-radius: 5px;
 }
