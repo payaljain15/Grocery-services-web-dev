@@ -66,13 +66,15 @@ body{
 
 .description {
   /* border:red solid 5px; */
+  font-size: 24px;
   position:absolute;
-  width:500px;
-  height:350px;
-  margin-top:0%;
-  margin-left:60%;
-  background-color:rgb(255,255,255,0.7);
+  width:750px;
+  height:150px;
+  margin-top:-20%;
+  margin-left:48%;
+  background-color:rgba(253, 123, 24, 0.652);
   border-radius:5px;
+  float: right;
 }
 
 .location{

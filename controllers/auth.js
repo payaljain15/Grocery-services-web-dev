@@ -308,7 +308,10 @@ exports.images = async (req, res) => {
             const img3 = result[2].images;
             const img4 = result[3].images;
             const description = result[0].description;
-            return res.render("Overview",{city:city_name,img1:img1,img2:img2,img3:img3,img4:img4,description:description});
+            const description2 = result[1].description;
+            const description3 = result[2].description;
+            const description4 = result[3].description;
+            return res.render("Overview",{city:city_name,img1:img1,img2:img2,img3:img3,img4:img4,description:description,description2:description2,description3:description3,description4:description4});
         }
     });
 
