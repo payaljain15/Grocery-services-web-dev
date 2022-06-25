@@ -15,22 +15,24 @@
         <span>Epicerie</span>
     </div>
     <div class="msg">
-        <p>Welcome Username!</p>
+        <p>Welcome {{data}} !</p>
     </div>
     <div class="logout">
-    <a href="/logout" class="button">Log Out</a>
+        <a href="/logout" class="button">Log Out</a>
     </div>
     <img src="/images/login4.png" alt="login" style="width:7%;height7%;" id="png">
-    <div class='mail'>
-        <label for="location">Choose Your Location<br></label>
-        <select id="locations" name="locationlist" form="locationform">
-            <option value="Delhi">Delhi</option>
-            <option value="Mumbai">Mumbai</option>
-            <option value="Shimla">Shimla</option>
-            <option value="Kolkata">Kolkata</option>
-        </select>
-        <div class="go">
-            <a href="/Overview" class="button">Go!</a>
+    <form action="/auth/images" method="post">
+        <div class='mail'>
+            <label for="location">Choose Your Location<br></label>
+            <select id="locations" name="locationlist" >
+                <option value="Delhi">Delhi</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Shimla">Shimla</option>
+                <option value="Bangalore">Bangalore</option>
+            </select>
+            <div class="go">
+                <input type="submit" href="/Overview" value ='Go!' class="button">
+            </div>
         </div>
-    </div>
+    </form>
 </body>
