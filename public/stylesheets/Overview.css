@@ -64,14 +64,14 @@ body{
   to {opacity: 1}
 }
 
-.description {
+.description span {
   /* border:red solid 5px; */
   font-size: 24px;
   position:absolute;
-  width:750px;
-  height:150px;
-  margin-top:-20%;
-  margin-left:48%;
+  /* width:40%;
+  height:40%; */
+  margin-top:-30%;
+  margin-left:60%;
   background-color:rgba(253, 123, 24, 0.652);
   border-radius:5px;
   float: right;
