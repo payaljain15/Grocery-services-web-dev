@@ -26,5 +26,12 @@ router.get('/confirm_otp',middleware.requireAuth, (req, res) => {
 router.get('/change_pass',middleware.requireAuth, (req, res) => {
     res.render('change_pass');
 });
+router.get('/logout',middleware.requireAuth, (req, res) => {
+    res.render('logout');
+});
+router.get('/login',middleware.requireAuth, (req, res) => {
+    res.render('login');
+});
+
 
 module.exports = router;

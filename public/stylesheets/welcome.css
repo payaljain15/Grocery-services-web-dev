@@ -15,27 +15,53 @@ body{
     margin-top:2%;
     margin-left: 37%;
 }
-
-  .msg {
+.logout{
+    background-color: black;
     border: none;
     color: white;
-    padding: 10px 20px;
+    padding: 5px 0px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    font-size:20px;
+    margin-left:83%;
+    position:absolute;
+    margin-top:2%;
+}
+a.button:hover{
+    background-color:white;
+    color: black;
+}
+a.button{
+    color:white;
+    text-decoration: none;
+    margin-top:-40%;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.msg {
+    border: none;
+    color: black;;
+    padding: 0px 10px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     border-radius: 5px;
     font-size:20px;
-    margin-left:81.5%;
+    margin-left:3%;
     position:absolute;
     margin-top:2%;
+    background-color:rgb(255,255,255,0.7);
 
-  }
-a.button{
+}
+/* a.button{
     color:white;
     text-decoration: none;
     margin-top:-40%;
-}
+} */
 .mail{
     position:absolute;
     margin-top:17%;
@@ -64,7 +90,7 @@ a.button{
     background-color: black;
     border: none;
     color: white;
-    padding: 5px 10px;
+    padding: 5px 0px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -77,8 +103,16 @@ a.button{
 }
 
 
-.mail #png{
+/* .mail #png{
     position:absolute;
     margin-left:53%;
     margin-top:-7%;
+} */
+
+#png{
+    position:absolute;
+    margin-left:90%;
+
+
 }
+

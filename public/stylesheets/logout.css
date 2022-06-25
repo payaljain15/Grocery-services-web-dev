@@ -1,0 +1,56 @@
+body{
+    margin:0;
+    padding:0;
+    background-size: cover;
+    background-position: center;
+    font-family: 'Times new roman' , serif;
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+}
+.content{
+    position: absolute;
+    font-family: 'Times new roman' , serif;
+    font-size: 100px;
+    color: black;
+    margin-top:2%;
+    margin-left: 37%;
+}
+.mail{
+    position:absolute;
+    margin-top:17%;
+    margin-left:33%;
+    width:35%;
+    height:27%;
+    background-color:rgb(255,255,255,0.7);
+    border-radius:5px;
+}
+.logout{
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 5px 0px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    font-size:20px;
+    margin-left:40%;
+    position:absolute;
+    margin-top:2%;
+}
+a.button:hover{
+    background-color:white;
+    color: black;
+}
+a.button{
+    color:white;
+    text-decoration: none;
+    margin-top:-40%;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+.mail p{
+    font-weight:20px;
+    font-size:30px;
+    text-align:center;
+}
