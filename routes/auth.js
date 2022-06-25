@@ -10,4 +10,5 @@ router.post('/confirm_otp', authController.otp);
 router.post('/change_pass', authController.change_pass);
 router.post('/logout',authController.logout);
 router.post('/images',authController.images);
+router.post('/category' ,authController.category);
 module.exports = router;
