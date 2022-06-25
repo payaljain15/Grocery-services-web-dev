@@ -300,14 +300,15 @@ exports.logout= async (req, res) => {
 
 exports.images = async (req, res) => {
     const city_name = req.body.locationlist;
-    db.query('SELECT images FROM destination WHERE destination.city_id = (SELECT city_id FROM city WHERE city_name = ?)',[city_name], async(err,result) => {
+    db.query('SELECT images,description FROM destination WHERE destination.city_id = (SELECT city_id FROM city WHERE city_name = ?)',[city_name], async(err,result) => {
         if(err) throw err;
         else {
             const img1 = result[0].images;
             const img2 = result[1].images;
             const img3 = result[2].images;
             const img4 = result[3].images;
-            return res.render("Overview",{city:city_name,img1:img1,img2:img2,img3:img3,img4:img4,description:'ok'});
+            const description = result[0].description;
+            return res.render("Overview",{city:city_name,img1:img1,img2:img2,img3:img3,img4:img4,description:description});
         }
     });
 
