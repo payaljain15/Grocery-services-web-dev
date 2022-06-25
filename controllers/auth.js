@@ -292,3 +292,10 @@ exports.change_pass = async(req,res) => {
     });
 }
 
+exports.logout= async (req, res) => {
+    console.log('logout');
+    await res.clearCookie('jwt_token',  { path: '/' });
+    await req.user.save();
+    return res.render('login', { message:'User successfully logout'});
+}
+
