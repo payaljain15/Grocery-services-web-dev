@@ -75,7 +75,10 @@ body{
   background-color:rgba(240, 76, 235, 0.652);
   border-radius:5px;
   float: right;
-  text-align: center
+  text-align: center;
+  display: flex;
+  align-items:center;
+  justify-content:center;
 }
 
 .location{
