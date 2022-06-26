@@ -325,7 +325,14 @@ exports.images = async (req, res) => {
 exports.category = async (req, res) => {
     console.log(req.body.locationlist);
     const location = req.body.locationlist;
-    res.render('category',{location:location});
+    const img = '/images/b5.jpg';
+    db.query("SELECT images FROM destination WHERE destination.des_name = ?",[location],async (err, result) => {
+        if (err) throw err;
+        else {
+            const img = result[0].images;
+            res.render('category',{location:location,img : img});
+        }
+    }); 
 }
 
 
