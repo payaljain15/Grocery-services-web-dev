@@ -27,7 +27,6 @@ router.get('/change_pass',middleware.requireAuth, (req, res) => {
     res.render('change_pass');
 });
 router.get('/logout',middleware.requireAuth, (req, res) => {
-    console.log("llll");
     res.render('logout');
 });
 router.get('/login',middleware.requireAuth, (req, res) => {
@@ -39,6 +38,12 @@ router.get('/category',middleware.requireAuth, (req, res) => {
 
 router.get('/user',middleware.requireAuth, (req, res) => {
     res.render('user');
+});
+router.get('/about_us', (req, res) => {
+    res.render('about_us');
+});
+router.get('/contact_us', (req, res) => {
+    res.render('contact_us');
 });
 
 
