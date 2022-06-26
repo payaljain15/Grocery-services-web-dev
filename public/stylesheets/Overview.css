@@ -120,13 +120,13 @@ body{
   margin-top:45%;
 }
 
-input.button{
+/* input.button{
   color:white;
   text-decoration: none;
   margin-top:-40%;
   padding: 5px 10px;
   border-radius: 5px;
-}
+} */
 .dec{
   background-color: black;
   border: none;
@@ -141,10 +141,10 @@ input.button{
   position:absolute;
   margin-top:45%;
 }
-input.button:hover{
+/* input.button:hover{
   background-color:white;
   color: black;
-}
+} */
 .logout{
   background-color: black;
   border: none;
@@ -164,21 +164,7 @@ input.button:hover{
   margin-left:-3%;
   margin-top:-7%;
 }
-.sub{
-  background-color: black;
-  border: none;
-  color: white;
-  padding: 5px 0px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
-  border-radius: 5px;
-  font-size:20px;
-  margin-left:90%;
-  position:absolute;
-  margin-top:-5.5%;
-  
-}
+
 
 a.button:hover{
   background-color:white;
@@ -190,4 +176,36 @@ a.button{
   margin-top:-40%;
   padding: 5px 10px;
   border-radius: 5px;
+}
+
+input[type = "submit"]:hover{
+  background-color:white;
+  color: black;
+  /* padding: 0px 10px; */
+  /* border-radius: 5px; */
+}
+/* input[type="submit"]{
+  color:white;
+  text-decoration: none;
+  margin-top:-40%;
+  padding: 5px 10px;
+  border-radius: 5px;
+} */
+input{
+  background-color: black;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 5px;
+  font-size:20px;
+  margin-left:90%;
+  position:absolute;
+  margin-top:-5.5%;
+}
+h2{
+  position:absolute;
+  margin-top:-200px;
 }
