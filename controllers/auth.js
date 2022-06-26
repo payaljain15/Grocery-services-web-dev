@@ -323,6 +323,13 @@ exports.images = async (req, res) => {
 }
 
 exports.category = async (req, res) => {
-    console.log(req.body);
-    res.render('category');
+    console.log(req.body.locationlist);
+    const location = req.body.locationlist;
+    res.render('category',{location:location});
+}
+
+
+exports.user = async (req, res) => {
+    console.log("payal");
+    res.render('user');
 }
