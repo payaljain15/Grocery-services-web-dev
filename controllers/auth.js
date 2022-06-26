@@ -320,8 +320,9 @@ exports.images = async (req, res) => {
             return res.render("Overview",{city:city_name,img1:img1,img2:img2,img3:img3,img4:img4,description:description,description2:description2,description3:description3,description4:description4,loc1 :loc1,loc2:loc2,loc3:loc3,loc4:loc4});
         }
     });
-
-
-    
 }
 
+exports.category = async (req, res) => {
+    console.log(req.body);
+    res.render('category');
+}
