@@ -8,9 +8,15 @@
     <link rel="stylesheet" href="/stylesheets/welcome.css" type="text/css">
     <link rel='icon' href='/images/icon.png' />
     <title>Epicerie</title>
+    <script>
+        function background(x) {
+            x = "/images/" + x + ".jpg";
+            document.body.style.backgroundImage = "url('" + x + "')";
+        }
+    </script>
 </head>
 
-<body style="background-image:url(/images/b5.jpg)" center center fixed>
+<body style="background-image:url(/images/Delhi.jpg)" center center fixed>
     <div class="content">
         <span>Epicerie</span>
     </div>
@@ -24,15 +30,21 @@
     <form action="/auth/images" method="post">
         <div class='mail'>
             <label for="location">Choose Your Location<br></label>
-            <select id="locations" name="locationlist" >
+            <select id="locations" name="locationlist" onchange="background(this.value)">
                 <option value="Delhi">Delhi</option>
                 <option value="Mumbai">Mumbai</option>
                 <option value="Shimla">Shimla</option>
                 <option value="Bangalore">Bangalore</option>
             </select>
             <div class="go">
-                <input type="submit" href="/Overview" value ='Go!' class="button">
+                <input type="submit" value='Go!' class="button">
             </div>
         </div>
     </form>
+
+
+
+
 </body>
+
+</html>
