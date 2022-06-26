@@ -16,7 +16,9 @@
   <div class="logout">
     <a href="/logout" class="button">Log Out</a>
   </div>
-  <img src="/images/login4.png" alt="login" style="width:7%" id="png">
+  <form action = "/auth/user" method = "post">
+      <input type="image" src="/images/login4.png" alt="Submit button" style="width:7%;" id="png">
+  </form>
   <div class="slideshow-container">
     <div class="mySlides fade">
       <img src="{{img1}}" height="400" width="655">
@@ -58,8 +60,10 @@
         <option value="{{loc3}}">{{loc3}}</option>
         <option value="{{loc4}}">{{loc4}}</option>
       </select>
+      <label for="persons">Select Date:</label>
+      <input type="date" id="persons" name="persons">
       <div class="sub">
-        <input type="submit" value="Submit">
+        <input type="submit" value="Submit" id = "sub">
       </div>
     </div>
   </form>

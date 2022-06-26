@@ -26,7 +26,10 @@
     <div class="logout">
         <a href="/logout" class="button">Log Out</a>
     </div>
-    <img src="/images/login4.png" alt="login" style="width:7%;height7%;" id="png">
+    <form action = "/auth/user" method = "post">
+        {{!-- <img src="/images/login4.png" alt="login" style="width:7%;" id="png"> --}}
+        <input type="image" src="/images/login4.png" alt="Submit button" style="width:7%;" id="png">
+    </form>
     <form action="/auth/images" method="post">
         <div class='mail'>
             <label for="location">Choose Your Location<br></label>
@@ -37,7 +40,7 @@
                 <option value="Bangalore">Bangalore</option>
             </select>
             <div class="go">
-                <input type="submit" value='Go!' class="button">
+                <input type="submit" value='Go!' class="">
             </div>
         </div>
     </form>

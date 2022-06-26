@@ -190,9 +190,9 @@ input[type = "submit"]:hover{
   padding: 5px 10px;
   border-radius: 5px;
 } */
-input{
-  background-color: black;
-  color: white;
+#sub{
+  background-color:black;
+  color:white;
   padding: 5px 10px;
   border: none;
   text-align: center;
@@ -203,6 +203,11 @@ input{
   margin-left:90%;
   position:absolute;
   margin-top:-5.5%;
+}
+#sub:hover{
+  background-color:white;
+  color: black;
+
 }
 h2{
   position:absolute;

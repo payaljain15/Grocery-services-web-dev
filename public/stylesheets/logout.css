@@ -54,3 +54,6 @@ a.button{
     font-size:30px;
     text-align:center;
 }
+.logout .back{
+    margin-left:-100px;
+}
