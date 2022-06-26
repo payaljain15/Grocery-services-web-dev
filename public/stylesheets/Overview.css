@@ -161,10 +161,9 @@ body{
 }
 #png{
   position:absolute;
-  margin-left:-3%;
+  margin-left:92%;
   margin-top:-7%;
 }
-
 
 a.button:hover{
   background-color:white;

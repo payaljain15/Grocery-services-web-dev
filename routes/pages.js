@@ -37,5 +37,9 @@ router.get('/category',middleware.requireAuth, (req, res) => {
     res.render('category');
 });
 
+router.get('/user',middleware.requireAuth, (req, res) => {
+    res.render('user');
+});
+
 
 module.exports = router;

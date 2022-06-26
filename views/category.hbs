@@ -11,12 +11,15 @@
 
 <body style="background-image:url(/images/b5.jpg)" center center fixed>
     <div class="loc">
-        <h1>Welcome to Location Name</h1>
+        <h1>Welcome to {{location}}!</h1>
     </div>
     <div class="logout">
         <a href="/logout" class="button">Log Out</a>
     </div>
-    <img src="/images/login4.png" alt="login" style="width:7%;" id="png">
+    <form action = "/auth/user" method = "post">
+        {{!-- <img src="/images/login4.png" alt="login" style="width:7%;" id="png"> --}}
+        <input type="image" src="/images/login4.png" alt="Submit button" style="width:7%;" id="png">
+    </form>
     <div class = "food">
         <img src="/images/food.png" alt="login"id="image">
     </div>
