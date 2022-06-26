@@ -31,6 +31,13 @@ body{
     margin-left:92%;
     margin-top:-7%;
   }
+  #image{
+    position:absolute;
+    padding:20px;
+    height:180px;
+    width:180px;
+    margin-left:83%;
+  }
   a.button:hover{
     background-color:white;
     color: black;
@@ -43,32 +50,32 @@ body{
     border-radius: 5px;
   }
   .food{
-    position:absolute;
+    position:relative;
     margin-top:0%;
     margin-left:5%;
     width:90%;
-    height:40%;
+    height:200px;
     background-color:rgb(255,255,255,0.7);
     border-radius:5px;
-    border:red solid 5px;
+    /* border:red solid 5px; */
 }
 .table{
-    position:absolute;
-    margin-top:20%;
+    position:relative;
+    margin-top:5%;
     margin-left:5%;
     width:90%;
-    height:40%;
+    height:200px;
     background-color:rgb(255,255,255,0.7);
     border-radius:5px;
-    border:red solid 5px;
+    /* border:red solid 5px; */
 }
 .games{
-    position:absolute;
-    margin-top:40%;
+    position:relative;
+    margin-top:5%;
     margin-left:5%;
     width:90%;
-    height:40%;
+    height:200px;
     background-color:rgb(255,255,255,0.7);
     border-radius:5px;
-    border:red solid 5px;
+    /* border:red solid 5px; */
 }
