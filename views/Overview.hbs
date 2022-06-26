@@ -16,15 +16,15 @@
   <div class="logout">
     <a href="/logout" class="button">Log Out</a>
   </div>
-  <form action = "/auth/user" method = "post">
-      <input type="image" src="/images/login4.png" alt="Submit button" style="width:7%;" id="png">
+  <form action="/auth/user" method="post">
+    <input type="image" src="/images/login4.png" alt="Submit button" style="width:7%;" id="png">
   </form>
   <div class="slideshow-container">
     <div class="mySlides fade">
       <img src="{{img1}}" height="400" width="655">
       <div class="description">
         <h2>{{loc1}}</h2>
-        <span>{{description}}</span> 
+        <span>{{description}}</span>
       </div>
     </div>
     <div class="mySlides fade">
@@ -52,18 +52,31 @@
     <a class="next" onclick="plusSlides(1)">&#10095;</a>
   </div>
   <form action="/auth/category" method="post">
-    <div class="location">
-      <label for="location">Choose Your Location<br></label>
-      <select id="locations" name="locationlist">
-        <option value="{{loc1}}">{{loc1}}</option>
-        <option value="{{loc2}}">{{loc2}}</option>
-        <option value="{{loc3}}">{{loc3}}</option>
-        <option value="{{loc4}}">{{loc4}}</option>
-      </select>
-      <label for="persons">Select Date:</label>
-      <input type="date" id="persons" name="persons">
+    <div class="inputall">
+      <div class="location">
+        <label for="location" id="locationtext">Choose Your Location:<br></label>
+        <select id="locations" name="locationlist">
+          <option value="{{loc1}}">{{loc1}}</option>
+          <option value="{{loc2}}">{{loc2}}</option>
+          <option value="{{loc3}}">{{loc3}}</option>
+          <option value="{{loc4}}">{{loc4}}</option>
+        </select>
+      </div>
+      <div class="dates">
+        <label for="dates" id="dates">Select Date:<br></label>
+        <input type="date" id="date" name="date">
+      </div>
+      <div class="timeslot">
+        <label for="timeslot">Choose Your Timeslot:<br></label>
+        <select id="timeslot" name="timeslot">
+          <option value="morning">Morning (8:00 AM - 11:00 AM)</option>
+          <option value="afternoon">Afternoon (12:00 AM - 3:00 AM)</option>
+          <option value="evening">Evening (5:00 AM - 8:00 AM)</option>
+          <option value="latenight">Late Night (9:00 AM - 12:00 AM)</option>
+        </select>
+      </div>
       <div class="sub">
-        <input type="submit" value="Submit" id = "sub">
+        <input type="submit" value="Submit" id="sub">
       </div>
     </div>
   </form>
