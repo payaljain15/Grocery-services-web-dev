@@ -8,7 +8,7 @@ const JWTSecret = process.env.JWT;
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const hbs = require('nodemailer-express-handlebars');
-const { NOW } = require('sequelize');
+// const { NOW } = require('sequelize');
 
 dotenv.config({ path: './.env' })
 const app = express();
@@ -105,27 +105,13 @@ exports.forgot_password = (req, res) => {
     console.log('Token: ' + token);
     res.cookie('jwt_token', token, { path: '/' });
     var sql = 'SELECT email FROM users WHERE username = ?';
-    var sql2 = 'SELECT username FROM otp WHERE username = ?';
     console.log(sql);
     db.query(sql,[user.username], async (err, result, fields) => {
         if (err) throw err;
         if(result.length < 1) {
             res.render('signup', {message: 'The username is not registered with us.'});
         }
-        // db.query(sql2, [user.username], (error, results) => {
-        //     console.log("gg");
-        //     if (error)
-        //         throw error;
-        //     if (results.length > 0) {
-        //         console.log(1);
-        //         db.query('DELETE FROM otp WHERE ?', { username: user.username });
-        //     }
-        //     else
-        //         console.log('done fine');
-        // });
-        var usern = JSON.stringify(result);
-        const email = usern.split('"');
-        console.log(email[3]);
+
         var nodemailer = require('nodemailer');
 
         var transporter = nodemailer.createTransport({
@@ -145,21 +131,14 @@ exports.forgot_password = (req, res) => {
         
         transporter.use('compile', hbs(handlebarOptions))
 
-        
-
-        // db.query("INSERT INTO OTP SET ?",{ username:user.username , otp:otp , expirein : expire}, (error, results) =>{
-        //     if(error)throw error;
-        //     console.log(results);
-        // });
 
         var mailOptions = {
             from: process.env.E,
-            to: email[3],
+            to: result[0].email,
             subject: 'OTP Confirmation',
             template: 'email',
             context : {
                 name : otp
-
             }
         };
 
@@ -175,33 +154,34 @@ exports.forgot_password = (req, res) => {
 }
 
 exports.login = async (req, res) => {
-    console.log(req.body);
+    console.log(req.body.username, req.body.password);
     res.clearCookie('jwt_token',  { path: '/' });
-    const username = req.body;
-    var usern = JSON.stringify(username);
-    const user = usern.split('"');
-    console.log(user);
-    const nowpass = user[7];
-    var sql = 'SELECT userpass,fullname FROM users WHERE username = "' + user[3] + '"';
+    // const username = req.body;
+    // var usern = JSON.stringify(username);
+    // const user = usern.split('"');
+    // console.log(1,user);
+    // const nowpass = user[7];
+    var sql = 'SELECT userpass,fullname FROM users WHERE username = "' + req.body.username + '"';
     console.log(sql);
     db.query(sql, async function (err, result, fields) {
         if (err) throw err;
-        var userpass = JSON.stringify(result);
-        const pass = userpass.split('"');
-        console.log(pass);
-        const password = pass[3];
-        const name = pass[7];
+        // console.log(result[0].userpass);
+        // var userpass = JSON.stringify(result);
+        // const pass = userpass.split('"');
+        // // console.log(pass);
+        // const password = pass[3];
+        // const name = pass[7];
         // console.log("name:" +name);
         if(result.length  < 1){
             return res.render('login', {
                 message: 'No users found'
             });
         }
-        if(await bcrypt.compare(nowpass, password)){
+        if(await bcrypt.compare(req.body.password, result[0].userpass)){
             console.log('Done');
             const token = jwt.sign(
                 {
-                    username: user[3]
+                    username: req.body.username
                 },
                 JWTSecret
             )
@@ -209,7 +189,7 @@ exports.login = async (req, res) => {
             console.log('Token: ' + token);
             res.cookie('jwt_token', token, { path: '/' });
             return res.render('welcome',{
-                data: name
+                data: result[0].fullname
             });
         }
         else return res.render('login',{message: 'Invalid Password'});
