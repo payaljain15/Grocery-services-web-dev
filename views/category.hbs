@@ -16,17 +16,30 @@
     <div class="logout">
         <a href="/logout" class="button">Log Out</a>
     </div>
-    <form action = "/auth/user" method = "post">
+    <form action="/auth/user" method="post">
         {{!-- <img src="/images/login4.png" alt="login" style="width:7%;" id="png"> --}}
         <input type="image" src="/images/login4.png" alt="Submit button" style="width:7%;" id="png">
     </form>
-    <div class = "food">
-        <img src="/images/food.png" alt="login"id="image">
+    <div class="food">
+        <span>There’s nothing more romantic than a serene walk to the fridge!<br>Let's eat something!</span>
+        <div class="foodmenu">
+            <a href="/foodmenu" class="button">Food Available Today</a>
+        </div>
+        <img src="/images/food.png" alt="login" id="image">
     </div>
-    <div class = "table">
+    <div class="table">
+        <span>There is just something about sparkle of glassware and the color and<br> texture of a beautifully set
+            table that gets creative juices flowing.<br>Choose a Table for you and your loved ones!</span>
+        <div class="settable">
+            <a href="/table" class="button">Choose your Table!</a>
+        </div>
         <img src="/images/table.jpg" alt="login" id="image">
     </div>
-    <div class = "games">
+    <div class="games">
+        <span>Take someone who doesn't keep score,who's not afraid of losing!<br>Hit the shot in the goal!</span>
+        <div class="play">
+            <a href="/playgame" class="button">Let's Play Some Games</a>
+        </div>
         <img src="/images/games.jpg" alt="login" id="image">
     </div>
 </body>

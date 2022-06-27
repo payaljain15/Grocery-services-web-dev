@@ -35,8 +35,9 @@ body{
     position:absolute;
     padding:20px;
     height:180px;
-    width:180px;
+    width:200px;
     margin-left:83%;
+    padding-left:20px;
   }
   a.button:hover{
     background-color:white;
@@ -79,3 +80,98 @@ body{
     border-radius:5px;
     /* border:red solid 5px; */
 }
+
+.food span{
+  position:absolute;
+  font-family: cursive;
+  padding:20px;
+  font-weight: bold;
+  font-size:25px;
+}
+.table span{
+  position:absolute;
+  font-family: cursive;
+  padding:20px;
+  font-weight: bold;
+  font-size:25px;
+}
+.games span{
+  position:absolute;
+  font-family: cursive;
+  padding:20px;
+  font-weight: bold;
+  font-size:25px;
+}
+
+.foodmenu{
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 5px 0px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 5px;
+  font-size:20px;
+  margin-left:3%;
+  position:absolute;
+  margin-top:10%;
+}
+
+a.button:hover{
+  background-color:white;
+  color: black;
+}
+a.button{
+  color:white;
+  text-decoration: none;
+  margin-top:-40%;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.settable{
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 5px 0px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 5px;
+  font-size:20px;
+  margin-left:3%;
+  position:absolute;
+  margin-top:12%;
+}
+
+.foodmenu{
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 5px 0px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 5px;
+  font-size:20px;
+  margin-left:3%;
+  position:absolute;
+  margin-top:10%;
+}
+
+.play{
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 5px 0px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 5px;
+  font-size:20px;
+  margin-left:3%;
+  position:absolute;
+  margin-top:10%;
+}
+
