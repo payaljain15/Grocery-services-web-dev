@@ -45,6 +45,14 @@ router.get('/about_us', (req, res) => {
 router.get('/contact_us', (req, res) => {
     res.render('contact_us');
 });
-
+router.get('/foodmenu', (req, res) => {
+    res.render('foodmenu');
+});
+router.get('/table', (req, res) => {
+    res.render('table');
+});
+router.get('/playgame', (req, res) => {
+    res.render('playgame');
+});
 
 module.exports = router;
