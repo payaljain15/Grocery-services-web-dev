@@ -54,5 +54,8 @@ router.get('/table', (req, res) => {
 router.get('/playgame', (req, res) => {
     res.render('playgame');
 });
+router.get('/foodie', (req, res) => {
+    res.render('foodie');
+});
 
 module.exports = router;
