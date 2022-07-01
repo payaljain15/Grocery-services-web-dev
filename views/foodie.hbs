@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<title>Pizza</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+{{!--
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> --}}
+<link rel="stylesheet" href="/stylesheets/foodie.css" type="text/css">
+<script src="https://www.w3schools.com/lib/w3.js"></script>
+
+<style>
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: 'Times New Roman', Times, serif, sans-serif
+    }
+</style>
+
+<body style="background-image:url(/images/b5.jpg)" center center fixed>
+    <!-- Start Content -->
+    <div id="home" class="w3-content">
+
+        <!-- Menu -->
+        <div id="menu" class="w3-container w3-black w3-xxlarge w3-padding-64">
+            <h1 class="w3-center w3-jumbo w3-padding-32">THE MENU</h1>
+            <div class="w3-row w3-center w3-border w3-border-dark-grey">
+                <a href="#breakfast">
+                    <div class="w3-third w3-padding-large w3-red">Breakfast</div>
+                </a>
+                <a href="#MainCourse">
+                    <div class="w3-third w3-padding-large w3-hover-red">Main Course</div>
+                </a>
+                <a href="#starters">
+                    <div class="w3-third w3-padding-large w3-hover-red">Starters</div>
+                </a>
+            </div>
+
+            <div id="breakfast" class="w3-container w3-white w3-padding-32">
+                <h1><b>Aloo Parantha</b> <span class="w3-right w3-tag w3-dark-grey w3-round">INR 20</span></h1>
+                <hr>
+                <h1><b>Mix Parantha</b> <span class="w3-right w3-tag w3-dark-grey w3-round">INR 35</span></h1>
+                <hr>
+                <h1><b>Onion Parantha</b> <span class="w3-right w3-tag w3-dark-grey w3-round">INR 30</span></h1>
+
+                <hr>
+                <h1><b>Paneer Parantha</b> <span class="w3-right w3-tag w3-dark-grey w3-round">INR 45</span></h1>
+                <hr>
+                {{!-- <h1><b>Meat Town</b> <span class="w3-tag w3-red w3-round">Hot!</span>
+                    <span class="w3-right w3-tag w3-dark-grey w3-round">$20.00</span>
+                </h1> --}}
+
+            </div>
+
+            <h1 id="MainCourse" class="w3-center w3-jumbo w3-padding-32">Main Course</h1>
+            <div class="w3-container w3-white w3-padding-32">
+                <h1><b>Tawa Roti</b> <span class="w3-right w3-tag w3-dark-grey w3-round">INR 5</span></h1>
+                <hr>
+                <h1><b>Tandoori Roti</b> <span class="w3-right w3-tag w3-dark-grey w3-round">INR 5</span></h1>
+                <hr>
+                <h1><b>Butter Roti</b> <span class="w3-right w3-tag w3-dark-grey w3-round">INR 7</span></h1>
+                <hr>
+                <h1><b>Missi Roti</b> <span class="w3-right w3-tag w3-dark-grey w3-round">INR 10</span></h1>
+                <hr>
+                <h1><b>Lacha Parantha</b> <span class="w3-right w3-tag w3-dark-grey w3-round">INR 15</span></h1>
+                <hr>
+                <h1><b>Plain Naan</b> <span class="w3-right w3-tag w3-dark-grey w3-round">INR 20</span></h1>
+                <hr>
+                <h1><b>Butter Naan</b> <span class="w3-right w3-tag w3-dark-grey w3-round">INR 25</span></h1>
+                <hr>
+                <h1><b>Garlic Naan</b> <span class="w3-right w3-tag w3-dark-grey w3-round">INR 25</span></h1>
+                <hr>
+                <h1><b>Cheese Naan</b> <span class="w3-right w3-tag w3-dark-grey w3-round">INR 60</span></h1>
+                <hr>
+                <h1><b>Aloo Zeera</b>
+                    <span class="w3-right w3-tag w3-dark-grey w3-round">INR 60</span>
+                </h1>
+                <hr>
+                <h1><b>Rajma</b>
+                    <span class="w3-right w3-tag w3-dark-grey w3-round">INR 70</span>
+                </h1>
+                <hr>
+                <h1><b>Dal Tadka</b>
+                    <span class="w3-right w3-tag w3-dark-grey w3-round">INR 70</span>
+                </h1>
+                <hr>
+                <h1><b>Dal Makhni</b>
+                    <span class="w3-right w3-tag w3-dark-grey w3-round">INR 70</span>
+                </h1>
+                <hr>
+                <h1><b>Mix Veg</b>
+                    <span class="w3-right w3-tag w3-dark-grey w3-round">INR 80</span>
+                </h1>
+                <hr>
+                <h1><b>Channa Masala</b>
+                    <span class="w3-right w3-tag w3-dark-grey w3-round">INR 80</span>
+                </h1>
+                <hr>
+                <h1><b>Kashmiri Dam Aloo</b>
+                    <span class="w3-right w3-tag w3-dark-grey w3-round">INR 100</span>
+                </h1>
+                <hr>
+                <h1><b>Malai Kofta</b>
+                    <span class="w3-right w3-tag w3-dark-grey w3-round">INR 130</span>
+                </h1>
+                <hr>
+                <h1><b>Kadahi Paneer</b><span class="w3-tag w3-red w3-round">Popular</span>
+                    <span class="w3-right w3-tag w3-dark-grey w3-round">INR 140</span>
+                </h1>
+                <hr>
+                <h1><b>Shahi Paneer</b>
+                    <span class="w3-right w3-tag w3-dark-grey w3-round">INR 140</span>
+                </h1>
+                <hr>
+                <h1><b>Cheese Tomato</b>
+                    <span class="w3-right w3-tag w3-dark-grey w3-round">INR 140</span>
+                </h1>
+                <hr>
+                <h1><b>Paneer Tikka Masala</b>
+                    <span class="w3-right w3-tag w3-dark-grey w3-round">INR 160</span>
+                </h1>
+                <hr>
+                <h1><b>Paneer Butter Masala</b>
+                    <span class="w3-right w3-tag w3-dark-grey w3-round">INR 140</span>
+                </h1>
+                <hr>
+                <h1><b>Paalak Paneer</b>
+                    <span class="w3-right w3-tag w3-dark-grey w3-round">INR 140</span>
+                </h1>
+                <hr>
+                <h1><b>Paneer Dhania Adrakhi</b>
+                    <span class="w3-right w3-tag w3-dark-grey w3-round">INR 140</span>
+                </h1>
+                <hr>
+                <h1><b>Paneer Bhurji</b>
+                    <span class="w3-right w3-tag w3-dark-grey w3-round">INR 160</span>
+                </h1>
+                <hr>
+                <h1><b>Mutter Paneer</b>
+                    <span class="w3-right w3-tag w3-dark-grey w3-round">INR 140</span>
+                </h1>
+                <hr>
+                <h1><b>Mutter Mushroom</b>
+                    <span class="w3-right w3-tag w3-dark-grey w3-round">INR 140</span>
+                </h1>
+                <hr>
+                <h1><b>Mushroom Masala</b>
+                    <span class="w3-right w3-tag w3-dark-grey w3-round">INR 140</span>
+                </h1>
+                <h1><b>Zeera Rice</b>
+                    <span class="w3-right w3-tag w3-dark-grey w3-round">INR 50</span>
+                </h1>
+                <hr>
+                <h1><b>Veg Biryani</b>
+                    <span class="w3-right w3-tag w3-dark-grey w3-round">INR 99</span>
+                </h1>
+                <hr>
+                <h1><b>Peas Pulao</b>
+                    <span class="w3-right w3-tag w3-dark-grey w3-round">INR 70</span>
+                </h1>
+                <hr>
+                <h1><b>Dahi</b>
+                    <span class="w3-right w3-tag w3-dark-grey w3-round">INR 20</span>
+                </h1>
+                <hr>
+                <h1><b>Bundi Raita</b>
+                    <span class="w3-right w3-tag w3-dark-grey w3-round">INR 30</span>
+                </h1>
+                <hr>
+                <h1><b>Mix Raita</b>
+                    <span class="w3-right w3-tag w3-dark-grey w3-round">INR 40</span>
+                </h1>
+                <hr>
+                <h1><b>Pineapple Raita</b>
+                    <span class="w3-right w3-tag w3-dark-grey w3-round">INR 60</span>
+                </h1>
+                <hr>
+                <h1><b>Alu Raita</b>
+                    <span class="w3-right w3-tag w3-dark-grey w3-round">INR 30</span>
+                </h1>
+                <hr>
+                <h1><b>Green salad</b>
+                    <span class="w3-right w3-tag w3-dark-grey w3-round">INR 45</span>
+                </h1>
+                <hr>
+                <h1><b>Cream salad</b>
+                    <span class="w3-right w3-tag w3-dark-grey w3-round">INR 60</span>
+                </h1>
+                <hr>
+                
+            </div>
+
+            <h1 id="starters" class="w3-center w3-jumbo w3-padding-32">STARTERS</h1>
+            <div class="w3-container w3-white w3-padding-32">
+                <h1><b>Fried Rice</b> <span class="w3-right w3-tag w3-dark-grey w3-round">INR 90</span></h1>
+                <hr>
+                <h1><b>Veg Noodles</b> <span class="w3-right w3-tag w3-dark-grey w3-round">INR 70</span></h1>
+                <hr>
+                <h1><b>Cheese Noodles</b> <span class="w3-right w3-tag w3-dark-grey w3-round">INR 90</span></h1>
+                <hr>
+                <h1><b>Chilly Garlic Noodles</b> <span class="w3-right w3-tag w3-dark-grey w3-round">INR 80</span></h1>
+                <hr>
+                <h1><b>Manchurian</b> <span class="w3-right w3-tag w3-dark-grey w3-round">INR 90</span></h1>
+                <hr>
+                <h1><b>Cheese Chilly</b> <span class="w3-right w3-tag w3-dark-grey w3-round">INR 140</span></h1>
+                <hr>
+                <h1><b>Mushroom Chilly</b> <span class="w3-right w3-tag w3-dark-grey w3-round">INR 120</span></h1>
+                <hr>
+                <h1><b>Honey Gobhi</b> <span class="w3-right w3-tag w3-dark-grey w3-round">INR 99</span></h1>
+                <hr>
+                <h1><b>Honey Chilli Potato</b> <span class="w3-right w3-tag w3-dark-grey w3-round">INR 99</span></h1>
+                <hr>
+                <h1><b>Veg Sandwich</b> <span class="w3-right w3-tag w3-dark-grey w3-round">INR 50</span></h1>
+                <hr>
+                <h1><b>Cheese Sandwich</b> <span class="w3-right w3-tag w3-dark-grey w3-round">INR 70</span></h1>
+                <hr>
+                <h1><b>Corn Sandwich</b> <span class="w3-right w3-tag w3-dark-grey w3-round">INR 70</span></h1>
+                <hr>
+                <h1><b>Aloo Tikki Burger</b> <span class="w3-right w3-tag w3-dark-grey w3-round">INR 30</span></h1>
+                <hr>
+                <h1><b>Veg Tikki Burger</b> <span class="w3-right w3-tag w3-dark-grey w3-round">INR 40</span></h1>
+                <hr>
+                <h1><b>Cheese Burger</b> <span class="w3-right w3-tag w3-dark-grey w3-round">INR 50</span></h1>
+                <hr>
+                <h1><b>Pineapple Burger</b> <span class="w3-right w3-tag w3-dark-grey w3-round">INR 70</span></h1>
+                <hr>
+                <h1><b>Peas Corn Burger</b> <span class="w3-right w3-tag w3-dark-grey w3-round">INR 50</span></h1>
+                <hr>
+                <h1><b>Double Tikki Burger</b> <span class="w3-right w3-tag w3-dark-grey w3-round">INR 50</span></h1>
+                <hr>
+
+
+                {{!-- <h1><b>Today's Soup</b> <span class="w3-tag w3-grey w3-round">Seasonal</span>
+                    <span class="w3-right w3-tag w3-dark-grey w3-round">$5.50</span>
+                </h1>
+
+
+                <hr>
+                <h1><b>Bruschetta</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$8.50</span></h1>
+
+
+                <hr>
+                <h1><b>Garlic bread</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$9.50</span></h1> --}}
+
+            </div>
+        </div>
+
+        <!-- End Content -->
+    </div>
+</body>
+
+</html>
