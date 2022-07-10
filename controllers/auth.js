@@ -199,7 +199,6 @@ exports.login = async (req, res) => {
 
 exports.otp = async(req,res) => {
     console.log(req.body.otp);
-    db.query('DELETE FROM otp WHERE expirein < NOW()')
     const token = req.cookies.jwt_token;
     if(token){
         jwt.verify(token,process.env.JWT, (err,decodedtoken) => {
