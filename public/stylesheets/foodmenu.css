@@ -1,27 +1,57 @@
-body{
-    margin:0;
-    padding:0;
+body {
+    margin: 0;
+    padding: 0;
     background-size: cover;
     background-position: center;
-    font-family: 'Times new roman' , serif;
+    font-family: 'Times new roman', serif;
     background-repeat: no-repeat;
-    background-attachment:fixed;
+    background-attachment: fixed;
 }
 
-.foodmenu{
-    width:90%;
-    margin-left:5%;
-    position:relative;
-    margin-top:2%;
-    height:90%;
-    background-color:rgb(255,255,255,0.7);
-    border-radius:20px;
-}
-.loc{
-    margin-left:5%;
-    font-size:20px;
+.foodmenu {
+    width: 90%;
+    margin-left: 5%;
+    position: relative;
+    margin-top: 2%;
+    height: 90%;
+    background-color: rgb(255, 255, 255, 0.7);
+    border-radius: 20px;
 }
 
-h2{
-    margin-top:5%;
+.loc {
+    margin-left: 5%;
+    font-size: 20px;
+}
+
+h2 {
+    margin-top: 5%;
+}
+
+.back {
+
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 5px 0px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    font-size: 20px;
+    margin-left: 5%;
+    position: absolute;
+    margin-top: -5%;
+}
+
+a.button:hover {
+    background-color: white;
+    color: black;
+}
+
+a.button {
+    color: white;
+    text-decoration: none;
+    margin-top: -40%;
+    padding: 5px 10px;
+    border-radius: 5px;
 }
