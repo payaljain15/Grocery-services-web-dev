@@ -22,6 +22,9 @@
         <div class="cpass">
             <a href="/forgot_password" class="button">Change Password</a>
         </div>
+        <div class="dmt">
+            <a href="/delete" class="button">Delete My Trip</a>
+        </div>
     </div>
     <div class="lout">
         <a href="/logout" class="button">Log Out</a>
@@ -40,7 +43,7 @@
         <span id="loc">Lotus Garden</span>
         <span id="rest">Number Of Persons:4<br>Date:28-06-2022<br>Time Slot:Late Night(9:00 PM - 12:00PM)<br>Table
             Number - 1<br>Game - Bowling<br><strong>Total Bill - INR 3000</strong></span>
-        <input type="image" src="/images/delete.png" alt="del" id="del">
+        {{!-- <input type="image" src="/images/delete.png" alt="del" id="del"> --}}
         <img src="/images/table.jpg" alt="login" id="image">
     </div>
     <div class="trips">
@@ -48,54 +51,29 @@
         <span id="loc">Lotus Garden</span>
         <span id="rest">Number Of Persons:4<br>Date:28-06-2022<br>Time Slot:Late Night(9:00 PM - 12:00PM)<br>Table
             Number - 1<br>Game - Bowling<br><strong>Total Bill - INR 3000</strong></span>
-        <input type="image" src="/images/delete.png" alt="del" id="del">
+        {{!-- <input type="image" src="/images/delete.png" alt="del" id="del"> --}}
         <img src="/images/table.jpg" alt="login" id="image">
     </div>
-    <div id="myModal" class="modal">
-
-        <!-- Modal content -->
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <p>Do you confirm to delete this trip?</p>
-            <div class="buttons">
-                <form action="/auth/category" method="post">
-                    <input type="button" value = "YES" id="yes">
-                </form>
-                {{!-- <a href="#" class="button">Yes</a> --}}
-                <form action="/auth/category" method="post">
-                    <input type="button" value = "NO" id="no">
-                </form>
-            </div>
-        </div>
-
+    <div class="trips">
+        <span id="city">Delhi</span>
+        <span id="loc">Lotus Garden</span>
+        <span id="rest">Number Of Persons:4<br>Date:28-06-2022<br>Time Slot:Late Night(9:00 PM - 12:00PM)<br>Table
+            Number - 1<br>Game - Bowling<br><strong>Total Bill - INR 3000</strong></span>
+        {{!-- <input type="image" src="/images/delete.png" alt="del" id="del"> --}}
+        <img src="/images/table.jpg" alt="login" id="image">
     </div>
-    <script>
-        // Get the modal
-        var modal = document.getElementById("myModal");
+    <div class="trips">
+        <span id="city">Delhi</span>
+        <span id="loc">Lotus Garden</span>
+        <span id="rest">Number Of Persons:4<br>Date:28-06-2022<br>Time Slot:Late Night(9:00 PM - 12:00PM)<br>Table
+            Number - 1<br>Game - Bowling<br><strong>Total Bill - INR 3000</strong></span>
+        {{!-- <input type="image" src="/images/delete.png" alt="del" id="del"> --}}
+        <img src="/images/table.jpg" alt="login" id="image">
+    </div>
+    <br>
+    <br>
 
-        // Get the button that opens the modal
-        var btn = document.getElementById("del");
 
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
-
-        // When the user clicks the button, open the modal 
-        btn.onclick = function () {
-            modal.style.display = "block";
-        }
-
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function () {
-            modal.style.display = "none";
-        }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
 
 </body>
 
