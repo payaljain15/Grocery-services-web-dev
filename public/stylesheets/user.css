@@ -62,7 +62,7 @@ a.button{
     font-size: 16px;
     border-radius: 5px;
     font-size:20px;
-    margin-left:50%;
+    margin-left:42%;
     position:absolute;
     margin-top:-5%;
   } 
@@ -77,11 +77,26 @@ a.button{
     font-size: 16px;
     border-radius: 5px;
     font-size:20px;
-    margin-left:60%;
+    margin-left:53%;
     position:absolute;
 
     margin-top:-5%;
   } 
+  .dmt{
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 5px 0px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    font-size:20px;
+    margin-left:75%;
+    position:absolute;
+
+    margin-top:-5%;
+  }
   .lout{
     background-color: black;
     border: none;
@@ -96,6 +111,7 @@ a.button{
     position:absolute;
     margin-top:-26%;
   } 
+
   .back{
     background-color: black;
     border: none;
@@ -172,113 +188,8 @@ span#rest{
   #image{
     position:absolute;
     padding:20px;
-    height:20%px;
+    height:75%;
     width:20%;
-    margin-left:65%;
+    margin-left:70%;
     padding-left:20px;
   }
-  #del{
-    position:absolute;
-    padding:20px;
-    height:15%;
-    width:5%;
-    margin-top:10%;
-    margin-left:92%;
-    /* margin-left:40%;
-    padding-left:20px;
-    margin-top:30%; */
-  }
-  .modal {
-    display: none;
-    /* Hidden by default */
-    position: fixed;
-    /* Stay in place */
-    z-index: 1;
-    /* Sit on top */
-    padding-top: 20%;
-    /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%;
-    /* Full width */
-    height: 80%;
-    /* Full height */
-    overflow: auto;
-    /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0);
-    /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.4);
-    /* Black w/ opacity */
-}
-
-/* Modal Content */
-.modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-}
-.modal-content p{
-    font-size:20px;
-    font-family: 'Times New Roman', Times, serif;
-}
-
-/* The Close Button */
-.close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-#yes{
-    background-color: black;
-    border: none;
-    color: white;
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    border-radius: 5px;
-    font-size:20px;
-    margin-left:40%;
-    position:absolute;
-    margin-top:-3%;
-  } 
-  #no{
-    background-color: black;
-    border: none;
-    color: white;
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    border-radius: 5px;
-    font-size:20px;
-    margin-left:50%;
-    position:absolute;
-    margin-top:-3%;
-  } 
-#yes:hover{
-    background-color:yellowgreen;
-    color: black;
-  }
-  #no:hover{
-    background-color:yellowgreen;
-    color: black;
-  }
-/* a.button{
-    color:white;
-    text-decoration: none;
-    margin-top:-40%;
-    padding: 5px 10px;
-    border-radius: 5px;
-}
-   */

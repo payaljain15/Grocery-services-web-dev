@@ -318,3 +318,7 @@ exports.user = async (req, res) => {
     console.log("payal");
     res.render('user');
 }
+exports.delete = async (req, res) => {
+    console.log("payal");
+    res.render('delete');
+}

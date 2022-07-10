@@ -42,20 +42,18 @@ router.get('/user',middleware.requireAuth, (req, res) => {
 router.get('/about_us', (req, res) => {
     res.render('about_us');
 });
-router.get('/contact_us', (req, res) => {
-    res.render('contact_us');
-});
-router.get('/foodmenu', (req, res) => {
-    res.render('foodmenu');
-});
-router.get('/table', (req, res) => {
+
+router.get('/table', middleware.requireAuth,(req, res) => {
     res.render('table');
 });
-router.get('/playgame', (req, res) => {
+router.get('/playgame',middleware.requireAuth, (req, res) => {
     res.render('playgame');
 });
 router.get('/foodie', (req, res) => {
     res.render('foodie');
+});
+router.get('/delete',middleware.requireAuth, (req, res) => {
+    res.render('delete');
 });
 
 module.exports = router;
