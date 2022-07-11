@@ -1,14 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/stylesheets/delete.css" type="text/css">
+    <link rel="stylesheet" href="/stylesheets/table.css" type="text/css">
     <title>Epicerie</title>
 </head>
-<body style="background-image:url(/images/tableb.jpg)" center center fixed>
-    <p>table</p>
-    
+
+<body style="background-image:url(/images/table4.jpg)" center center fixed>
+    <div class="content">
+        <span>Choose a Table</span>
+    </div>
+    <div class="table_img">
+        <p>Table 1</p>
+    </div>
+
+    {{!-- <label for="table" id="tab">Choose Your Table<br></label> --}}
+    <select id="tables" name="tablelist">
+        <option value="val1">None PRICE - 1000</option>
+        <option value="val2">Mumbai</option>
+        <option value="val3">Shimla</option>
+        <option value="val4">Bangalore</option>
+    </select>
+    <div class="game_section">
+        <span>Choose a Game</span>
+    </div>
+    <label class="container1">BOWLING<br> Price - INR 500
+        <input type="checkbox" checked="checked">
+        <span class="checkmark"></span>
+    </label>
+
+    <label class="container1">CHESS<br> Price - INR 500
+        <input type="checkbox">
+        <span class="checkmark"></span>
+    </label>
+
+    <label class="container1">BADMINTON<br> Price - INR 600
+        <input type="checkbox">
+        <span class="checkmark"></span>
+    </label>
+
+    <label class="container1">CARROM<br> Price - INR 500
+        <input type="checkbox">
+        <span class="checkmark"></span>
+    </label>
+    <label class="container2">TAMBOLA<br> Price - INR 400
+        <input type="checkbox" checked="checked">
+        <span class="checkmark"></span>
+    </label>
+
+    <label class="container2">CRICKET<br> Price - INR 800
+        <input type="checkbox">
+        <span class="checkmark"></span>
+    </label>
+
+    <label class="container2">CYCLING<br> Price - INR 1000
+        <input type="checkbox">
+        <span class="checkmark"></span>
+    </label>
+
+    <label class="container2">AIR SHOOTING<br> Price - INR 1000
+        <input type="checkbox">
+        <span class="checkmark"></span>
+    </label>
+    <label class="container3">TABLE TENNIS<br> Price - INR 500
+        <input type="checkbox" checked="checked">
+        <span class="checkmark"></span>
+    </label>
+
+    <label class="container3">GOLF<br> Price - INR 900
+        <input type="checkbox">
+        <span class="checkmark"></span>
+    </label>
+
+    <label class="container3">DODGEBALL<br> Price - INR 500
+        <input type="checkbox">
+        <span class="checkmark"></span>
+    </label>
+
+    <label class="container3">MARBLES<br> Price - INR 100
+        <input type="checkbox">
+        <span class="checkmark"></span>
+    </label>
+    <div class="submit">
+        <input type="submit" value='Submit!' class="sub">
+    </div>
+    <br>
 </body>
+
 </html>

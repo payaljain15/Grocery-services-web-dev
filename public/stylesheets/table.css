@@ -1,9 +1,179 @@
-body{
-    margin:0;
-    padding:0;
+body {
+    margin: 0;
+    padding: 0;
     background-size: cover;
     background-position: center;
-    font-family: 'Times new roman' , serif;
+    font-family: 'Times new roman', serif;
     background-repeat: no-repeat;
-    background-attachment:fixed;
+    background-attachment: fixed;
+}
+
+.content {
+    font-size: 50px;
+    position: relative;
+    width: 90%;
+    height: 60%;
+    margin-top: 5%;
+    margin-left: 5%;
+    background-color: rgba(211, 204, 204, 0.7);
+    border-radius: 5px;
+    text-align: center;
+
+}
+
+.table_img {
+    position: absolute;
+    width: 40%;
+    height: 50%;
+    background-color: rgba(211, 204, 204, 0.7);
+    border-radius: 5px;
+    text-align: center;
+    margin-left: 5%;
+    margin-top: 2%;
+}
+
+/* #tab{
+    position: absolute;
+    width: 40%;
+    height: 7%;
+    background-color: rgba(211, 204, 204, 0.9);
+    border-radius: 5px;
+    text-align: center;
+    margin-left:50%;
+    margin-top:2%;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+} */
+#tables {
+    position: absolute;
+    width: 40%;
+    height: 7%;
+    background-color: white;
+    border-radius: 5px;
+    text-align: center;
+    margin-left: 50%;
+    margin-top: 2%;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-family: cursive;
+}
+
+.game_section {
+    font-size: 50px;
+    position: relative;
+    width: 90%;
+    height: 60%;
+    margin-top: 27%;
+    margin-left: 5%;
+    background-color: rgba(211, 204, 204, 0.7);
+    border-radius: 5px;
+    text-align: center;
+}
+
+.container1 {
+    position: relative;
+    width: 18.5%;
+    height: 7%;
+    background-color: white;
+    border-radius: 5px;
+    text-align: center;
+    margin-left: 5%;
+    margin-top: 2%;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-family: cursive;
+    float: left;
+}
+
+.container2 {
+    position: relative;
+    width: 18.5%;
+    height: 7%;
+    background-color: white;
+    border-radius: 5px;
+    text-align: center;
+    margin-left: 5%;
+    margin-top: 2%;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-family: cursive;
+    float: left;
+}
+
+.container3 {
+    position: relative;
+    width: 18.5%;
+    height: 7%;
+    background-color: white;
+    border-radius: 5px;
+    text-align: center;
+    margin-left: 5%;
+    margin-top: 2%;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-family: cursive;
+    float: left;
+}
+
+a.button:hover {
+    background-color: white;
+    color: black;
+}
+
+a.button {
+    color: white;
+    text-decoration: none;
+    margin-top: -40%;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+input[type="submit"]:hover {
+    background-color: white;
+    color: black;
+    /* padding: 0px 10px; */
+    /* border-radius: 5px; */
+}
+
+.submit {
+    position: absolute;
+    text-align: centre;
+    margin-left: 47%;
+    margin-top: 20%;
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 5px 0px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    font-size: 20px;
+  
+}
+.sub{
+    position: absolute;
+    text-align: centre;
+    margin-left: 47%;
+    margin-top: 20%;
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    font-size: 20px;
+  
 }
