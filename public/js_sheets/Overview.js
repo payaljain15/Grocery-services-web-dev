@@ -1,20 +1,26 @@
 let slideIndex = 1;
+let previndex = 0;
 showSlides(slideIndex);
 
 // Next/previous controls
 function plusSlides(n) {
   showSlides(slideIndex += n);
+  previndex += n;
+  previndex = previndex%4;
 }
 
-// Thumbnail image controls
-function currentSlide(n) {
-  showSlides(slideIndex = n);
+function plusslide(){
+  let tagindex  = document.getElementById("locations").selectedIndex;
+  plusSlides(tagindex-previndex);
+  previndex=tagindex;
 }
 
 function showSlides(n) {
   let i;
   let slides = document.getElementsByClassName("mySlides");
-  if (n > slides.length) {slideIndex = 1}
+  if (n > slides.length) {
+    slideIndex = slideIndex%4;
+  }
   if (n < 1) {slideIndex = slides.length}
   for (i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
