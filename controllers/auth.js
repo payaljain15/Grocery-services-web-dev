@@ -90,10 +90,7 @@ exports.forgot_password = (req, res) => {
     var user = req.body;
     console.log(user.username);
     var otp = Math.floor((Math.random() * 10000) + 1);
-    var expire = new Date();
-    expire.setMinutes(expire.getMinutes() + 5);
     console.log("otp: ", otp);
-    console.log("expirein: ", expire);
         
     const token = jwt.sign(
         {
@@ -156,22 +153,10 @@ exports.forgot_password = (req, res) => {
 exports.login = async (req, res) => {
     console.log(req.body.username, req.body.password);
     res.clearCookie('jwt_token',  { path: '/' });
-    // const username = req.body;
-    // var usern = JSON.stringify(username);
-    // const user = usern.split('"');
-    // console.log(1,user);
-    // const nowpass = user[7];
     var sql = 'SELECT userpass,fullname FROM users WHERE username = "' + req.body.username + '"';
     console.log(sql);
     db.query(sql, async function (err, result, fields) {
         if (err) throw err;
-        // console.log(result[0].userpass);
-        // var userpass = JSON.stringify(result);
-        // const pass = userpass.split('"');
-        // // console.log(pass);
-        // const password = pass[3];
-        // const name = pass[7];
-        // console.log("name:" +name);
         if(result.length  < 1){
             return res.render('login', {
                 message: 'No users found'
@@ -181,11 +166,11 @@ exports.login = async (req, res) => {
             console.log('Done');
             const token = jwt.sign(
                 {
-                    username: req.body.username
+                    username: req.body.username,
+                    name: result[0].fullname
                 },
                 JWTSecret
-            )
-            // window.localStorage.setItem('jwt_token', token);
+            );
             console.log('Token: ' + token);
             res.cookie('jwt_token', token, { path: '/' });
             return res.render('welcome',{
@@ -279,8 +264,21 @@ exports.logout= async (req, res) => {
     return res.render('login', { message:'User successfully logout'});
 }
 
+
+exports.welcome = async (req, res) => {
+    await jwt.verify(req.cookies.jwt_token,JWTSecret, (err,decodedtoken) => 
+    {
+        if(err) throw err;
+        const user = decodedtoken.name;
+        res.render('welcome',{ data:user}); 
+    });
+}
+
+
 exports.images = async (req, res) => {
     const city_name = req.body.locationlist;
+    res.clearCookie('city_name',  { path: '/' });
+    res.cookie('city_name', city_name, { path: '/' });
     db.query('SELECT des_name,images,description FROM destination WHERE destination.city_id = (SELECT city_id FROM city WHERE city_name = ?)',[city_name], async(err,result) => {
         if(err) throw err;
         else {
@@ -302,7 +300,16 @@ exports.images = async (req, res) => {
 }
 
 exports.category = async (req, res) => {
-    console.log(req.body.locationlist);
+    console.log(new Date(req.body.date).toISOString());
+    console.log(1);
+    res.clearCookie('location',  { path: '/' });
+    res.clearCookie('date',  { path: '/' });
+    res.clearCookie('time',  { path: '/' });
+    res.clearCookie('quantity',  { path: '/' });
+    res.cookie('location', req.body.locationlist, { path: '/' });
+    res.cookie('date', req.body.date, { path: '/' });
+    res.cookie('time', req.body.timeslot, { path: '/' });
+    res.cookie('quantity', req.body.quantity, { path: '/' });
     const location = req.body.locationlist;
     db.query("SELECT images FROM destination WHERE destination.des_name = ?",[location],async (err, result) => {
         if (err) throw err;

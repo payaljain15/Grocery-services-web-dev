@@ -13,4 +13,5 @@ router.post('/images',authController.images);
 router.post('/category' ,authController.category);
 router.post('/user',authController.user);
 router.post('/delete',authController.delete);
+router.post('/welcome',authController.welcome);
 module.exports = router;

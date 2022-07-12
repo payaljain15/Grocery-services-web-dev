@@ -29,9 +29,11 @@
     <div class="lout">
         <a href="/logout" class="button">Log Out</a>
     </div>
-    <div class="back">
-        <a href="/welcome" class="button">Back</a>
-    </div>
+    <form action='/auth/welcome' method='post'>
+        <div class="back">
+            <input type="submit" value="Back" class="button">
+        </div>
+    </form>
     <div class="heading">
         <p>YOUR TRIPS</p>
     </div>
