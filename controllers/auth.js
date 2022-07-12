@@ -261,6 +261,11 @@ exports.change_pass = async(req,res) => {
 exports.logout= async (req, res) => {
     console.log('logout');
     await res.clearCookie('jwt_token',  { path: '/' });
+    await res.clearCookie('location',  { path: '/' });
+    await res.clearCookie('date',  { path: '/' });
+    await res.clearCookie('time',  { path: '/' });
+    await res.clearCookie('city_name',  { path: '/' });
+    await res.clearCookie('quantity',  { path: '/' });
     return res.render('login', { message:'User successfully logout'});
 }
 
@@ -318,6 +323,21 @@ exports.category = async (req, res) => {
             res.render('category',{location:location,img : img});
         }
     }); 
+}
+
+exports.table = async (req, res) => {
+    db.query('SELECT dec_id,price,table_name,images FROM decoration', async(err, result) => {
+        if (err) throw err;
+        else {
+            let i =0;
+            let msg = '';
+            for(i = 0; i < result.length; i++){
+            let temp = '<option value="' + result[i].images + '">' + result[i].table_name + ' - ' + result[i].price + 'Rs </option>'
+            msg = msg + temp;
+            }
+            return res.render('table',{msg:msg});
+        }
+    });
 }
 
 
