@@ -90,10 +90,7 @@ exports.forgot_password = (req, res) => {
     var user = req.body;
     console.log(user.username);
     var otp = Math.floor((Math.random() * 10000) + 1);
-    var expire = new Date();
-    expire.setMinutes(expire.getMinutes() + 5);
     console.log("otp: ", otp);
-    console.log("expirein: ", expire);
         
     const token = jwt.sign(
         {
