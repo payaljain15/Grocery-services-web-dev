@@ -39,8 +39,8 @@ router.get('/category',middleware.requireAuth, (req, res) => {
 router.get('/user',middleware.requireAuth, (req, res) => {
     res.render('user');
 });
-router.get('/about_us', (req, res) => {
-    res.render('about_us');
+router.get('/aboutus',(req, res) => {
+    res.render('aboutus');
 });
 
 router.get('/table', middleware.requireAuth,(req, res) => {
@@ -55,5 +55,12 @@ router.get('/foodie', (req, res) => {
 router.get('/delete',middleware.requireAuth, (req, res) => {
     res.render('delete');
 });
+router.get('/bill',middleware.requireAuth, (req, res) => {
+    res.render('bill');
+});
+router.get('/download', middleware.requireAuth,(req, res) => {
+    res.render('download');
+});
+
 
 module.exports = router;

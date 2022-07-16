@@ -1,0 +1,110 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    background-position: center;
+    font-family: 'Times new roman', serif;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.content {
+    background-color: white;
+    margin-left: 10%;
+    height: 100%;
+    width: 80%;
+    margin-top: 5%;
+    padding-bottom:3%;
+    padding-top:1%;
+}
+
+.content h1 {
+    text-align: center;
+    font-size:40px;
+}
+
+.heading {
+    background-color: black;
+    color: white;
+    margin-left: 5%;
+    width: 90%;
+    border-radius: 5px;
+    margin-bottom: 5%;
+    text-align: center;
+}
+
+.info1 {
+    font-family: 'Courier New', Courier, monospace;
+    margin-left: 5%;
+}
+
+hr {
+    border: none;
+    border-top: 2px dashed black;
+    color: #fff;
+    background-color: #fff;
+    height: 1px;
+    width: 90%;
+    text-align: center;
+}
+.table{
+    width:100%;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    font-size:18px;
+}
+.go {
+    alignment: center;
+    background-color: black;
+    border: none;
+    color: white;
+    /* padding: 5px 0px; */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    font-size:20px;
+    margin-left:45%;
+    margin-top:5%;
+    /* position:absolute; */
+    /* margin-top:8%; */
+}
+.gos{
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    /* font-size:20px;
+    margin-left:5%; */
+    /* position:absolute;
+    margin-top:8%; */
+}
+
+
+
+input[type = "submit"]:hover{
+    background-color:grey;
+    color: white;
+  }
+
+  .trip h1 {
+    text-align: center;
+}
+.trip{
+    color: black;
+    margin-left: 5%;
+    width: 90%;
+    border-radius: 5px;
+    margin-bottom: 5%;
+    text-align: center;
+}
+.info2 {
+    font-family: 'Courier New', Courier, monospace;
+    margin-left: 5%;
+}

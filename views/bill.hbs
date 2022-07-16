@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/stylesheets/bill.css" type="text/css">
+	<link rel='icon' href='/icon.png' />
+	<title>Epicerie</title>
+</head>
+
+<body style="background-image:url(/images/b5.jpg)" center center fixed>
+	<div class="content" id="printable">
+		<h1>Epicerie</h1>
+		<div class="heading">
+			<h2>TAX INVOICE</h2>
+		</div>
+		<div class="info1">
+			<p>
+				<b>Name:</b> {{name}}<br>
+				<b>Phone:</b> {{phone}}<br>
+				<b>Email:</b> {{email}}<br>
+				<b>Date:</b> {{date}}<br>
+				<b>Time:</b> {{time}}<br>
+			</p>
+		</div>
+		<hr>
+		<div class="trip">
+			<h2>TRIP DETAILS</h2>
+		</div>
+		<div class="info2">
+			<p>
+				<b>Trip ID:</b> {{tripid}}<br>
+				<b>Location:</b> {{location}}<br>
+				<b>Time Slot:</b> {{timeslot}}<br>
+				<b>Number of Person:</b> {{persons}}<br>
+				<b>Table:</b> {{tablename}}<br>
+			</p>
+		</div>
+		<hr>
+		<div>
+			<table class="table">
+				<tr>
+					<th>Description</th>
+					<th>Price</th>
+				</tr>
+				<tr>
+					<td>Table Set-Up</td>
+					<td>INR 10000</td>
+				</tr>
+				<tr>
+					<td>Games</td>
+					<td>INR 10000</td>
+				</tr>
+				<tr>
+					<td>Sub Total</td>
+					<td>INR 20000</td>
+				</tr>
+				<tr>
+					<td>GST</td>
+					<td>INR 200</td>
+				</tr>
+				<tr>
+					<th>Total Payable Amount:</th>
+					<th>INR 40000</th>
+			</table>
+			<hr>
+
+		</div>
+		<div class="go">
+			<input type="submit" value='Book My Trip' class="gos">
+		</div>
+		<br>
+	</div>
+	<br>
+</body>

@@ -15,4 +15,5 @@ router.post('/user',authController.user);
 router.post('/delete',authController.delete);
 router.post('/welcome',authController.welcome);
 router.post('/table',authController.table);
+router.post('/download_bill',authController.download_bill);
 module.exports = router;

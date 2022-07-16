@@ -8,9 +8,13 @@
   <link rel="stylesheet" href="/stylesheets/Overview.css" type="text/css">
   <title>Epicerie</title>
 </head>
+
 <body style="background-image:url(/images/{{city}}.jpg)" center center fixed>
   <div class="loc">
     <h1>Welcome to {{city}}!</h1>
+  </div>
+  <div class="aboutus">
+    <a href="/aboutus" class="button">About Us</a>
   </div>
   <div class="logout">
     <a href="/logout" class="button">Log Out</a>
@@ -54,7 +58,7 @@
     <div class="inputall">
       <div class="location">
         <label for="location" id="locationtext">Choose Your Location:<br></label>
-        <select id="locations" name="locationlist" onchange = 'plusslide()'>
+        <select id="locations" name="locationlist" onchange='plusslide()'>
           <option value="{{loc1}}">{{loc1}}</option>
           <option value="{{loc2}}">{{loc2}}</option>
           <option value="{{loc3}}">{{loc3}}</option>
@@ -76,7 +80,7 @@
       </div>
       <div class="persons">
         <label for="quantity" id="person">Number Of Person:<br></label>
-        <input type="number" id="quantity" name="quantity" required>
+        <input type="number" id="quantity" name="quantity" required min="1">
       </div>
       <div class="sub">
         <input type="submit" value="Submit" id="sub">
@@ -86,4 +90,5 @@
   <br><br>
 </body>
 <script type="text/javascript" src="/js_sheets/Overview.js"></script>
+
 </html>

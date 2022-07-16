@@ -101,6 +101,21 @@ a.button{
     position:absolute;
     margin-top:8%;
 }
+.gos{
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    font-size:20px;
+    margin-left:5%;
+    position:absolute;
+    margin-top:8%;
+}
 
 
 /* .mail #png{
@@ -141,6 +156,32 @@ input{
     position:absolute;
     /* margin-top:-5.5%; */
   }
+.aboutus{
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 5px 0px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    font-size:20px;
+    margin-left:72%;
+    position:absolute;
+    margin-top:2%;
+}
+/* a.button:hover{
+    background-color:white;
+    color: black;
+}
+a.button{
+    color:white;
+    text-decoration: none;
+    margin-top:-40%;
+    padding: 5px 10px;
+    border-radius: 5px;
+} */
+
 
 
 
