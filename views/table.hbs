@@ -8,19 +8,25 @@
     <link rel="stylesheet" href="/stylesheets/table.css" type="text/css">
     <title>Epicerie</title>
     <script>
-    function image(url) 
-    {
-        var img = document.getElementById('img');
-        img.src = url;
-    }
+        function image(url) {
+            var img = document.getElementById('img');
+            img.src = url;
+        }
     </script>
 </head>
+
 <body style="background-image:url(/images/table4.jpg)" center center fixed>
+    {{!-- <form action='/auth/category' method='post'>
+        <div class="back">
+            <input type="submit" value="Back" class="button">
+        </div>
+    </form> --}}
     <div class="content">
         <span>Choose a Table</span>
     </div>
     <div class="table_img">
-        <img src='https://img.freepik.com/premium-photo/picnic-blanket-with-basket-grass_23-2148231815.jpg?w=2000' id = 'img' style="width:100%;height:100%">
+        <img src='https://img.freepik.com/premium-photo/picnic-blanket-with-basket-grass_23-2148231815.jpg?w=2000'
+            id='img' style="width:100%;height:100%">
     </div>
     <select id="tables" name="tablelist" onchange="image(this.value)">
         {{{msg}}}
@@ -30,7 +36,7 @@
         <span>Choose a Game</span>
     </div>
     <label class="container1">BOWLING<br> Price - INR 500
-        <input type="checkbox" checked="checked">
+        <input type="checkbox">
         <span class="checkmark"></span>
     </label>
 
@@ -49,7 +55,7 @@
         <span class="checkmark"></span>
     </label>
     <label class="container2">TAMBOLA<br> Price - INR 400
-        <input type="checkbox" checked="checked">
+        <input type="checkbox">
         <span class="checkmark"></span>
     </label>
 
@@ -68,7 +74,7 @@
         <span class="checkmark"></span>
     </label>
     <label class="container3">TABLE TENNIS<br> Price - INR 500
-        <input type="checkbox" checked="checked">
+        <input type="checkbox">
         <span class="checkmark"></span>
     </label>
 
@@ -89,7 +95,6 @@
     <div class="submit">
         <input type="submit" value='Submit!' class="sub">
     </div>
-    <br>
 </body>
 
 

@@ -349,3 +349,7 @@ exports.delete = async (req, res) => {
     console.log("payal");
     res.render('delete');
 }
+exports.download_bill = async (req, res) => {
+    console.log("payal");
+    res.render('download');
+}

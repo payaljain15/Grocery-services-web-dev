@@ -292,5 +292,30 @@ input#quantity{
   font-family: cursive;
   font-weight: bold;
 }
+.aboutus{
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 5px 0px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 5px;
+  font-size:20px;
+  margin-left:75%;
+  position:absolute;
+  margin-top:-5%;
+}
+a.button:hover{
+  background-color:white;
+  color: black;
+}
+a.button{
+  color:white;
+  text-decoration: none;
+  margin-top:-40%;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
 
 

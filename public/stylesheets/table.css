@@ -22,10 +22,9 @@ body {
 }
 
 .table_img {
-    position: absolute;
+    position: relative;
     width: 40%;
-    height: 50%;
-    background-color: rgba(211, 204, 204, 0.7);
+    height: 400px;
     border-radius: 5px;
     text-align: center;
     margin-left: 5%;
@@ -54,7 +53,7 @@ body {
     border-radius: 5px;
     text-align: center;
     margin-left: 50%;
-    margin-top: 2%;
+    margin-top: -27%;
     font-size: 20px;
     justify-content: center;
     align-items: center;
@@ -67,7 +66,7 @@ body {
     position: relative;
     width: 90%;
     height: 60%;
-    margin-top: 27%;
+    margin-top: 2%;
     margin-left: 5%;
     background-color: rgba(211, 204, 204, 0.7);
     border-radius: 5px;

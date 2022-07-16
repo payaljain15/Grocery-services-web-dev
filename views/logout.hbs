@@ -13,9 +13,11 @@
     <div class="content">
         <span>Epicerie</span>
     </div>
-    <div class="logout">
-        <a href="/welcome" class="back">Back</a>
-    </div>
+    <form action='/auth/welcome' method='post'>
+        <div class="back">
+            <input type="submit" value="Back" class="button">
+        </div>
+    </form>
     <form action="/auth/logout" method="post">
         <div class='mail'>
             <p>Thankyou for Visiting Us!</p>
