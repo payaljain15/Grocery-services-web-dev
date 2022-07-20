@@ -10,7 +10,7 @@ body{
 .content{
     position: absolute;
     font-family: 'Times new roman' , serif;
-    font-size: 100px;
+    font-size: 80px;
     color: black;
     margin-top:2%;
     margin-left: 37%;
@@ -18,9 +18,9 @@ body{
 
 .mail{
     position:absolute;
-    margin-top:15%;
-    margin-left:33%;
-    width:29%;
+    margin-top:12%;
+    margin-left:35%;
+    width:30%;
     height:50%;
     background-color:rgb(255,255,255,0.3);
     border-radius:5px;
@@ -126,5 +126,14 @@ a.button{
   }
   .signup_link a:hover{
     text-decoration: underline;
+  }
+  .message{
+    position: absolute;
+    margin-top:5%;
+    margin-left:35%;
+    width:30%;
+    height:10%;
+    background-color:rgb(255,255,255,0.7);
+    border-radius:5px;
   }
   
