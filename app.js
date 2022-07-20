@@ -30,7 +30,6 @@ db.connect(function (err) {
   console.log("Connected!");
 });
 
-
 //Define Routes
 app.use('/', require('./routes/pages'));
 app.use('/auth', require('./routes/auth'));

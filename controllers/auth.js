@@ -340,6 +340,34 @@ exports.table = async (req, res) => {
     });
 }
 
+exports.bill = async (req, res) => {
+    // const tripid = Date.now();
+    // console.log(tripid);
+    var table = req.body.tablelist;
+    console.log(table);
+    var games = 0;
+    if(req.body.game){   
+        games = req.body.game;
+    }
+    console.log(games);
+    // res.clearCookie('tripid',  { path: '/' });
+    res.clearCookie('table',  { path: '/' });
+    res.clearCookie('games',  { path: '/' });
+    // res.cookie('tripid', tripid, { path: '/' });
+    res.cookie('table', table, { path: '/' });
+    res.cookie('games', games, { path: '/' });
+    db.query('SELECT table_name FROM decoration WHERE images = ?',[table], async(err, result) => {
+        if (err) throw err;
+        else {
+            table = result[0].table_name;
+            console.log(table);
+        }
+    });
+    db.query('SELECT  ')
+
+
+    return res.render('table');
+}
 
 exports.user = async (req, res) => {
     console.log("payal");
