@@ -54,7 +54,7 @@ hr {
     font-size:18px;
 }
 .go {
-    alignment: center;
+    align-content: center;
     background-color: black;
     border: none;
     color: white;
