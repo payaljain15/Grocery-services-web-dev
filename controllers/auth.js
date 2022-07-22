@@ -337,66 +337,56 @@ exports.table = async (req, res) => {
     });
 }
 
-exports.bill = async (req, res) => {
+exports.bill = async function (req, res) {
+    const util = require('util');
+    const query = util.promisify(db.query).bind(db);
     const tripid = Date.now();
-    console.log(tripid);
     var table = req.body.tablelist;
-    console.log(table);
     var games = 0;
     if (req.body.game) {
         games = req.body.game;
     }
+    var user;
     jwt.verify(req.cookies.jwt_token, JWTSecret, (err, decodedtoken) => {
         if (err) throw err;
-        const user = decodedtoken.name;
+        user = decodedtoken.name;
     });
-    console.log(games);
-    res.clearCookie('tripid',  { path: '/' });
+    res.clearCookie('tripid', { path: '/' });
     res.clearCookie('table', { path: '/' });
     res.clearCookie('games', { path: '/' });
     res.cookie('tripid', tripid, { path: '/' });
     res.cookie('table', table, { path: '/' });
     res.cookie('games', games, { path: '/' });
-    db.query('SELECT table_name FROM decoration WHERE images = ?', [table], (err, result) => {
-        if (err)
-            throw err;
-        else {
-            table = result[0].table_name;
-            console.log(table);
-        }
-    });
+    table = await query('SELECT table_name,price FROM decoration WHERE images = ?', [table]);
+    table_name = table[0].table_name;
+    var tprice = table[0].price;
     var game = "";
     var sum = 0;
     if (games == 0) {
         game = 'NONE';
     }
-    else 
-    {
-        for (let i = 0; i < games.length; i++) 
-        {
-            // db.query('SELECT game_name,price FROM games WHERE game_id = ?', [games[i]], async (err, result) => {
-            //     if (err) throw err;
-            //     else {
-            //         game = game + result[0].game_name;
-            //         sum = result[0].price + sum;
-            //         console.log(sum);
-            //         console.log(game);
-            //     }
-            //     if (i < games.length - 1) {
-            //         game = game + ', ';
-            //     }
-            // });
-            const users = await db.query('SELECT game_name,price FROM games WHERE game_id = ?', [games[i]]);
-            // game = game + users[0].game_name;
-            // sum = users[0].price + sum; 
-            console.log(users.result.game_name);
-            console.log(game);
-            if (i < games.length - 1) {
-                game = game + ', ';
-            }
+    else {
+        const result = await query('SELECT game_name,price FROM games WHERE game_id IN ?', [[games]]);
+        for (let i = 0; i < result.length; i++) {
+            game = game + result[i].game_name;
+            sum = sum + result[i].price;
+            if (i < result.length - 1) game = game + ',';
         }
     }
-    console.log(sum);
+    const userinfo = await query('SELECT fullname,email,contactnumber FROM users WHERE username = ?', [user]);
+    const name = userinfo[0].fullname;
+    const email = userinfo[0].email;
+    const contact = userinfo[0].contactnumber;
+    const date = Date.now();
+    const d = new Date(date).toLocaleDateString();
+    const Time = new Date(date).toLocaleTimeString(); 
+
+    // console.log(`${name} ${email} ${contact} ${d} ${game} ${sum} ${Time}`);
+    const stotal = tprice + sum + 5000;
+    const cgst = stotal * 0.05;
+    const sgst = stotal * 0.05;
+    const gtotal = stotal + cgst+sgst;
+    res.render('bill',{ name: name, email: email, phone: contact, date: d, games: game, sum: sum, time: Time,tripid:tripid,tablename:table_name, timeslot:req.cookies.time,location:req.cookies.location,persons:req.cookies.quantity,tprice:tprice,stotal:stotal,cgst:cgst,sgst:sgst,gtotal:gtotal});
 }
 
 exports.user = async (req, res) => {
