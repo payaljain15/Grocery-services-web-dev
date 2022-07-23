@@ -172,7 +172,7 @@ exports.login = async (req, res) => {
                 JWTSecret
             );
             console.log('Token: ' + token);
-            res.cookie('jwt_token', token, { path: '/' });
+            await res.cookie('jwt_token', token, { path: '/' });
             return res.render('welcome', {
                 data: result[0].fullname
             });
@@ -340,7 +340,7 @@ exports.table = async (req, res) => {
 exports.bill = async function (req, res) {
     const util = require('util');
     const query = util.promisify(db.query).bind(db);
-    const tripid = Date.now();
+    const tripid = Date.now() + Math.random();
     var table = req.body.tablelist;
     var games = 0;
     if (req.body.game) {
@@ -379,15 +379,105 @@ exports.bill = async function (req, res) {
     const contact = userinfo[0].contactnumber;
     const date = Date.now();
     const d = new Date(date).toLocaleDateString();
-    const Time = new Date(date).toLocaleTimeString(); 
+    const Time = new Date(date).toLocaleTimeString();
 
     // console.log(`${name} ${email} ${contact} ${d} ${game} ${sum} ${Time}`);
     const stotal = tprice + sum + 5000;
     const cgst = stotal * 0.05;
     const sgst = stotal * 0.05;
-    const gtotal = stotal + cgst+sgst;
-    res.render('bill',{ name: name, email: email, phone: contact, date: d, games: game, sum: sum, time: Time,tripid:tripid,tablename:table_name, timeslot:req.cookies.time,location:req.cookies.location,persons:req.cookies.quantity,tprice:tprice,stotal:stotal,cgst:cgst,sgst:sgst,gtotal:gtotal});
+    const gtotal = stotal + cgst + sgst;
+    res.clearCookie('gtotal', { path: '/' });
+    res.cookie('gtotal', gtotal, { path: '/' });
+    res.render('bill', { name: name, email: email, phone: contact, date: d, games: game, sum: sum, time: Time, tripid: tripid, tablename: table_name, timeslot: req.cookies.time, location: req.cookies.location, persons: req.cookies.quantity, tprice: tprice, stotal: stotal, cgst: cgst, sgst: sgst, gtotal: gtotal });
 }
+
+
+exports.confirmtrip = async (req, res) => {
+    const city = req.cookies.city_name;
+    const date = req.cookies.date;
+    const Game = req.cookies.games;
+    const tripid = req.cookies.tripid;
+    const location = req.cookies.location;
+    const timeslot = req.cookies.time;
+    const quantity = req.cookies.quantity;
+    const table = req.cookies.table;
+    const gtotal = req.cookies.gtotal;
+    var user;
+    jwt.verify(req.cookies.jwt_token, JWTSecret, (err, decodedtoken) => {
+        if (err) throw err;
+        user = decodedtoken.name;
+    });
+    const util = require('util');
+    const query = util.promisify(db.query).bind(db);
+    await query('INSERT INTO trips(tripid,city,location,tdate,timeslot,quantity,tablename,gtotal) VALUES (?,?,?,?,?,?,?,?)', [tripid, city, location, date, timeslot, quantity, table, gtotal]);
+    if (Game != 0) {
+        const result = await query('SELECT game_name,price FROM games WHERE game_id IN ?', [[Game]]);
+        for (let i = 0; i < result.length; i++) {
+            await query('INSERT INTO rgames(tripid,game,price) VALUES (?,?,?)', [tripid, Game[i], result[i].price]);
+        }
+    }
+    await query('INSERT INTO usertrip(tripid,username) VALUES (?,?)', [tripid, user]);
+    // profile(res);
+    const userinfo = await query('SELECT fullname,email,contactnumber FROM users WHERE username = ?', [user]);
+    const name = userinfo[0].fullname;
+    const email = userinfo[0].email;
+    const contact = userinfo[0].contactnumber;
+    console.log(name, email, contact);
+    var msg = '';
+    const Tripid = await query('SELECT tripid FROM usertrip WHERE username = ?', [user]);
+    for (let i = 0; i < Tripid.length; i++) {
+        var tt = Tripid[i].tripid;
+        var tripinfo = await query('SELECT * FROM trips WHERE tripid = ?', [tt]);
+        var game = await query('SELECT game FROM rgames WHERE tripid = ?', [tt]);
+        var games ='';
+        const result = await query('SELECT game_name FROM games WHERE game_id IN ?', [[game]]);
+        if (result.length == 0) games = 'NONE';
+        else {
+            for (let i = 0; i < result.length; i++) {
+                games = games + result[i].game_name;
+                if (i < result.length - 1) games = games + ',';
+            }
+        }
+        console.log(tripinfo)
+        var Table = await query('SELECT table_name FROM decoration WHERE images = ?', [tripinfo[0].tablename]);
+        var msg = msg + '<div class="trips"><span id="city">' + tripinfo[0].city + '</span><span id="loc">' + tripinfo[0].location + '</span><span id="rest">Number Of Persons:' + tripinfo[0].quantity + '<br>Date:' + new Date(tripinfo[0].tdate).toLocaleDateString() + '<br>Time Slot:' + tripinfo[0].timeslot + '<br>Table-' + Table[0].table_name + '<br>Games - ' + games + '<br><strong>Total Bill - INR ' + tripinfo[0].gtotal + '</strong></span><img src="' + tripinfo[0].tablename + '" alt="login" id="image"></div>';
+    }
+
+    res.render('user', { msg: msg });
+}
+
+async function profile(res) {
+    var user;
+    jwt.verify(res.cookies.jwt_token, JWTSecret, (err, decodedtoken) => {
+        if (err) throw err;
+        user = decodedtoken.name;
+    });
+    const util = require('util');
+    const query = util.promisify(db.query).bind(db);
+    const userinfo = await query('SELECT fullname,email,contactnumber FROM users WHERE username = ?', [user]);
+    const name = userinfo[0].fullname;
+    const email = userinfo[0].email;
+    const contact = userinfo[0].contactnumber;
+    var msg = '';
+    const tripid = await query('SELECT tripid FROM usertrip WHERE username = ?', [user]);
+    for (let i = 0; i < tripid.length; i++) {
+        const tripinfo = await query('SELECT * FROM trips WHERE tripid = ?', [tripid[i]]);
+        const game = await query('SELECT game FROM rgames WHERE tripid = ?', [tripid[i]]);
+        const tablelink = await query('SELECT images FROM decoration WHERE table_name = ?', [tripinfo[0].tablename]);
+        var games = '';
+        if (game.length == 0) games = 'NONE';
+        else {
+            for (let j = 0; j < game.length; j++) {
+                games = games + game[j].game;
+                if (j < game.length - 1) games = games + ',';
+            }
+        }
+        var msg = msg + '<div class="trips"><span id="city">' + tripinfo[0].city + '</span><span id="loc">' + tripinfo[0].location + '</span><span id="rest">Number Of Persons:' + tripinfo[0].quantity + '<br>Date:' + tripinfo[0].tdate + '<br>Time Slot:' + tripinfo[0].timeslot + '<br>Table-' + tripinfo[0].tablename + '<br>Games - ' + games + '<br><strong>Total Bill - INR ' + tripinfo[0].gtotal + '</strong></span><img src="' + tablelink[0].images + '" alt="login" id="image"></div>';
+    }
+
+    res.render('user', { msg: msg });
+}
+
 
 exports.user = async (req, res) => {
     console.log("payal");
