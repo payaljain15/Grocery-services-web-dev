@@ -12,7 +12,6 @@ body{
   margin-left:5%;
   font-size:20px;
 }
-/* Slideshow container */
 .slideshow-container {
   height: 400px;
   width: 90%;
@@ -20,17 +19,12 @@ body{
   margin-left:5%;
   position: relative;
   float: left;
-  /* border: red solid 5px; */
 
 }
 
-/* Hide the images by default */
 .mySlides {
   display: none;
-  /* float: left; */
 }
-
-/* Next & previous buttons */
 .prev, .next {
   cursor: pointer;
   position:absolute;
@@ -43,14 +37,12 @@ body{
   transition: 0.6s ease;
   border-radius: 0 3px 3px 0;
   user-select: none;
-  /* float: left; */
 }
 
 /* Position the "next button" to the right */
 .next {
   margin-left: 612px;
-  /* border-radius: 3px 0 0 3px;
-  margin-left:-610px; */
+
   
 } 
 
@@ -80,78 +72,6 @@ body{
   justify-content:center;
 }
 
-.inputall{
-  position:absolute;
-  margin-top:35%;
-  margin-left:5%;
-  width:90%;
-  background-color:rgb(255,255,255,0.3);
-  border-radius:5px;
-  float:left;
-  height:20%;
-}
-
-/* .locations{
-  font-family: 'Times New Roman', Times, serif;
-  font-size:15px;
-
-  margin-bottom:20px;
-} */
-/* 
-#locationtext{
-  font-size:25px;
-  padding:20px;
-}*/
-.location select {
-  margin-top: 12%;
-  margin-bottom: 3%;
-  margin-left: 2%;
-  width: 100%;
-  height: 25%;
-  font-family: cursive;
-  font-weight: bold;
-} 
-
-.menu{
-  background-color: black;
-  border: none;
-  color: white;
-  padding: 5px 0px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
-  border-radius: 5px;
-  font-size:20px;
-  margin-left:5%;
-  position:absolute;
-  margin-top:45%;
-}
-
-/* input.button{
-  color:white;
-  text-decoration: none;
-  margin-top:-40%;
-  padding: 5px 10px;
-  border-radius: 5px;
-} */
-.dec{
-  background-color: black;
-  border: none;
-  color: white;
-  padding: 5px 0px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
-  border-radius: 5px;
-  font-size:20px;
-  margin-left:55%;
-  position:absolute;
-  margin-top:45%;
-}
-/* input.button:hover{
-  background-color:white;
-  color: black;
-} */
 .logout{
   background-color: black;
   border: none;
@@ -187,19 +107,11 @@ a.button{
 input[type = "submit"]:hover{
   background-color:white;
   color: black;
-  /* padding: 0px 10px; */
-  /* border-radius: 5px; */
 }
-/* input[type="submit"]{
-  color:white;
-  text-decoration: none;
-  margin-top:-40%;
-  padding: 5px 10px;
-  border-radius: 5px;
-} */
+
 #sub{
-  background-color:black;
-  color:white;
+  background-color:red;
+  color:black;
   padding: 5px 10px;
   border: none;
   text-align: center;
@@ -207,91 +119,21 @@ input[type = "submit"]:hover{
   font-size: 16px;
   border-radius: 5px;
   font-size:20px;
-  margin-left:90%;
-  position:absolute;
+  margin-left:35%;
+  position:relative;
   margin-top: 3%; 
+  width:30%;
 }
 #sub:hover{
-  background-color:white;
-  color: black;
+  background-color:yellowgreen;
+  color: white;
 
 }
 h2{
   position:absolute;
   margin-top:-200px;
 }
-/* label #dates{
-  position:absolute;
-  font-weight:25px;
-  padding:10px;
-}
 
-
-#persons{
-  position:absolute;
-  font-family: 'Times New Roman', Times, serif;
-  font-size:25px;
-  padding:45px;
-  padding-bottom:20px;
-  margin-bottom:20px;
-} */
-
-.location{
-  padding:10px;
-  font-size:25px;
-  position:absolute;
-  /* margin-top: -11%; */
-  margin-left:2%;
-
-}
-.dates{
-  padding:10px;
-  font-size:25px;
-  position:absolute;
-  /* margin-top:-11%; */
-  margin-left:25%;
-}
-input#date{
-  margin-top: 15%;
-  margin-bottom: 3%;
-  margin-left: 2%;
-  width: 100%;
-  height: 25%;
-  font-family: cursive;
-  font-weight: bold;
-} 
-.timeslot{
-  padding:10px;
-  font-size:25px;
-  position:absolute;
-  /* margin-top:-11%; */
-  margin-left:40%;
-}
-.timeslot select {
-  margin-top: 12%;
-  margin-bottom: 3%;
-  margin-left: 2%;
-  width: 90%;
-  height: 25%;
-  font-family: cursive;
-  font-weight: bold;
-} 
-.persons{
-  padding:10px;
-  font-size:25px;
-  position:absolute;
-  /* margin-top:-11%; */
-  margin-left:65%;
-}
-#quantity{
-  margin-top: 12%;
-  /* margin-bottom: 3%; */
-  margin-left: 2%;
-  width: 90%;
-  height: 23%;
-  font-family: cursive;
-  font-weight: bold;
-}
 .aboutus{
   background-color: black;
   border: none;
@@ -317,5 +159,41 @@ a.button{
   padding: 5px 10px;
   border-radius: 5px;
 }
+.inputall{
+  background-color: rgba(255, 255, 255, 0.489);
+  position: relative;
+  margin-top:35%;
+  width:90%;  
+  margin-left:5%;
+  border-radius:5px;
+  padding-bottom:2%;
+  font-size: 25px;
+  color: black;
+  font-weight: bold;
+  padding:25px;
+}
+.location{
+  position:relative;
+  float:left;
+  margin-right:7%;
+
+}
+.dates{
+  position:relative;
+  float:left;
+  margin-right:7%;
+}
+.timeslot{
+  position:relative;  
+  float:left;
+  margin-right:7%;
+}
+.persons{
+  position:relative;
+  float:left;
+  
+  /* margin-right:7%; */
+}
+
 
 
