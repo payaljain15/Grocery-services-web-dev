@@ -9,20 +9,17 @@
     <link rel='icon' href='/icon.png' />
     <title>Epicerie</title>
 </head>
-
 <body style="background-image:url(/images/b5.jpg)" center center fixed>
     <div class="content">
         <span>Epicerie</span>
     </div>
     <form action="/auth/user" method="post">
-        {{!-- <img src="/images/login4.png" alt="login" style="width:7%;" id="png"> --}}
         <input type="image" src="/images/login4.png" alt="Submit button" style="width:7%;" id="png">
     </form>
     <div class='mail'>
         <form action="/auth/download_bill" method="post">
             <div class="txt_field">
                 <input type="text" id = "delete" name = "delete" required>
-                {{!-- <span></span> --}}
                 <label>Enter the trip ID to download your bill</label>
             </div>
             <input type="submit" value="Download Bill">

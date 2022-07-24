@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const {middleware} = require('../middleware/authmiddleware');
+const authController = require('../controllers/auth');
 router.get('/', (req, res) => {
     res.render('login');
 });
@@ -37,7 +38,7 @@ router.get('/category',middleware.requireAuth, (req, res) => {
 });
 
 router.get('/user',middleware.requireAuth, (req, res) => {
-    res.render('user');
+    authController.user(req,res);
 });
 router.get('/aboutus',(req, res) => {
     res.render('aboutus');
