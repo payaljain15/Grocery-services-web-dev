@@ -198,9 +198,6 @@ exports.otp = async (req, res) => {
                 console.log(decodedtoken);
                 const user = decodedtoken;
                 console.log(user.username);
-                // db.query('SELECT otp from otp where username = ?',[user.username], async(err, res) => {
-                //     console.log(res.otp);
-                // });
                 if (req.body.otp == user.otp) {
                     res.clearCookie('jwt_token', { path: '/' });
                     const token = jwt.sign(
@@ -266,6 +263,10 @@ exports.logout = async (req, res) => {
     await res.clearCookie('time', { path: '/' });
     await res.clearCookie('city_name', { path: '/' });
     await res.clearCookie('quantity', { path: '/' });
+    await res.clearCookie('gtotal', { path: '/' });
+    await res.clearCookie('tripid', { path: '/' });
+    await res.clearCookie('table', { path: '/' });
+    await res.clearCookie('games', { path: '/' });
     return res.render('login', { message: 'User successfully logout' });
 }
 
@@ -368,7 +369,7 @@ exports.bill = async function (req, res) {
     if (games == 0) {
         game = 'NONE';
     }
-    else if(games.length == 1){
+    else if (games.length == 1) {
         const result = await query('SELECT game_name,price FROM games WHERE game_id = ?', [games]);
         game = result[0].game_name;
         sum = result[0].price;
@@ -391,13 +392,13 @@ exports.bill = async function (req, res) {
     const Time = new Date(date).toLocaleTimeString();
 
     const quantity = req.cookies.quantity;
-    const stotal = tprice + sum + quantity*1000;
+    const stotal = tprice + sum + quantity * 1000;
     const cgst = stotal * 0.025;
     const sgst = stotal * 0.025;
     const gtotal = stotal + cgst + sgst;
     res.clearCookie('gtotal', { path: '/' });
     res.cookie('gtotal', gtotal, { path: '/' });
-    res.render('bill', { name: user, email: email, phone: contact, date: d, games: game, sum: sum, time: Time, tripid: tripid, tablename: table_name, timeslot: req.cookies.time, location: req.cookies.location, persons: req.cookies.quantity, tprice: tprice, stotal: stotal, cgst: cgst, sgst: sgst, gtotal: gtotal });
+    res.render('bill', { name: user, email: email, phone: contact, date: d, games: game, sum: sum, time: Time, tripid: tripid, tablename: table_name, timeslot: req.cookies.time, location: req.cookies.location, city: req.cookies.city_name, persons: req.cookies.quantity, tprice: tprice, stotal: stotal, cgst: cgst, sgst: sgst, gtotal: gtotal });
 }
 
 
@@ -418,34 +419,34 @@ exports.confirmtrip = async (req, res) => {
     });
     const util = require('util');
     const query = util.promisify(db.query).bind(db);
-    await query('INSERT INTO trips(tripid,city,location,tdate,timeslot,quantity,tablename,gtotal) VALUES (?,?,?,?,?,?,?,?)', [tripid, city, location, date, timeslot, quantity, table, gtotal]);
+    await query('INSERT INTO trips(tripid,city,location,tdate,timeslot,quantity,tablename,gtotal,username) VALUES (?,?,?,?,?,?,?,?,?)', [tripid, city, location, date, timeslot, quantity, table, gtotal, user]);
     if (Game != 0 && Game.length != 1) {
         const result = await query('SELECT game_name,price FROM games WHERE game_id IN ?', [[Game]]);
         for (let i = 0; i < result.length; i++) {
-            await query('INSERT INTO rgames(tripid,game,price) VALUES (?,?,?)', [tripid, Game[i], result[i].price]);
+            await query('INSERT INTO rgames(tripid,game,price,username) VALUES (?,?,?,?)', [tripid, Game[i], result[i].price, user]);
         }
     }
-    else if(Game.length == 1 && Game != 0){
-        const result = await query('SELECT game_name,price FROM games WHERE game_id = ?',[Game]);
-        await query('INSERT INTO rgames(tripid,game,price) VALUES (?,?,?)', [tripid, Game, result[0].price]);
+    else if (Game.length == 1 && Game != 0) {
+        const result = await query('SELECT game_name,price FROM games WHERE game_id = ?', [Game]);
+        await query('INSERT INTO rgames(tripid,game,price,username) VALUES (?,?,?,?)', [tripid, Game, result[0].price, user]);
     }
-    await query('INSERT INTO usertrip(tripid,username) VALUES (?,?)', [tripid, user]);
+    await query('INSERT INTO usertrips(tripid,username) VALUES (?,?)', [tripid, user]);
     const userinfo = await query('SELECT fullname,email,contactnumber FROM users WHERE username = ?', [user]);
     const name = userinfo[0].fullname;
     const email = userinfo[0].email;
     const contact = userinfo[0].contactnumber;
     console.log(name, email, contact);
     var msg = '';
-    const Tripid = await query('SELECT tripid FROM usertrip WHERE username = ?', [user]);
+    const Tripid = await query('SELECT tripid FROM usertrips WHERE username = ?', [user]);
     for (let i = 0; i < Tripid.length; i++) {
         var tt = Tripid[i].tripid;
-        var tripinfo = await query('SELECT * FROM trips WHERE tripid = ?', [tt]);
-        var game = await query('SELECT game FROM rgames WHERE tripid = ?', [tt]);
+        var tripinfo = await query('SELECT * FROM trips WHERE tripid= ? AND username = ?', [tt, user]);
+        var game = await query('SELECT game FROM rgames WHERE tripid = ? AND username = ?', [tt, user]);
         var games = '';
         if (game.length == 0) {
             games = 'NONE';
         }
-        else if (game.length == 1){
+        else if (game.length == 1) {
             game = game[0].game;
             const result = await query('SELECT game_name FROM games WHERE game_id = ?', [game]);
             games = result[0].game_name;
@@ -462,28 +463,116 @@ exports.confirmtrip = async (req, res) => {
         }
         console.log(tripinfo)
         var Table = await query('SELECT table_name FROM decoration WHERE images = ?', [tripinfo[0].tablename]);
-        var msg = msg + '<div class="trips"><span id="city">' + tripinfo[0].city + '</span><span id="loc">' + tripinfo[0].location + '</span><span id="rest">Trip ID:' + tt+'<br>Number Of Persons:' + tripinfo[0].quantity + '<br>Date:' + new Date(tripinfo[0].tdate).toLocaleDateString() + '<br>Time Slot:' + tripinfo[0].timeslot + '<br>Table-' + Table[0].table_name + '<br>Games - ' + games + '<br><strong>Total Bill - INR ' + tripinfo[0].gtotal + '</strong></span><img src="' + tripinfo[0].tablename + '" alt="login" id="image"></div>';
+        var msg = msg + '<div class="trips"><span id="city">' + tripinfo[0].city + '</span><span id="loc">' + tripinfo[0].location + '</span><span id="rest">Trip ID:' + tt + '<br>Number Of Persons:' + tripinfo[0].quantity + '<br>Date:' + new Date(tripinfo[0].tdate).toLocaleDateString() + '<br>Time Slot:' + tripinfo[0].timeslot + '<br>Table-' + Table[0].table_name + '<br>Games - ' + games + '<br><strong>Total Bill - INR ' + tripinfo[0].gtotal + '</strong></span><img src="' + tripinfo[0].tablename + '" alt="login" id="image"></div>';
     }
 
-    res.render('user', { msg: msg,name:name,email:email,phone:contact,user:user });
+    return res.render('user', { msg: msg, name: name, email: email, phone: contact, user: user });
 }
 
 
 
 exports.user = async (req, res) => {
-    console.log("payal");
-    res.render('user');
+    jwt.verify(req.cookies.jwt_token, JWTSecret, (err, decodedtoken) => {
+        if (err) throw err;
+        user = decodedtoken.username;
+    });
+    const util = require('util');
+    const query = util.promisify(db.query).bind(db);
+    const userinfo = await query('SELECT fullname,email,contactnumber FROM users WHERE username = ?', [user]);
+    const name = userinfo[0].fullname;
+    const email = userinfo[0].email;
+    const contact = userinfo[0].contactnumber;
+    console.log(name, email, contact);
+    var msg = '';
+    const Tripid = await query('SELECT tripid FROM usertrips WHERE username = ?', [user]);
+    if (Tripid.length == 0) {
+        msg = "<p>You haven't booked any trips yet.</p>";
+        return res.render('user', {
+            msg: msg, name: name, email: email, phone: contact, user: user
+        });
+    }
+    else {
+        for (let i = 0; i < Tripid.length; i++) {
+            var tt = Tripid[i].tripid;
+            var tripinfo = await query('SELECT * FROM trips WHERE tripid = ? AND username = ?', [tt, user]);
+            var game = await query('SELECT game FROM rgames WHERE tripid = ? AND username = ?', [tt, user]);
+            var games = '';
+            if (game.length == 0) {
+                games = 'NONE';
+            }
+            else if (game.length == 1) {
+                game = game[0].game;
+                const result = await query('SELECT game_name FROM games WHERE game_id = ?', [game]);
+                games = result[0].game_name;
+            }
+            else {
+                const result = await query('SELECT game_name FROM games WHERE game_id IN ?', [[game]]);
+                if (result.length == 0) games = 'NONE';
+                else {
+                    for (let i = 0; i < result.length; i++) {
+                        games = games + result[i].game_name;
+                        if (i < result.length - 1) games = games + ',';
+                    }
+                }
+            }
+            console.log(tripinfo)
+            var Table = await query('SELECT table_name FROM decoration WHERE images = ?', [tripinfo[0].tablename]);
+            var msg = msg + '<div class="trips"><span id="city">' + tripinfo[0].city + '</span><span id="loc">' + tripinfo[0].location + '</span><span id="rest">Trip ID:' + tt + '<br>Number Of Persons:' + tripinfo[0].quantity + '<br>Date:' + new Date(tripinfo[0].tdate).toLocaleDateString() + '<br>Time Slot:' + tripinfo[0].timeslot + '<br>Table-' + Table[0].table_name + '<br>Games - ' + games + '<br><strong>Total Bill - INR ' + tripinfo[0].gtotal + '</strong></span><img src="' + tripinfo[0].tablename + '" alt="login" id="image"></div>';
+        }
+    }
+
+    return res.render('user', { msg: msg, name: name, email: email, phone: contact, user: user });
 }
 exports.delete = async (req, res) => {
     const tripid = req.body.delete;
-    jwt.verify(res.cookies.jwt_token, JWTSecret, (err, decodedtoken) => {
+    jwt.verify(req.cookies.jwt_token, JWTSecret, (err, decodedtoken) => {
         if (err) throw err;
         user = decodedtoken.name;
     });
-
-
+    const util = require('util');
+    const query = util.promisify(db.query).bind(db);
+    await query('DELETE FROM usertrip WHERE tripid = ? AND username = ?', [tripid, user]);
+    await query('DELETE FROM rgames WHERE tripid = ?', [tripid]);
+    await query('DELETE FROM trips WHERE tripid = ?', [tripid]);
+    this.user(req, res);
 }
 exports.download_bill = async (req, res) => {
-    console.log("payal");
-    res.render('download');
+    const util = require('util');
+    const query = util.promisify(db.query).bind(db);
+    const tripid = req.body.delete;
+    var user;
+    jwt.verify(req.cookies.jwt_token, JWTSecret, (err, decodedtoken) => {
+        if (err) throw err;
+        user = decodedtoken.username;
+    });
+    const tripinfo = await query('SELECT * FROM trips WHERE tripid = ? AND username = ?', [tripid, user]);
+    const games = await query('SELECT game FROM rgames WHERE tripid = ? AND username = ?', [tripid, user]);
+    const userinfo = await query('SELECT fullname,email,contactnumber FROM users WHERE username = ?', [user]);
+    var game = '';
+    var sum = 0;
+    if (games == 0) {
+        game = 'NONE';
+    }
+    else if (games.length == 1) {
+        const result = await query('SELECT game_name,price FROM games WHERE game_id = ?', [games[0].game]);
+        game = result[0].game_name;
+        sum = result[0].price;
+    }
+    else {
+        for (let j = 0; j < games.length; j++) {
+            var result = await query('SELECT game_name,price FROM games WHERE game_id = ?', [games[j].game]);
+            game = game + result[0].game_name;
+            sum = sum + result[0].price;
+            if (j < games.length - 1) game = game + ',';
+
+        }
+    }
+    const Table = await query('SELECT table_name,price FROM decoration WHERE images = ?', [tripinfo[0].tablename]);
+    const stotal = Table[0].price + sum + tripinfo[0].quantity * 1000;
+    const cgst = stotal * 0.025;
+    const sgst = stotal * 0.025;
+    const gtotal = stotal + cgst + sgst;
+    const date = Date.now();
+
+    res.render('bill', { name: userinfo[0].fullname, phone: userinfo[0].contactnumber, email: userinfo[0].email, date: new Date(date).toLocaleDateString(), time: new Date(date).toLocaleTimeString(), tripid: tripid, location: tripinfo[0].location, city: tripinfo[0].city, persons: tripinfo[0].quantity, tablename: Table[0].table_name, games: game, tprice: Table[0].price, sum: sum, stotal: stotal, cgst: cgst, sgst: sgst, gtotal: gtotal });
 }
