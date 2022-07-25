@@ -62,6 +62,9 @@ router.get('/bill',middleware.requireAuth, (req, res) => {
 router.get('/download', middleware.requireAuth,(req, res) => {
     res.render('download');
 });
+router.get('/edit', middleware.requireAuth,(req, res) => {
+    res.render('edit');
+});
 
 
 module.exports = router;

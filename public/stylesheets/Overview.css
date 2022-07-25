@@ -73,7 +73,7 @@ body{
 }
 
 .logout{
-  background-color: black;
+  background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
   border: none;
   color: white;
   padding: 5px 0px;
@@ -93,7 +93,7 @@ body{
 }
 
 a.button:hover{
-  background-color:white;
+  background-image: linear-gradient(144deg, #8b0de4, #2100f8 50%, #03eeff);
   color: black;
 }
 a.button{
@@ -105,12 +105,12 @@ a.button{
 }
 
 input[type = "submit"]:hover{
-  background-color:white;
+  background-image: linear-gradient(144deg, #8b0de4, #2100f8 50%, #03eeff);
   color: black;
 }
 
 #sub{
-  background-color:red;
+  background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
   color:black;
   padding: 5px 10px;
   border: none;
@@ -125,8 +125,8 @@ input[type = "submit"]:hover{
   width:30%;
 }
 #sub:hover{
-  background-color:yellowgreen;
-  color: white;
+  background-image: linear-gradient(144deg, #8b0de4, #2100f8 50%, #03eeff);
+  color: black;
 
 }
 h2{
@@ -135,7 +135,7 @@ h2{
 }
 
 .aboutus{
-  background-color: black;
+  background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
   border: none;
   color: white;
   padding: 5px 0px;
@@ -149,7 +149,7 @@ h2{
   margin-top:-5%;
 }
 a.button:hover{
-  background-color:white;
+  background-image: linear-gradient(144deg, #8b0de4, #2100f8 50%, #03eeff);
   color: black;
 }
 a.button{
@@ -160,7 +160,7 @@ a.button{
   border-radius: 5px;
 }
 .inputall{
-  background-color: rgba(255, 255, 255, 0.489);
+  background-image: linear-gradient(144deg, #40ffe29a, #42b5f38e 50%, #9500eb88);
   position: relative;
   margin-top:35%;
   width:90%;  
