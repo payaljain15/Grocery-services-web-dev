@@ -108,3 +108,20 @@ input[type = "submit"]:hover{
     font-family: 'Courier New', Courier, monospace;
     margin-left: 5%;
 }
+.can{
+    align-content: center;
+    background-color: black;
+    border: none;
+    color: white;
+    /* padding: 5px 0px; */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    font-size:20px;
+    margin-left:50%;
+    margin-top:-2%;
+    position:absolute;
+
+}

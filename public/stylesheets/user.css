@@ -41,7 +41,7 @@ span#info{
 }
 
 a.button:hover{
-    background-color:white;
+  background-image: linear-gradient(144deg, #8b0de4, #2100f8 50%, #03eeff);
     color: black;
   }
 a.button{
@@ -53,7 +53,7 @@ a.button{
 }
 
 .edit{
-    background-color: black;
+  background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
     border: none;
     color: white;
     padding: 5px 0px;
@@ -68,7 +68,7 @@ a.button{
   } 
 
   .cpass{
-    background-color: black;
+    background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
     border: none;
     color: white;
     padding: 5px 0px;
@@ -83,7 +83,7 @@ a.button{
     margin-top:-5%;
   } 
   .dmt{
-    background-color: black;
+    background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
     border: none;
     color: white;
     padding: 5px 0px;
@@ -98,7 +98,7 @@ a.button{
     margin-top:-5%;
   }
   .lout{
-    background-color: black;
+    background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
     border: none;
     color: white;
     padding: 5px 0px;
@@ -113,15 +113,15 @@ a.button{
   } 
 
   .back{
-    background-color: black;
+    background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
     border: none;
     color: white;
-    padding: 5px 0px;
+    /* padding: 5px 0px; */
     text-align: center;
     text-decoration: none;
     font-size: 16px;
     border-radius: 5px;
-    font-size:20px;
+    /* font-size:25px; */
     margin-left:90%;
     position:absolute;
     margin-top:-26%;
@@ -195,7 +195,7 @@ span#rest{
   }
 
 .download{
-  background-color: black;
+  background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
   border: none;
   color: white;
   padding: 5px 0px;
@@ -208,4 +208,18 @@ span#rest{
   position:absolute;
 
   margin-top:-5%;
+}
+input[type="submit"] {
+  background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
+  color: white;
+  padding: 7px 10px;
+  border-radius:5px;
+  border:none;
+  font-size:16px;
+}
+
+input[type="submit"]:hover {
+  background-image: linear-gradient(144deg, #8b0de4, #2100f8 50%, #03eeff);
+  color: black;
+
 }
