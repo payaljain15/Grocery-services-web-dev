@@ -28,7 +28,7 @@ body{
     background-color: black;
     border: none;
     color: white;
-    padding: 5px 0px;
+    padding: 0px 0px;
     text-align: center;
     text-decoration: none;
     font-size: 16px;
@@ -38,6 +38,12 @@ body{
     position:absolute;
     margin-top:2%;
 }
+#png {
+    position: absolute;
+    margin-left: 92%;
+    margin-top: -1%;
+  }
+
 a.button:hover{
     background-color:white;
     color: black;
@@ -54,6 +60,44 @@ a.button{
     font-size:30px;
     text-align:center;
 }
-.logout .back{
+/* .logout .back{
     margin-left:-100px;
-}
+} */
+.back {
+
+    background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
+    border: none;
+    color: white;
+    padding: 0px 0px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    font-size: 20px;
+    margin-left: 85%;
+    position: absolute;
+    margin-top: 0%;
+    cursor: pointer;
+    min-width: 5%;
+    margin-top: 1%;
+  }
+
+  .back:hover {
+    background-image: linear-gradient(144deg, #8b0de4, #2100f8 50%, #03eeff);
+    color: black;
+  }
+  input[type="submit"] {
+    background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
+    color: white;
+    padding: 5px 10px;
+    border-radius:5px;
+    border:none;
+    font-size:20px;
+    font-family: 'Times New Roman', Times, serif;
+  }
+  input[type="submit"]:hover {
+    background-image: linear-gradient(144deg, #8b0de4, #2100f8 50%, #03eeff);
+    color: black;
+  
+  }
+  

@@ -1,116 +1,159 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body 
-{
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
-}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+    }
 
-html {
-  box-sizing: border-box;
-}
+    html {
+      box-sizing: border-box;
+    }
 
-*, *:before, *:after {
-  box-sizing: inherit;
-}
+    *,
+    *:before,
+    *:after {
+      box-sizing: inherit;
+    }
 
-.column {
-  float: left;
-  width: 50%;
-  margin-bottom: 16px;
-  padding: 0 8px;
-}
+    .column {
+      float: left;
+      width: 50%;
+      margin-bottom: 16px;
+      padding: 0 8px;
+    }
 
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  margin: 8px;
-}
+    .card {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      margin: 8px;
+    }
 
-.about-section {
-  padding: 50px;
-  text-align: center;
-  background-color: #474e5d;
-  color: white;
-}
+    .about-section {
+      padding: 50px;
+      text-align: center;
+      color: white;
+      background-image: url(/images/about.jpg);
+    }
 
-.container {
-  padding: 0 16px;
-}
+    .container {
+      padding: 0 16px;
+    }
 
-.container::after, .row::after {
-  content: "";
-  clear: both;
-  display: table;
-}
+    .container::after,
+    .row::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
 
-.title {
-  color: grey;
-}
+    #back {
 
-.button {
-  border: none;
-  outline: 0;
-  display: inline-block;
-  padding: 8px;
-  color: white;
-  background-color: #000;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
-}
+      background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
+      border: none;
+      color: white;
+      padding: 5px 0px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 16px;
+      border-radius: 5px;
+      font-size: 20px;
+      margin-left: 85%;
+      position: absolute;
+      margin-top: 0%;
+      cursor: pointer;
+      min-width: 5%;
+      margin-top: 1%;
+    }
 
-.button:hover {
-  background-color: #555;
-}
+    #back:hover {
+      background-image: linear-gradient(144deg, #8b0de4, #2100f8 50%, #03eeff);
+      color: black;
+    }
 
-@media screen and (max-width: 650px) {
-  .column {
-    width: 100%;
-    display: block;
-  }
-}
-</style>
+    #png {
+      position: absolute;
+      margin-left: 92%;
+      margin-top: -1%;
+    }
+
+
+    .title {
+      color: grey;
+    }
+
+    .button {
+      border: none;
+      outline: 0;
+      display: inline-block;
+      padding: 8px;
+      color: white;
+      background-color: #000;
+      text-align: center;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .button:hover {
+      background-color: #555;
+    }
+
+    @media screen and (max-width: 650px) {
+      .column {
+        width: 100%;
+        display: block;
+      }
+    }
+  </style>
 </head>
+
 <body>
+  <form action="/auth/welcome" method="post">
+    {{!-- <img src="/images/login4.png" alt="login" style="width:7%;" id="png"> --}}
+    <input type="submit" value="Back!" style="width:7%;" id="back">
+  </form>
+  <form action="/auth/user" method="post">
+    <input type="image" src="/images/login4.png" alt="Submit button" style="width:7%;" id="png">
+  </form>
+  <div class="about-section">
+    <h1>About Us</h1>
+    <p>We are here to provide you a service of healthy picnics open in nature with your family and friends. Just choose
+      your location and we will set a perfect table for you and your dear ones with one click!</p>
+    <p>Don't forget to enjoy our special meals and make your holiday more special with games and events!</p>
+  </div>
 
-<div class="about-section">
-  <h1>About Us</h1>
-  <p>We are here to provide you a service of healthy picnics open in nature with your family and friends. Just choose your location and we will set a perfect table for you and your dear ones with one click!</p>
-  <p>Don't forget to enjoy our special meals and make your holiday more special with games and events!</p>
-</div>
+  <h2 style="text-align:center">Our Team</h2>
+  <div class="row">
 
-<h2 style="text-align:center">Our Team</h2>
-<div class="row">
+    <div class="column">
+      <div class="card">
+        <img src="/images/payal.jpg" alt="Payal Jain" style="width:100%">
+        <div class="container">
+          <h2>Payal Jain</h2>
+          <p class="title">Student at National Institute of Technology Delhi</p>
+          <p>Full Stack Web Developer</p>
+          <p>1511payal.jain@gmail.com</p>
+          <p><a href="https://www.linkedin.com/in/payal-jain-245609202/" target="_blank" class="button">Contact</a></p>
+        </div>
+      </div>
+    </div>
 
-  <div class="column">
-    <div class="card">
-      <img src="/images/payal.jpg" alt="Payal Jain" style="width:100%">
-      <div class="container">
-        <h2>Payal Jain</h2>
-        <p class="title">Student at National Institute of Technology Delhi</p>
-        <p>Full Stack Web Developer</p>
-        <p>1511payal.jain@gmail.com</p>
-        <p><a href = "https://www.linkedin.com/in/payal-jain-245609202/" target="_blank" class="button">Contact</a></p>
+    <div class="column">
+      <div class="card">
+        <img src="/images/dev.jpg" alt="Dev Garg" style="width:100%">
+        <div class="container">
+          <h2>Dev Garg</h2>
+          <p class="title">Student at Delhi Technological University Delhi</p>
+          <p>Full Stack Web Developer.</p>
+          <p>gargdev89@gmail.com</p>
+          <p><a href="https://www.linkedin.com/in/dev-garg-4baab8205/" target="_blank" class="button">Contact</a></p>
+        </div>
       </div>
     </div>
   </div>
-  
-  <div class="column">
-    <div class="card">
-      <img src="/images/dev.jpg" alt="Dev Garg" style="width:100%">
-      <div class="container">
-        <h2>Dev Garg</h2>
-        <p class="title">Student at Delhi Technological University Delhi</p>
-        <p>Full Stack Web Developer.</p>
-        <p>gargdev89@gmail.com</p>
-        <p><a href = "https://www.linkedin.com/in/dev-garg-4baab8205/" target="_blank" class="button">Contact</a></p>
-      </div>
-    </div>
-  </div>
-</div>
 
 </body>
+
 </html>
