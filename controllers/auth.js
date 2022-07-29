@@ -419,7 +419,8 @@ exports.confirmtrip = async (req, res) => {
     });
     const util = require('util');
     const query = util.promisify(db.query).bind(db);
-    await query('INSERT INTO trips(tripid,city,location,tdate,timeslot,quantity,tablename,gtotal,username) VALUES (?,?,?,?,?,?,?,?,?)', [tripid, city, location, date, timeslot, quantity, table, gtotal, user]);
+    const ac = await query('INSERT INTO trips(tripid,city,location,tdate,timeslot,quantity,tablename,gtotal,username) VALUES (?,?,?,?,?,?,?,?,?)', [tripid, city, location, date, timeslot, quantity, table, gtotal, user]);
+    console.log(ac);
     if (Game != 0 && Game.length != 1) {
         const result = await query('SELECT game_name,price FROM games WHERE game_id IN ?', [[Game]]);
         for (let i = 0; i < result.length; i++) {
@@ -485,6 +486,7 @@ exports.user = async (req, res) => {
     console.log(name, email, contact);
     var msg = '';
     const Tripid = await query('SELECT tripid FROM usertrips WHERE username = ?', [user]);
+    console.log(Tripid);
     if (Tripid.length == 0) {
         msg = "<p>You haven't booked any trips yet.</p>";
         return res.render('user', {
@@ -494,6 +496,7 @@ exports.user = async (req, res) => {
     else {
         for (let i = 0; i < Tripid.length; i++) {
             var tt = Tripid[i].tripid;
+            console.log(tt+user);
             var tripinfo = await query('SELECT * FROM trips WHERE tripid = ? AND username = ?', [tt, user]);
             var game = await query('SELECT game FROM rgames WHERE tripid = ? AND username = ?', [tt, user]);
             var games = '';
@@ -515,7 +518,8 @@ exports.user = async (req, res) => {
                     }
                 }
             }
-            console.log(tripinfo)
+            console.log("12"+ tripinfo[0])
+
             var Table = await query('SELECT table_name FROM decoration WHERE images = ?', [tripinfo[0].tablename]);
             var msg = msg + '<div class="trips"><span id="city">' + tripinfo[0].city + '</span><span id="loc">' + tripinfo[0].location + '</span><span id="rest">Trip ID:' + tt + '<br>Number Of Persons:' + tripinfo[0].quantity + '<br>Date:' + new Date(tripinfo[0].tdate).toLocaleDateString() + '<br>Time Slot:' + tripinfo[0].timeslot + '<br>Table-' + Table[0].table_name + '<br>Games - ' + games + '<br><strong>Total Bill - INR ' + tripinfo[0].gtotal + '</strong></span><img src="' + tripinfo[0].tablename + '" alt="login" id="image"></div>';
         }
@@ -531,7 +535,7 @@ exports.delete = async (req, res) => {
     });
     const util = require('util');
     const query = util.promisify(db.query).bind(db);
-    await query('DELETE FROM usertrip WHERE tripid = ? AND username = ?', [tripid, user]);
+    await query('DELETE FROM usertrips WHERE tripid = ? AND username = ?', [tripid, user]);
     await query('DELETE FROM rgames WHERE tripid = ?', [tripid]);
     await query('DELETE FROM trips WHERE tripid = ?', [tripid]);
     this.user(req, res);
