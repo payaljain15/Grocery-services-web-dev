@@ -1,0 +1,180 @@
+body{
+    margin:0;
+    padding:0;
+    background-size: cover;
+    background-position: center;
+    font-family: 'Times new roman' , serif;
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+}
+* {box-sizing:border-box}
+.loc{
+  margin-left:5%;
+  font-size:20px;
+}
+.logout{
+  background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
+    border: none;
+    color: white;
+    padding: 0px 0px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    font-size:20px;
+    margin-left:85%;
+    position:absolute;
+    margin-top:-4.5%;
+  }
+  #png{
+    position:absolute;
+    margin-left:92%;
+    margin-top:-7%;
+  }
+  #image{
+    position:absolute;
+    padding:20px;
+    height:180px;
+    width:200px;
+    margin-left:83%;
+    padding-left:20px;
+  }
+  a.button:hover{
+    background-color:white;
+    color: black;
+  }
+  a.button{
+    color:white;
+    text-decoration: none;
+    margin-top:-40%;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  .food{
+    position:relative;
+    margin-top:0%;
+    margin-left:5%;
+    width:90%;
+    height:200px;
+    background-color:rgb(255,255,255,0.7);
+    border-radius:5px;
+    /* border:red solid 5px; */
+}
+.table{
+    position:relative;
+    margin-top:5%;
+    margin-left:5%;
+    width:90%;
+    height:200px;
+    background-color:rgb(255,255,255,0.7);
+    border-radius:5px;
+    /* border:red solid 5px; */
+}
+.games{
+    position:relative;
+    margin-top:5%;
+    margin-left:5%;
+    width:90%;
+    height:200px;
+    background-color:rgb(255,255,255,0.7);
+    border-radius:5px;
+    /* border:red solid 5px; */
+}
+
+.food span{
+  position:absolute;
+  font-family: cursive;
+  padding:20px;
+  font-weight: bold;
+  font-size:25px;
+}
+.table span{
+  position:absolute;
+  font-family: cursive;
+  padding:20px;
+  font-weight: bold;
+  font-size:25px;
+}
+.games span{
+  position:absolute;
+  font-family: cursive;
+  padding:20px;
+  font-weight: bold;
+  font-size:25px;
+}
+
+.foodmenu{
+  background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
+  border: none;
+  color: white;
+  padding: 0px 0px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 5px;
+  font-size:20px;
+  margin-left:3%;
+  position:absolute;
+  margin-top:10%;
+}
+
+a.button:hover{
+  background-image: linear-gradient(144deg, #8b0de4, #2100f8 50%, #03eeff);
+  color: black;
+}
+a.button{
+  color:white;
+  text-decoration: none;
+  margin-top:-40%;
+  padding: 7px 10px;
+  border-radius: 5px;
+}
+
+.settable{
+  background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
+  border: none;
+  color: white;
+  padding: 0px 0px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 5px;
+  font-size:20px;
+  margin-left:3%;
+  position:absolute;
+  margin-top:12%;
+}
+.button{
+  background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  
+}
+
+.play{
+  background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 5px;
+  font-size:20px;
+  margin-left:3%;
+  position:absolute;
+  margin-top:10%;
+}
+input[type="submit"] {
+  background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
+  color: white;
+  padding: 10px 10px;
+  border-radius:5px;
+}
+input[type="submit"]:hover {
+  background-image: linear-gradient(144deg, #8b0de4, #2100f8 50%, #03eeff);
+  color: black;
+
+}

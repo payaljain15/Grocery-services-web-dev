@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/category.css" type="text/css">
+    <link rel='icon' href='/images/icon.png' />
+    <title>Category</title>
+</head>
+
+<body style="background-image:url({{img}})" center center fixed>
+    <div class="loc">
+        <h1>Welcome to {{location}}!</h1>
+    </div>
+    <div class="logout">
+        <a href="/logout" class="button">Log Out</a>
+    </div>
+    <form action="/auth/user" method="post">
+        {{!-- <img src="/images/login4.png" alt="login" style="width:7%;" id="png"> --}}
+        <input type="image" src="/images/login4.png" alt="Submit button" style="width:7%;" id="png">
+    </form>
+    <div class="food">
+        <span>There's nothing more romantic than a serene walk to the fridge!<br>Let's eat something!</span>
+        <div class="foodmenu">
+            <a href="/foodie" class="button">Food Available Today</a>
+        </div>
+        <img src="/images/food.png" alt="login" id="image">
+    </div>
+    <form action="/auth/table" method="post">
+        <div class="table">
+            <span>There is just something about sparkle of glassware and the color and<br> texture of a beautifully set
+                table that gets creative juices flowing.<br>Choose a Table for you and your loved ones!</span>
+            <div class="settable">
+                <input type="submit" class="button" value="Choose your Table!">
+            </div>
+            <img src="/images/table4.webp" alt="login" id="image">
+        </div>
+        <div class="games">
+            <span>Take someone who doesn't keep score,who's not afraid of losing!<br>Hit the shot in the goal!</span>
+            <div class="play">
+                <input type="submit" class="button" value="Let's Play Some Games">
+            </div>
+            <img src="/images/games.jpg" alt="login" id="image">
+        </div>
+    </form>
+    <br><br>
+</body>
+
+</html>

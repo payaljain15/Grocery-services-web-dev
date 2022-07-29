@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/forgot_password.css" type="text/css">
+    <link rel='icon' href='/images/icon.png' />
+    <title>Confirm OTP</title>
+</head>
+
+<body style="background-image:url(/images/b5.jpg)" center center fixed>
+    <div class="content">
+        <span>Epicerie</span>
+    </div>
+    <div class='mail'>
+        <form action="/auth/otp" method="post">
+            <div class="txt_field">
+                <input type="text" id = "otp" name = "otp" required>
+                <span></span>
+                <label>Enter the OTP recieved on your registered email.</label>
+            </div>
+            <input type="submit" value="Submit" href="/change_pass">
+        </form>
+    </div>
+</body>

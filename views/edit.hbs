@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/edit.css" type="text/css">
+    <link rel='icon' href='/images/icon.png' />
+    <title>Edit Information</title>
+</head>
+<body style="background-image:url(/images/b1.jpg)" center center fixed>
+<form action="/auth/user" method="post">
+        {{!-- <img src="/images/login4.png" alt="login" style="width:7%;" id="png"> --}}
+        <input type="submit" value="Back!" style="width:7%;" id="back">
+    </form>
+    <div class = 'container'>
+        <div class = 'title'>Edit Information</div>
+        <form action="/auth/edit" method = 'POST'>
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">Full Name</span>
+                    <input type="text" value = "Payal Jain" id = "name" name = "name" required>
+                </div>
+                {{!-- <div class="input-box">
+                    <span class="details">Username</span>
+                    <input type="text" placeholder="Enter Your Username" id = "username" name = "username" required>
+                </div> --}}
+                <div class="input-box">
+                    <span class="details">Email Address</span>
+                    <input type="email" value = "1511payal.jain@gmail.com" id = "email" name = "email" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Contact Number</span>
+                    <input type="tel" value = "9041601092" id = "pnumber" name = "pnumber" required>
+                </div>
+                {{!-- <div class="input-box">
+                    <span class="details">Password</span>
+                    <input type="password" placeholder="Enter Your Password" id = "password" name = "password" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Confirm password</span>
+                    <input type="password" placeholder="Confirm Your Password" id = "passwordConfirm" name = "passwordConfirm" required>
+                </div> --}}
+            </div>
+            <div class="button">
+                <input type="submit" value = "Edit">
+            </div>
+        </form>
+        {{!-- <div class="login_link">
+            Already have an account? <a href="/">Log In</a>
+        </div>
+        {{#if message}}
+            <h4> {{ message }}</h4>
+        {{/if}} --}}
+        
+    </div>  
+    
+</body>
+</html>

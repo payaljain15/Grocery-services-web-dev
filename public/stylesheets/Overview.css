@@ -1,0 +1,199 @@
+body{
+    margin:0;
+    padding:0;
+    background-size: cover;
+    background-position: center;
+    font-family: 'Times new roman' , serif;
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+}
+* {box-sizing:border-box}
+.loc{
+  margin-left:5%;
+  font-size:20px;
+}
+.slideshow-container {
+  height: 400px;
+  width: 90%;
+  margin-top:0%;
+  margin-left:5%;
+  position: relative;
+  float: left;
+
+}
+
+.mySlides {
+  display: none;
+}
+.prev, .next {
+  cursor: pointer;
+  position:absolute;
+  width: auto;
+  margin-top: -225px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  margin-left: 612px;
+
+  
+} 
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+.description {
+  font-size: 24px;
+  position:absolute;
+  width:40%;
+  height:80%;
+  margin-top:-30%;
+  margin-left:60%;
+  background-color:rgba(211, 204, 204, 0.652);
+  border-radius:5px;
+  float: right;
+  text-align: center;
+  display: flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.logout{
+  background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
+  border: none;
+  color: white;
+  padding: 5px 0px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 5px;
+  font-size:20px;
+  margin-left:85%;
+  position:absolute;
+  margin-top:-5%;
+}
+#png{
+  position:absolute;
+  margin-left:92%;
+  margin-top:-7%;
+}
+
+a.button:hover{
+  background-image: linear-gradient(144deg, #8b0de4, #2100f8 50%, #03eeff);
+  color: black;
+}
+a.button{
+  color:white;
+  text-decoration: none;
+  margin-top:-40%;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+input[type = "submit"]:hover{
+  background-image: linear-gradient(144deg, #8b0de4, #2100f8 50%, #03eeff);
+  color: black;
+}
+
+#sub{
+  background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
+  color:black;
+  padding: 5px 10px;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 5px;
+  font-size:20px;
+  margin-left:35%;
+  position:relative;
+  margin-top: 3%; 
+  width:30%;
+}
+#sub:hover{
+  background-image: linear-gradient(144deg, #8b0de4, #2100f8 50%, #03eeff);
+  color: black;
+
+}
+h2{
+  position:absolute;
+  margin-top:-200px;
+}
+
+.aboutus{
+  background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
+  border: none;
+  color: white;
+  padding: 5px 0px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 5px;
+  font-size:20px;
+  margin-left:75%;
+  position:absolute;
+  margin-top:-5%;
+}
+a.button:hover{
+  background-image: linear-gradient(144deg, #8b0de4, #2100f8 50%, #03eeff);
+  color: black;
+}
+a.button{
+  color:white;
+  text-decoration: none;
+  margin-top:-40%;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+.inputall{
+  background-image: linear-gradient(144deg, #16dafd9a, #2173f88e 50%, #db00eb88);
+  position: relative;
+  margin-top:35%;
+  width:90%;  
+  margin-left:5%;
+  border-radius:5px;
+  padding-bottom:2%;
+  font-size: 25px;
+  color: black;
+  font-weight: bold;
+  padding:25px;
+}
+.location{
+  position:relative;
+  float:left;
+  margin-right:7%;
+
+}
+.dates{
+  position:relative;
+  float:left;
+  margin-right:7%;
+}
+.timeslot{
+  position:relative;  
+  float:left;
+  margin-right:7%;
+}
+.persons{
+  position:relative;
+  float:left;
+  
+  /* margin-right:7%; */
+}
+
+
+

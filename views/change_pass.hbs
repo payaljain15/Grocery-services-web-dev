@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/forgot_password.css" type="text/css">
+    <link rel='icon' href='/images/icon.png' />
+    <title>Change Password</title>
+</head>
+
+<body style="background-image:url(/images/b5.jpg)" center center fixed>
+    <div class="content">
+        <span>Epicerie</span>
+    </div>
+    <div class='mail'>
+        <form action="/auth/change_pass" method="post">
+            <div class="txt_field">
+                <input type="password" id = "newpass" name = "newpass" required>
+                <span></span>
+                <label>New Password</label>
+            </div>
+            <div class="txt_field">
+                <input type="password" id = "confirmpass" name = "confirmpass" required>
+                <span></span>
+                <label>Confirm New Password</label>
+            </div>
+            <input type="submit" value="Submit" href="/change_pass">
+        </form>
+        {{#if message}}
+            <h4> {{ message }}</h4>
+        {{/if}}
+    </div>
+</body>

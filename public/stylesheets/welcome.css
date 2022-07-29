@@ -1,0 +1,252 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-size: cover;
+  background-position: center;
+  font-family: 'Times new roman', serif;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.content {
+  position: absolute;
+  font-family: 'Times new roman', serif;
+  font-size: 7vw;
+  color: black;
+  margin-top: 2%;
+  margin-left: 37%;
+}
+
+.logout {
+  background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
+  border: none;
+  color: white;
+  padding: 5px 0px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 5px;
+  font-size: 20px;
+  margin-left: 83%;
+  position: absolute;
+  margin-top: 2%;
+}
+
+a.button:hover {
+  background-image: linear-gradient(144deg, #8b0de4, #2100f8 50%, #03eeff);;
+  color: black;
+}
+
+a.button {
+  color: white;
+  text-decoration: none;
+  margin-top: -40%;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.msg {
+  border: none;
+  color: black;
+  ;
+  padding: 0px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  font-size: 20px;
+  margin-left: 3%;
+  position: absolute;
+  margin-top: 2%;
+  background-color: rgb(255, 255, 255, 0.7);
+
+}
+
+/* a.button{
+    color:white;
+    text-decoration: none;
+    margin-top:-40%;
+} */
+.mail {
+  position: absolute;
+  margin-top: 17%;
+  margin-left: 33%;
+  width: 29%;
+  height: 20%;
+  background-color: rgb(255, 255, 255, 0.3);
+  border-radius: 5px;
+}
+
+.mail label {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 25px;
+  padding: 10px;
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.mail select {
+  margin-top: 10%;
+  margin-left: 6%;
+  width: 65%;
+  height: 25%;
+  font-family: cursive;
+  font-weight: bold;
+}
+
+.mail .go {
+  background-color: linear-gradient(right, red, yellow);
+  border: none;
+  color: black;
+  padding: 5px 0px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  font-size: 20px;
+  margin-left: 5%;
+  position: absolute;
+  margin-top: 8%;
+}
+
+/* .gos{
+    background-color:linear-gradient(right, red , yellow);
+    border: none;
+    color: black;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    font-size:20px;
+    margin-left:5%;
+    position:absolute;
+    margin-top:8%;
+} */
+
+
+/* .mail #png{
+    position:absolute;
+    margin-left:53%;
+    margin-top:-7%;
+} */
+
+#png {
+  position: absolute;
+  margin-left: 90%;
+
+
+}
+
+input[type="submit"]:hover {
+  background-image: linear-gradient(144deg, #8b0de4, #2100f8 50%, #03eeff);
+  color: black;
+  /* padding: 0px 10px; */
+  /* border-radius: 5px; */
+}
+
+/* input[type="submit"]{
+    color:white;
+    text-decoration: none;
+    margin-top:-40%;
+    padding: 5px 10px;
+    border-radius: 5px;
+  } */
+input {
+  padding: 5px 10px;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 5px;
+  font-size: 20px;
+  margin-left: 90%;
+  position: absolute;
+  /* margin-top:-5.5%; */
+}
+
+.aboutus {
+  background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
+  border: none;
+  color: white;
+  padding: 5px 0px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 5px;
+  font-size: 20px;
+  margin-left: 72%;
+  position: absolute;
+  margin-top: 2%;
+}
+
+/* a.button:hover{
+    background-color:white;
+    color: black;
+}
+a.button{
+    color:white;
+    text-decoration: none;
+    margin-top:-40%;
+    padding: 5px 10px;
+    border-radius: 5px;
+} */
+
+
+
+
+
+/* CSS */
+.gos {
+  align-items: center;
+  background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
+  border: 0;
+  border-radius: 8px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  display: flex;
+  font-family: Phantomsans, sans-serif;
+  font-size: 20px;
+  justify-content: center;
+  line-height: 1em;
+  max-width: 100%;
+  min-width: 50px;
+  padding: 3px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.gos:active,
+.gos:hover {
+  outline: 0;
+  background-color: rgb(5, 6, 45)
+}
+
+.gos span {
+  background-color: rgb(5, 6, 45);
+  padding: 16px 24px;
+  border-radius: 6px;
+  width: 100%;
+  height: 100%;
+  transition: 300ms;
+}
+
+.gos:hover span {
+  background-color: rgb(5, 6, 45);
+
+}
+
+@media (min-width: 768px) {
+  .gos {
+    font-size: 24px;
+    /* min-width: 196px; */
+  }
+}

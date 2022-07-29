@@ -1,0 +1,197 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-size: cover;
+  background-position: center;
+  font-family: 'Times new roman', serif;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.content {
+  position: relative;
+  font-family: 'Times new roman', serif;
+  font-size: 7vw;
+  color: black;
+  margin-top: -2%;
+  margin-left: 37vw;
+  line-height: 2;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.mail {
+  width: 300px;
+  height: 300px;
+  background: black;
+  color: white;
+  margin-top: 15%;
+  left: 50%;
+  position: relative;
+  transform: translate(-50%, -50%);
+  box-sizing: 350px;
+  padding: 20px 20px;
+  border-radius: 5px;
+}
+
+
+a.button {
+  text-decoration: none;
+  color: white;
+}
+
+.mail #png {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  position: absolute;
+  top: -45px;
+  left: 130px;
+}
+
+.mail form {
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+form .txt_field {
+  position: relative;
+  border-bottom: 2px solid white;
+  margin: 30px 0;
+  font-size: 20px;
+}
+
+.txt_field input {
+  width: 100%;
+  padding: 0 5px;
+  height: 40px;
+  font-size: 16px;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+input #username {
+  font-family: 'Times New Roman', Times, serif;
+  color: white;
+}
+
+.txt_field label {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  color: white;
+  transform: translateY(-50%);
+  font-size: 16px;
+  pointer-events: none;
+  transition: .5s;
+  font-size: 20px;
+}
+
+.txt_field span::before {
+  content: '';
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: white;
+  transition: .2s;
+
+}
+
+.txt_field input:focus~label,
+.txt_field input:valid~label {
+  top: -5px;
+  color: rgb(0, 110, 255);
+}
+
+.txt_field input:focus~span::before,
+.txt_field input:valid~span::before {
+  width: 100%;
+}
+
+.pass {
+  text-decoration: none;
+  font-size: 20px;
+  line-height: 20px;
+  color: grey;
+}
+
+.pass:hover {
+  text-decoration: underline;
+  color: rgb(0, 110, 255);
+}
+
+input[type="submit"] {
+  width: 90%;
+  height: 25%;
+  background: red;
+  border-radius: 20px;
+  font-size: 20px;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
+  text-align: center;
+  margin-left: 5%;
+  padding: 7px;
+  margin-bottom: 5%;
+
+}
+
+input[type="submit"]:hover {
+  background: yellowgreen;
+  color: white;
+  transition: .2s;
+}
+
+.signup_link {
+  text-decoration: none;
+  font-size: 20px;
+  line-height: 20px;
+  color: grey;
+}
+
+.signup_link a {
+  text-decoration: none;
+  font-size: 20px;
+  line-height: 20px;
+  color: rgb(0, 110, 255);
+}
+
+.signup_link a:hover {
+  text-decoration: underline;
+}
+
+.message {
+  position: relative;
+  margin-top: 20%;
+  margin-left: 0%;
+  width: 100%;
+  height: 10%;
+  background-color: red;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 20px;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+
+}
+
+/* #cont{
+    margin-top:2%;
+  } */
+.pass a {
+  text-decoration: none;
+  font-size: 20px;
+  line-height: 20px;
+  color: rgb(0, 110, 255);
+}
+
+input {
+  color: white;
+}

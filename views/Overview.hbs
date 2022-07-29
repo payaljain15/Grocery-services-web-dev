@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/Overview.css" type="text/css">
+  <link rel='icon' href='/images/icon.png' />
+  <title>Epicerie</title>
+</head>
+
+<body style="background-image:url(/images/{{city}}.jpg)" center center fixed>
+  <div class="loc">
+    <h1>Welcome to {{city}}!</h1>
+  </div>
+  <div class="aboutus">
+    <a href="/aboutus" class="button">About Us</a>
+  </div>
+  <div class="logout">
+    <a href="/logout" class="button">Log Out</a>
+  </div>
+  <form action="/auth/user" method="post">
+    <input type="image" src="/images/login4.png" alt="Submit button" style="width:7%;" id="png">
+  </form>
+  <div class="slideshow-container">
+    <div class="mySlides fade">
+      <img src="{{img1}}" height="400" width="655">
+      <div class="description">
+        <h2>{{loc1}}</h2>
+        <span>{{description}}</span>
+      </div>
+    </div>
+    <div class="mySlides fade">
+      <img src="{{img2}}" height="400" width="655">
+      <div class="description">
+        <h2>{{loc2}}</h2>
+        <span>{{description2}}</span>
+      </div>
+    </div>
+    <div class="mySlides fade">
+      <img src="{{img3}}" height="400" width="655">
+      <div class="description">
+        <h2>{{loc3}}</h2>
+        <span>{{description3}}</span>
+      </div>
+    </div>
+    <div class="mySlides fade">
+      <img src="{{img4}}" height="400" width="655">
+      <div class="description">
+        <h2>{{loc4}}</h2>
+        <span>{{description4}}</span>
+      </div>
+    </div>
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+  <form action="/auth/category" method="post">
+    <div class="inputall">
+      <div class="location">
+        <label for="location" id="locationtext">Choose Your Location:<br></label>
+        <select id="locations" name="locationlist" onchange='plusslide()'>
+          <option value="{{loc1}}">{{loc1}}</option>
+          <option value="{{loc2}}">{{loc2}}</option>
+          <option value="{{loc3}}">{{loc3}}</option>
+          <option value="{{loc4}}">{{loc4}}</option>
+        </select>
+      </div>
+      <div class="dates">
+        <label for="dates" id="dates">Select Date:<br></label>
+        <input type="date" id="date" name="date" required>
+      </div>
+      <div class="timeslot">
+        <label for="timeslot">Choose Your Timeslot:<br></label>
+        <select id="timeslot" name="timeslot">
+          <option value="morning">Morning (8:00 AM - 11:00 AM)</option>
+          <option value="afternoon">Afternoon (12:00 AM - 3:00 AM)</option>
+          <option value="evening">Evening (5:00 AM - 8:00 AM)</option>
+          <option value="latenight">Late Night (9:00 AM - 12:00 AM)</option>
+        </select>
+      </div>
+      <div class="persons">
+        <label for="quantity" id="person">Number Of Person:<br></label>
+        <input type="number" id="quantity" name="quantity" required min="1">
+      </div>
+
+      <div class="sub">
+        <input type="submit" value="Submit" id="sub">
+      </div>
+    </div>
+  </form>
+  <br><br>
+</body>
+<script type="text/javascript" src="/js_sheets/Overview.js"></script>
+
+</html>

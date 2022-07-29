@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/delete.css" type="text/css">
+    <link rel='icon' href='/images/icon.png' />
+    <title>Delete Trip</title>
+</head>
+
+<body style="background-image:url(/images/b5.jpg)" center center fixed>
+    <div class="content">
+        <span>Epicerie</span>
+    </div>
+    <form action="/auth/user" method="post">
+        {{!-- <img src="/images/login4.png" alt="login" style="width:7%;" id="png"> --}}
+        <input type="image" src="/images/login4.png" alt="Submit button" style="width:7%;" id="png">
+    </form>
+    <div class='mail'>
+        <form action="/auth/delete" method="post">
+            <div class="txt_field">
+                <input type="text" id = "delete" name = "delete" required>
+                {{!-- <span></span> --}}
+                <label>Enter the Trip ID you want to delete</label>
+            </div>
+            <input type="submit" value="Confirm Delete">
+        </form>
+    </div>
+</body>
