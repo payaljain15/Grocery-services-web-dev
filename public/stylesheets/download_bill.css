@@ -108,7 +108,7 @@ input[type = "submit"]:hover{
     font-family: 'Courier New', Courier, monospace;
     margin-left: 5%;
 }
-.can{
+.back{
     align-content: center;
     background-color: black;
     border: none;
@@ -125,7 +125,7 @@ input[type = "submit"]:hover{
     position:absolute;
 
 }
-.cans{
+.backs{
     align-content: center;
     background-color: black;
     border: none;
@@ -140,5 +140,4 @@ input[type = "submit"]:hover{
     margin-left:90%;
     margin-top:-4%;
     position:absolute;
-
 }
