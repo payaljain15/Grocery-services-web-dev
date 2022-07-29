@@ -518,8 +518,7 @@ exports.user = async (req, res) => {
                     }
                 }
             }
-            console.log("12"+ tripinfo[0])
-
+            console.log(tripinfo);
             var Table = await query('SELECT table_name FROM decoration WHERE images = ?', [tripinfo[0].tablename]);
             var msg = msg + '<div class="trips"><span id="city">' + tripinfo[0].city + '</span><span id="loc">' + tripinfo[0].location + '</span><span id="rest">Trip ID:' + tt + '<br>Number Of Persons:' + tripinfo[0].quantity + '<br>Date:' + new Date(tripinfo[0].tdate).toLocaleDateString() + '<br>Time Slot:' + tripinfo[0].timeslot + '<br>Table-' + Table[0].table_name + '<br>Games - ' + games + '<br><strong>Total Bill - INR ' + tripinfo[0].gtotal + '</strong></span><img src="' + tripinfo[0].tablename + '" alt="login" id="image"></div>';
         }
