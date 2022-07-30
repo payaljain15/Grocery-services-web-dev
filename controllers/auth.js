@@ -353,8 +353,9 @@ exports.bill = async function (req, res) {
     var user;
     jwt.verify(req.cookies.jwt_token, JWTSecret, (err, decodedtoken) => {
         if (err) throw err;
-        user = decodedtoken.name;
+        user = decodedtoken.username;
     });
+    console.log("bill:"+ user);
     res.clearCookie('tripid', { path: '/' });
     res.clearCookie('table', { path: '/' });
     res.clearCookie('games', { path: '/' });
@@ -364,6 +365,7 @@ exports.bill = async function (req, res) {
     table = await query('SELECT table_name,price FROM decoration WHERE images = ?', [table]);
     table_name = table[0].table_name;
     var tprice = table[0].price;
+    console.log("table_name:" + table_name + " " + tprice);
     var game = "";
     var sum = 0;
     if (games == 0) {
@@ -383,7 +385,7 @@ exports.bill = async function (req, res) {
         }
     }
     console.log("user: " + user);
-    const userinfo = await query('SELECT email,contactnumber FROM users WHERE fullname = ?', [user]);
+    const userinfo = await query('SELECT fullname,email,contactnumber FROM users WHERE username = ?', [user]);
     // const name = userinfo[0].fullname;
     const email = userinfo[0].email;
     const contact = userinfo[0].contactnumber;
@@ -398,7 +400,7 @@ exports.bill = async function (req, res) {
     const gtotal = stotal + cgst + sgst;
     res.clearCookie('gtotal', { path: '/' });
     res.cookie('gtotal', gtotal, { path: '/' });
-    res.render('bill', { name: user, email: email, phone: contact, date: d, games: game, sum: sum, time: Time, tripid: tripid, tablename: table_name, timeslot: req.cookies.time, location: req.cookies.location, city: req.cookies.city_name, persons: req.cookies.quantity, tprice: tprice, stotal: stotal, cgst: cgst, sgst: sgst, gtotal: gtotal });
+    res.render('bill', { name: userinfo.fullname, email: email, phone: contact, date: d, games: game, sum: sum, time: Time, tripid: tripid, tablename: table_name, timeslot: req.cookies.time, location: req.cookies.location, city: req.cookies.city_name, persons: req.cookies.quantity, tprice: tprice, stotal: stotal, cgst: cgst, sgst: sgst, gtotal: gtotal });
 }
 
 
@@ -439,9 +441,10 @@ exports.confirmtrip = async (req, res) => {
     console.log(name, email, contact);
     var msg = '';
     const Tripid = await query('SELECT tripid FROM usertrips WHERE username = ?', [user]);
+    console.log(Tripid);
     for (let i = 0; i < Tripid.length; i++) {
         var tt = Tripid[i].tripid;
-        var tripinfo = await query('SELECT * FROM trips WHERE tripid= ? AND username = ?', [tt, user]);
+        var tripinfo = await query('SELECT * FROM trips WHERE tripid = ? AND username = ?', [tt, user]);
         var game = await query('SELECT game FROM rgames WHERE tripid = ? AND username = ?', [tt, user]);
         var games = '';
         if (game.length == 0) {
@@ -464,7 +467,7 @@ exports.confirmtrip = async (req, res) => {
         }
         console.log(tripinfo)
         var Table = await query('SELECT table_name FROM decoration WHERE images = ?', [tripinfo[0].tablename]);
-        var msg = msg + '<div class="trips"><span id="city">' + tripinfo[0].city + '</span><span id="loc">' + tripinfo[0].location + '</span><span id="rest">Trip ID:' + tt + '<br>Number Of Persons:' + tripinfo[0].quantity + '<br>Date:' + new Date(tripinfo[0].tdate).toLocaleDateString() + '<br>Time Slot:' + tripinfo[0].timeslot + '<br>Table-' + Table[0].table_name + '<br>Games - ' + games + '<br><strong>Total Bill - INR ' + tripinfo[0].gtotal + '</strong></span><img src="' + tripinfo[0].tablename + '" alt="login" id="image"></div>';
+        msg = msg + '<div class="trips"><span id="city">' + tripinfo[0].city + '</span><span id="loc">' + tripinfo[0].location + '</span><span id="rest">Trip ID:' + tt + '<br>Number Of Persons:' + tripinfo[0].quantity + '<br>Date:' + new Date(tripinfo[0].tdate).toLocaleDateString() + '<br>Time Slot:' + tripinfo[0].timeslot + '<br>Table-' + Table[0].table_name + '<br>Games - ' + games + '<br><strong>Total Bill - INR ' + tripinfo[0].gtotal + '</strong></span><img src="' + tripinfo[0].tablename + '" alt="login" id="image"></div>';
     }
 
     return res.render('user', { msg: msg, name: name, email: email, phone: contact, user: user });
@@ -497,8 +500,10 @@ exports.user = async (req, res) => {
         for (let i = 0; i < Tripid.length; i++) {
             var tt = Tripid[i].tripid;
             console.log(tt+user);
-            var tripinfo = await query('SELECT * FROM trips WHERE tripid = ? AND username = ?', [tt, user]);
-            var game = await query('SELECT game FROM rgames WHERE tripid = ? AND username = ?', [tt, user]);
+            var sql2 = "SELECT game FROM rgames WHERE tripid = " + tt + " AND username = '"+user+"'";
+            var tripinfo = await query('SELECT tablename,city,location,quantity,tdate,timeslot,gtotal FROM trips WHERE tripid = ? AND username = ?', [tt,user]);
+            var game = await query(sql2);
+            console.log(game);
             var games = '';
             if (game.length == 0) {
                 games = 'NONE';
@@ -518,7 +523,7 @@ exports.user = async (req, res) => {
                     }
                 }
             }
-            console.log(tripinfo);
+            
             var Table = await query('SELECT table_name FROM decoration WHERE images = ?', [tripinfo[0].tablename]);
             var msg = msg + '<div class="trips"><span id="city">' + tripinfo[0].city + '</span><span id="loc">' + tripinfo[0].location + '</span><span id="rest">Trip ID:' + tt + '<br>Number Of Persons:' + tripinfo[0].quantity + '<br>Date:' + new Date(tripinfo[0].tdate).toLocaleDateString() + '<br>Time Slot:' + tripinfo[0].timeslot + '<br>Table-' + Table[0].table_name + '<br>Games - ' + games + '<br><strong>Total Bill - INR ' + tripinfo[0].gtotal + '</strong></span><img src="' + tripinfo[0].tablename + '" alt="login" id="image"></div>';
         }
