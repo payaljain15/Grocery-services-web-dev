@@ -11,6 +11,7 @@ router.post('/change_pass', authController.change_pass);
 router.post('/logout',authController.logout);
 router.post('/images',authController.images);
 router.post('/category' ,authController.category);
+router.post('/backcategory' ,authController.backcategory);
 router.post('/user',authController.user);
 router.post('/delete',authController.delete);
 router.post('/welcome',authController.welcome);
